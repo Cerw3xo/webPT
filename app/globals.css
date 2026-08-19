@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --color-ink: #080808;
+  --color-ink: #050505;
   --color-charcoal: #111111;
   --color-surface: #151515;
   --color-raised: #1c1c1c;
@@ -11,6 +11,8 @@
   --color-accent: #9075f7;
 
   --space-page: clamp(1.25rem, 3vw, 3.5rem);
+  --space-content: clamp(1.5rem, 4.5vw, 4.5rem);
+  --content-max: 80rem;
   --space-section: clamp(7rem, 14vw, 14rem);
   --font-display: "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
   --font-body: Arial, Helvetica, sans-serif;
@@ -1513,5 +1515,302 @@ a {
 
   .site-footer {
     background: var(--color-ink);
+  }
+}
+
+/* Refined desktop content grid — applied outside cinematic chapters only */
+.shell {
+  width: min(100%, var(--content-max));
+  padding-inline: var(--space-content);
+}
+
+.section {
+  padding-block: clamp(7.5rem, 10vw, 10.5rem);
+}
+
+.section-header {
+  grid-template-columns: minmax(9rem, 0.42fr) minmax(0, 0.58fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  margin-bottom: clamp(3.5rem, 6vw, 6.5rem);
+}
+
+.section-title {
+  max-width: 12ch;
+  font-size: clamp(2.25rem, 3.5vw, 4rem);
+  letter-spacing: -0.052em;
+  line-height: 0.88;
+}
+
+.about-section {
+  padding-top: clamp(8.5rem, 12vw, 11.25rem);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 3.5rem);
+  align-items: center;
+}
+
+.about-grid .media-placeholder {
+  grid-column: 2 / span 4;
+  width: 100%;
+}
+
+.about-copy {
+  grid-column: 8 / span 4;
+}
+
+.about-copy .lead-copy {
+  max-width: 10ch;
+  font-size: clamp(3rem, 4.3vw, 5rem);
+  line-height: 0.88;
+}
+
+.body-copy {
+  max-width: 34rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.text-link {
+  margin-top: 2.5rem;
+}
+
+.service-list {
+  max-width: 100%;
+}
+
+.service-row {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 3.5rem);
+  padding-block: clamp(3rem, 5vw, 5.5rem);
+}
+
+.service-row > .media-placeholder {
+  grid-column: 1 / span 7;
+  width: 100%;
+}
+
+.service-row__content {
+  grid-column: 9 / span 4;
+  grid-template-columns: 2rem 1fr;
+  column-gap: 0.75rem;
+}
+
+.service-row:nth-child(even) > .media-placeholder {
+  grid-column: 6 / span 7;
+  order: initial;
+}
+
+.service-row:nth-child(even) .service-row__content {
+  grid-column: 1 / span 4;
+}
+
+.service-row h3 {
+  font-size: clamp(2.4rem, 3.7vw, 4.25rem);
+  line-height: 0.84;
+}
+
+.service-row p {
+  max-width: 21rem;
+  margin-top: 1.4rem;
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+
+.service-row__arrow {
+  margin-top: 1.75rem;
+}
+
+.philosophy-section {
+  padding-top: clamp(5.5rem, 9vw, 9rem);
+}
+
+.process-grid {
+  margin-inline: auto;
+}
+
+.process-step {
+  min-height: 23rem;
+  padding: clamp(1.25rem, 2.2vw, 2rem);
+}
+
+.process-step h3 {
+  font-size: clamp(2.25rem, 3.1vw, 3.5rem);
+  line-height: 0.9;
+}
+
+.process-step p {
+  max-width: 12rem;
+  font-size: 0.75rem;
+}
+
+.results-section {
+  padding-bottom: clamp(7.5rem, 10vw, 10.5rem);
+}
+
+.results-viewport {
+  overflow: hidden;
+}
+
+.results-track {
+  grid-auto-columns: minmax(17rem, 24rem);
+  gap: 0.75rem;
+  width: max-content;
+  padding-inline: 0;
+}
+
+.result-card {
+  width: 24rem;
+  min-width: 17rem;
+  padding: 0.75rem;
+  background: #111;
+}
+
+.result-card h3 {
+  font-size: 1.45rem;
+}
+
+.result-card__identity,
+.result-card__metric {
+  padding-block: 1rem;
+}
+
+.result-card__metric strong {
+  font-size: clamp(2.5rem, 3.2vw, 3.6rem);
+}
+
+.results-controls {
+  margin-top: 2rem;
+}
+
+.final-cta {
+  min-height: min(48rem, 78svh);
+}
+
+.final-cta__inner {
+  max-width: var(--content-max);
+}
+
+.final-cta .display-type {
+  max-width: 10ch;
+  font-size: clamp(3.25rem, 5vw, 5.5rem);
+  line-height: 0.87;
+}
+
+.cta-button {
+  width: min(100%, 19rem);
+  margin-top: 2.75rem;
+}
+
+.contact-section {
+  padding-block: clamp(7.5rem, 10vw, 10.5rem);
+}
+
+.contact-grid {
+  grid-template-columns: minmax(15rem, 0.75fr) minmax(24rem, 1fr);
+  gap: clamp(3rem, 8vw, 8rem);
+}
+
+.contact-intro .lead-copy {
+  max-width: 12ch;
+  font-size: clamp(2.5rem, 3.6vw, 4rem);
+  line-height: 0.9;
+}
+
+.site-footer__top {
+  min-height: 17rem;
+  padding-block: 3rem;
+}
+
+.footer-mark {
+  font-size: clamp(5.5rem, 10vw, 10rem);
+  line-height: 0.62;
+}
+
+.site-footer__bottom {
+  min-height: 5rem;
+}
+
+@media (max-width: 720px) {
+  .shell {
+    padding-inline: 1.25rem;
+  }
+
+  .section {
+    padding-block: 6rem;
+  }
+
+  .section-header {
+    gap: 1.75rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(2.6rem, 11vw, 4rem);
+  }
+
+  .about-grid {
+    display: block;
+  }
+
+  .about-grid .media-placeholder {
+    width: min(100%, 26rem);
+  }
+
+  .about-copy {
+    margin-top: 2.5rem;
+  }
+
+  .about-copy .lead-copy {
+    font-size: clamp(2.75rem, 13vw, 4rem);
+  }
+
+  .service-row,
+  .service-row:nth-child(even) {
+    display: block;
+  }
+
+  .service-row__content,
+  .service-row:nth-child(even) .service-row__content {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    margin-top: 1.5rem;
+  }
+
+  .service-row h3 {
+    font-size: clamp(2.8rem, 13vw, 4rem);
+  }
+
+  .results-viewport {
+    overflow: visible;
+  }
+
+  .results-track {
+    grid-auto-columns: 78vw;
+    overflow-x: auto;
+    width: calc(100vw - 1.25rem);
+  }
+
+  .result-card {
+    width: 78vw;
+    min-width: 78vw;
+  }
+
+  .final-cta {
+    min-height: 38rem;
+  }
+
+  .final-cta .display-type {
+    font-size: clamp(3.25rem, 14vw, 4.75rem);
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer__top {
+    min-height: 15rem;
   }
 }

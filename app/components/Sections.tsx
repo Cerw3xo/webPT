@@ -142,29 +142,30 @@ export function ResultsSection() {
         <SectionHeader index="05" label="Výsledky" title="The work shows." />
       </div>
 
-      <div className="results-track" aria-label="Výsledky klientov">
-        {clients.map((client) => (
-          <article className="result-card" key={client.index}>
-            <MediaPlaceholder label={client.focus} ratio="portrait" index={client.index} theme="result" />
-            <div className="result-card__identity">
-              <div>
-                <h3>{client.name}</h3>
-                <p>{client.focus}</p>
+      <div className="results-viewport shell">
+        <div className="results-track" aria-label="Výsledky klientov">
+          {clients.map((client) => (
+            <article className="result-card" key={client.index}>
+              <MediaPlaceholder label={client.focus} ratio="portrait" index={client.index} theme="result" />
+              <div className="result-card__identity">
+                <div>
+                  <h3>{client.name}</h3>
+                  <p>{client.focus}</p>
+                </div>
+                <span>{client.index}</span>
               </div>
-              <span>{client.index}</span>
-            </div>
-            <div className="result-card__metric">
-              <strong>{client.metric}</strong>
-              <span>{client.detail}</span>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <div className="shell results-controls" aria-hidden="true">
-        <span>Drag to explore</span>
-        <div className="results-controls__line"><i /></div>
-        <span>01 / 04</span>
+              <div className="result-card__metric">
+                <strong>{client.metric}</strong>
+                <span>{client.detail}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="results-controls" aria-hidden="true">
+          <span>Drag to explore</span>
+          <div className="results-controls__line"><i /></div>
+          <span>01 / 04</span>
+        </div>
       </div>
     </section>
   );
@@ -176,7 +177,7 @@ export function FinalCta() {
       <div className="shell final-cta__inner">
         <p className="eyebrow">The standard</p>
         <h2 className="display-type" id="final-cta-title">
-          Build a body<br />that can do<br /><span className="accent-word">more.</span>
+          Build a body that can do <span className="accent-word">more.</span>
         </h2>
         <a className="cta-button" href="#contact">
           Začať spoluprácu <span aria-hidden="true">↗</span>
