@@ -2517,3 +2517,157 @@ body {
     font-size: clamp(2.75rem, 12vw, 3.75rem);
   }
 }
+
+/* Surface and contrast system — restrained, technical editorial finish */
+:root {
+  --color-ink: #080808;
+  --color-charcoal: #0b0b0c;
+  --color-surface: #0f0f11;
+  --color-raised: #101012;
+  --color-muted: #666663;
+  --color-line: #1e1e20;
+  --color-paper: #f1f0eb;
+  --color-accent: #7657d9;
+
+  --bg-main: #080808;
+  --bg-section: #0b0b0c;
+  --bg-elevated: #0f0f11;
+  --bg-card: #101012;
+  --text-primary: #f1f0eb;
+  --text-secondary: #9a9994;
+  --text-muted: #666663;
+  --border-subtle: #1e1e20;
+  --border-visible: #29292c;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-primary);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--text-primary);
+}
+
+.brand-mark__accent,
+.footer-mark span,
+.accent-word {
+  color: currentColor;
+}
+
+.site-header {
+  border-bottom-color: rgb(241 240 235 / 9%);
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.social-link:hover,
+.social-link:focus-visible {
+  color: var(--text-secondary);
+}
+
+.section-kicker,
+.section-kicker span,
+.eyebrow,
+.service-row__index,
+.process-step__index,
+.media-placeholder__label,
+.media-placeholder__index {
+  color: var(--text-muted);
+}
+
+.section-summary,
+.about-copy .body-copy,
+.service-row p,
+.process-step p,
+.result-card__identity p,
+.result-card__metric span,
+.contact-intro p,
+.site-footer__top p,
+.site-footer__bottom {
+  color: var(--text-secondary);
+}
+
+.about-section,
+.philosophy-section,
+.final-cta {
+  background: var(--bg-section);
+  border-color: var(--border-subtle);
+}
+
+.coaching-section,
+.contact-section,
+.site-footer {
+  background: var(--bg-main);
+  border-color: var(--border-subtle);
+}
+
+.results-section {
+  background: var(--bg-elevated);
+  border-color: var(--border-subtle);
+}
+
+.coaching-services,
+.coaching-services .service-row,
+.coaching-services .service-row:nth-child(even),
+.result-card,
+.visual-field,
+.contact-form-visual {
+  border-color: var(--border-subtle);
+}
+
+.coaching-services .service-row,
+.coaching-services .service-row:nth-child(even),
+.result-card {
+  background: var(--bg-card);
+}
+
+.process-grid::before {
+  background: var(--border-subtle);
+}
+
+.process-step,
+.process-step__index {
+  background: var(--bg-section);
+}
+
+.results-controls__line {
+  background: var(--border-visible);
+}
+
+.results-controls__line i {
+  background: var(--text-secondary);
+}
+
+.final-cta .display-type {
+  color: var(--text-primary);
+}
+
+.final-cta .cta-button,
+.visual-submit {
+  background: var(--text-primary);
+  color: var(--bg-main);
+  border-color: var(--text-primary);
+}
+
+.final-cta .cta-button:hover,
+.final-cta .cta-button:focus-visible {
+  background: var(--text-secondary);
+  border-color: var(--text-secondary);
+  color: var(--bg-main);
+}
+
+.visual-submit {
+  padding: 1.05rem 1.2rem;
+}
+
+.visual-submit span {
+  color: currentColor;
+}
+
+.chapter-link span,
+.service-row__arrow span,
+.cinematic-chapter__progress-value {
+  color: var(--color-accent);
+}
