@@ -1,7 +1,7 @@
 const chapters = [
-  { number: "01", line: "Build strength." },
-  { number: "02", line: "Build endurance." },
-  { number: "03", line: "Build performance." },
+  { number: "01", line: "Build strength.", label: "Barbell / Deadlift / Gym", theme: "strength" as const },
+  { number: "02", line: "Build endurance.", label: "Run / Condition / Move", theme: "endurance" as const },
+  { number: "03", line: "Build performance.", label: "Box / Move / Repeat", theme: "performance" as const },
 ];
 
 export function IntroSequence() {
@@ -9,13 +9,22 @@ export function IntroSequence() {
     <section className="intro-sequence" id="top" aria-label="Tréningový manifest">
       {chapters.map((chapter, index) => (
         <article className="intro-chapter" data-chapter={chapter.number} key={chapter.number}>
-          <div className="intro-chapter__media" aria-hidden="true">
-            <span className="media-index">0{index + 1} / 03</span>
+          <div className="intro-chapter__content">
+            <div className="intro-chapter__meta">
+              <p className="eyebrow">Chapter {chapter.number}</p>
+              <span>{chapter.label}</span>
+            </div>
+            <div>
+              <h1 className="display-type">{chapter.line}</h1>
+              <a className="chapter-link" href="#coaching">
+                Explore the method <span aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
-
-          <div className="intro-chapter__content shell">
-            <p className="eyebrow">Chapter {chapter.number}</p>
-            <h1 className="display-type">{chapter.line}</h1>
+          <div className="intro-chapter__media">
+            <span className="media-index">0{index + 1} / 03</span>
+            <span className="intro-chapter__media-label">{chapter.label}</span>
+            <span className={`intro-chapter__media-shape intro-chapter__media-shape--${chapter.theme}`} aria-hidden="true" />
           </div>
         </article>
       ))}
@@ -29,7 +38,7 @@ export function IntroSequence() {
             that can <span className="accent-word">do more.</span>
           </h2>
           <a className="text-link" href="#coaching">
-            Explore coaching <span aria-hidden="true">↓</span>
+            Begin the work <span aria-hidden="true">↓</span>
           </a>
         </div>
       </article>

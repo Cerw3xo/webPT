@@ -59,18 +59,18 @@ const clients = [
 
 export function AboutSection() {
   return (
-    <section className="section section--paper" id="about">
+    <section className="section about-section" id="about">
       <div className="shell">
-        <SectionHeader index="02" label="O mne" title="Coach. Athlete. Student of performance." tone="light" />
+        <SectionHeader index="02" label="O mne" title="Coach. Athlete. Student of performance." />
 
         <div className="about-grid">
-          <MediaPlaceholder label="Coach portrait" ratio="portrait" index="01" />
+          <MediaPlaceholder label="Coach portrait" ratio="portrait" index="01" theme="profile" />
           <div className="about-copy">
             <p className="lead-copy">
-              Tréning nie je trest. Je to nástroj, ktorý ti dá viac sily, kapacity a slobody robiť veci, na ktorých záleží.
+              Pripravujem ľudí na výkon, ktorý má zmysel aj mimo tréningovej haly.
             </p>
             <p className="body-copy">
-              Spájam princípy silovej prípravy a kondičného tréningu do jasného systému. Bez skratiek, bez chaosu, s plánom postaveným na realite tvojho života.
+              Spájam silový tréning, kondíciu a atletický pohyb do jasného systému. Bez skratiek, s rešpektom k tvojmu cieľu aj životu mimo tréningu.
             </p>
             <a className="text-link" href="#coaching">
               Ako trénujeme <span aria-hidden="true">↓</span>
@@ -91,10 +91,20 @@ export function CoachingSection() {
         <div className="service-list">
           {coachingServices.map((service) => (
             <article className="service-row" key={service.index}>
-              <span className="service-row__index">{service.index}</span>
-              <h3>{service.title}</h3>
-              <p>{service.text}</p>
-              <span className="service-row__arrow" aria-hidden="true">↗</span>
+              <MediaPlaceholder
+                label={service.title}
+                ratio="landscape"
+                index={service.index}
+                theme={service.index === "01" ? "strength" : service.index === "02" ? "endurance" : "performance"}
+              />
+              <div className="service-row__content">
+                <span className="service-row__index">{service.index}</span>
+                <h3>{service.title}</h3>
+                <p>{service.text}</p>
+                <a className="service-row__arrow" href="#contact">
+                  Zistiť viac <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             </article>
           ))}
         </div>
@@ -127,15 +137,15 @@ export function PhilosophySection() {
 
 export function ResultsSection() {
   return (
-    <section className="section section--paper results-section" id="results">
+    <section className="section results-section" id="results">
       <div className="shell">
-        <SectionHeader index="05" label="Výsledky" title="The work shows." tone="light" />
+        <SectionHeader index="05" label="Výsledky" title="The work shows." />
       </div>
 
       <div className="results-track" aria-label="Výsledky klientov">
         {clients.map((client) => (
           <article className="result-card" key={client.index}>
-            <MediaPlaceholder label={client.focus} ratio="portrait" index={client.index} />
+            <MediaPlaceholder label={client.focus} ratio="portrait" index={client.index} theme="result" />
             <div className="result-card__identity">
               <div>
                 <h3>{client.name}</h3>
@@ -164,9 +174,9 @@ export function FinalCta() {
   return (
     <section className="final-cta" aria-labelledby="final-cta-title">
       <div className="shell final-cta__inner">
-        <p className="eyebrow">Ready when you are</p>
+        <p className="eyebrow">The standard</p>
         <h2 className="display-type" id="final-cta-title">
-          Train for<br />more than<br /><span className="accent-word">today.</span>
+          Build a body<br />that can do<br /><span className="accent-word">more.</span>
         </h2>
         <a className="cta-button" href="#contact">
           Začať spoluprácu <span aria-hidden="true">↗</span>
