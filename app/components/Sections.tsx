@@ -221,7 +221,7 @@ export function ContactSection() {
               </div>
             ))}
             <div className="visual-submit" aria-hidden="true">
-              Odoslať žiadosť <span>↗</span>
+              Odoslať <span>→</span>
             </div>
           </div>
         </div>

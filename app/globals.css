@@ -14,8 +14,8 @@
   --space-content: clamp(1.5rem, 4.5vw, 4.5rem);
   --content-max: 80rem;
   --space-section: clamp(7rem, 14vw, 14rem);
-  --font-display: "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
-  --font-body: Arial, Helvetica, sans-serif;
+  --font-display: var(--font-antonio), "Arial Narrow", Impact, sans-serif;
+  --font-body: var(--font-inter), Arial, Helvetica, sans-serif;
 }
 
 @theme inline {
@@ -2320,5 +2320,200 @@ a {
 
   .site-footer__top {
     min-height: 11rem;
+  }
+}
+
+/* Final typography and scale refinement */
+body {
+  font-family: var(--font-body);
+}
+
+.display-type,
+.editorial-major,
+.contact-title,
+.service-row h3,
+.process-step h3,
+.result-card h3,
+.footer-mark,
+.brand-mark {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.site-header,
+.section-kicker,
+.eyebrow,
+.media-placeholder__label,
+.media-placeholder__index,
+.visual-field p,
+.visual-field span,
+.visual-submit,
+.results-controls,
+.site-footer__top p,
+.site-footer__bottom {
+  font-family: var(--font-body);
+}
+
+.section {
+  padding-block: clamp(6rem, 7.4vw, 8rem);
+}
+
+.about-composition > .media-placeholder {
+  aspect-ratio: 3 / 4;
+}
+
+.about-composition .editorial-major {
+  max-width: 10ch;
+  font-size: clamp(2.2rem, 3.5vw, 3.8rem);
+  line-height: 0.92;
+}
+
+.about-copy .lead-copy {
+  max-width: 25ch;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.about-copy .body-copy {
+  max-width: 32rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.section-intro {
+  margin-bottom: clamp(2.5rem, 4vw, 4.25rem);
+}
+
+.section-intro .editorial-major,
+.results-intro > .editorial-major {
+  font-size: clamp(2.2rem, 3.5vw, 3.8rem);
+  line-height: 0.92;
+}
+
+.coaching-services .service-row,
+.coaching-services .service-row:nth-child(even) {
+  gap: 1.1rem;
+  padding: 1rem;
+}
+
+.coaching-services .service-row h3,
+.process-step h3 {
+  font-size: clamp(1.25rem, 1.6vw, 1.6rem);
+  font-weight: 600;
+}
+
+.coaching-services .service-row p,
+.process-step p {
+  font-size: 0.86rem;
+}
+
+.process-grid {
+  margin-top: 0.5rem;
+}
+
+.process-step {
+  min-height: 16rem;
+}
+
+.process-step h3 {
+  margin-top: 3.5rem;
+}
+
+.results-intro {
+  margin-bottom: clamp(2.5rem, 4vw, 4.25rem);
+}
+
+.results-track {
+  grid-auto-columns: minmax(18rem, 21.5rem);
+  gap: 1rem;
+}
+
+.result-card {
+  width: 21.5rem;
+  min-width: 18rem;
+  padding: 0.8rem;
+}
+
+.result-card .media-placeholder {
+  aspect-ratio: 4 / 5;
+}
+
+.result-card h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.result-card__metric strong {
+  font-size: clamp(2.35rem, 3vw, 3.1rem);
+}
+
+.final-cta {
+  min-height: clamp(34rem, 64svh, 42rem);
+}
+
+.final-cta .display-type {
+  max-width: 11ch;
+  font-size: clamp(3rem, 3.8vw, 4rem);
+  line-height: 0.92;
+}
+
+.contact-title {
+  font-size: clamp(2.1rem, 3.1vw, 3.2rem);
+  line-height: 0.95;
+}
+
+.contact-intro .lead-copy {
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.visual-field {
+  min-height: 4.75rem;
+}
+
+.visual-field--large {
+  min-height: 8rem;
+  padding-top: 1.5rem;
+}
+
+.visual-submit {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--color-paper);
+  background: transparent;
+  color: var(--color-paper);
+}
+
+.visual-submit span {
+  color: var(--color-accent);
+  font-size: 1rem;
+}
+
+.site-footer__top {
+  min-height: 10rem;
+  padding-block: 2rem;
+}
+
+.footer-mark {
+  font-size: clamp(4.25rem, 6vw, 6rem);
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding-block: 5rem;
+  }
+
+  .about-composition .editorial-major,
+  .section-intro .editorial-major,
+  .results-intro > .editorial-major {
+    font-size: clamp(2.25rem, 10vw, 3.25rem);
+  }
+
+  .result-card {
+    width: 78vw;
+    min-width: 78vw;
+  }
+
+  .final-cta .display-type {
+    font-size: clamp(2.75rem, 12vw, 3.75rem);
   }
 }
