@@ -9,7 +9,7 @@ export function MediaPlaceholder({ label, ratio = "landscape", index, theme }: M
   return (
     <div
       className={`media-placeholder media-placeholder--${ratio}${theme ? ` media-placeholder--${theme}` : ""}`}
-      aria-label={`${label} — vizuál bude doplnený`}
+      aria-label={`${label} — vizuál bude doplněn`}
     >
       <span className="media-placeholder__cross" aria-hidden="true" />
       <span className="media-placeholder__frame" aria-hidden="true" />

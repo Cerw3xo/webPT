@@ -89,7 +89,7 @@ export function CinematicChapter({
         <div className="cinematic-chapter__copy">
           <div className="cinematic-chapter__meta">
             <span>{number} / {discipline}</span>
-            <span>Scroll to progress</span>
+            <span>Posouvej pro průběh</span>
           </div>
 
           <div className="cinematic-chapter__headline-wrap">
@@ -98,7 +98,7 @@ export function CinematicChapter({
               <span>{headline[1]}</span>
             </h1>
             <a className="chapter-link" href="#coaching">
-              Explore strength <span aria-hidden="true">↗</span>
+              Prozkoumat sílu <span aria-hidden="true">↗</span>
             </a>
           </div>
 
@@ -113,7 +113,7 @@ export function CinematicChapter({
           <div className="cinematic-chapter__media-motion">
             {media ?? <MediaPlaceholder label={mediaLabel} ratio="portrait" index={number} theme="strength" />}
           </div>
-          <span className="cinematic-chapter__media-caption">Future deadlift sequence / video</span>
+          <span className="cinematic-chapter__media-caption">Budoucí sekvence mrtvého tahu / video</span>
         </div>
       </div>
     </section>

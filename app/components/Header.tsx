@@ -1,6 +1,7 @@
 const navigation = [
-  { label: "O mne", href: "#about" },
-  { label: "Coaching", href: "#coaching" },
+  { label: "O mně", href: "#about" },
+  { label: "Trénink", href: "#coaching" },
+  { label: "Proces", href: "#process" },
   { label: "Výsledky", href: "#results" },
   { label: "Kontakt", href: "#contact" },
 ];
@@ -8,12 +9,12 @@ const navigation = [
 export function Header() {
   return (
     <header className="site-header">
-      <a className="brand-mark" href="#top" aria-label="MT — domov">
+      <a className="brand-mark" href="#top" aria-label="MT — domů">
         <span>M</span>
         <span className="brand-mark__accent">T</span>
       </a>
 
-      <nav className="site-nav" aria-label="Hlavná navigácia">
+      <nav className="site-nav" aria-label="Hlavní navigace">
         {navigation.map((item) => (
           <a key={item.href} href={item.href}>
             {item.label}

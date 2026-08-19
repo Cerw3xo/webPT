@@ -3,56 +3,56 @@ import { MediaPlaceholder } from "./MediaPlaceholder";
 const coachingServices = [
   {
     index: "01",
-    title: "Strength",
-    text: "Buduj silu, ktorá sa prenáša do športu aj každodenného života.",
+    title: "Síla",
+    text: "Budování síly, svalů a kvalitní techniky.",
   },
   {
     index: "02",
-    title: "Conditioning",
-    text: "Rozvíjaj motor, ktorý vydrží pracovať, regenerovať a opakovať výkon.",
+    title: "Kondice",
+    text: "Vytrvalost, pracovní kapacita a lepší kondice.",
   },
   {
     index: "03",
-    title: "Hybrid training",
-    text: "Spoj silu a vytrvalosť bez toho, aby jedna brzdila druhú.",
+    title: "Hybridní trénink",
+    text: "Síla, kondice a atletický pohyb v jednom systému.",
   },
 ];
 
 const process = [
-  { index: "01", title: "Assess", text: "Zistíme, kde si a čo ťa limituje." },
-  { index: "02", title: "Plan", text: "Vytvoríme systém okolo tvojho cieľa." },
-  { index: "03", title: "Train", text: "Pracujeme presne, tvrdo a udržateľne." },
-  { index: "04", title: "Progress", text: "Meriame, upravujeme a posúvame ďalej." },
+  { index: "01", title: "Zhodnocení", text: "Zjistíme výchozí stav." },
+  { index: "02", title: "Plán", text: "Nastavíme směr a priority." },
+  { index: "03", title: "Trénink", text: "Pracujeme systematicky." },
+  { index: "04", title: "Progres", text: "Sledujeme výsledky a upravujeme plán." },
 ];
 
 const clients = [
   {
     index: "01",
     name: "Martin K.",
-    focus: "Hybrid athlete",
+    focus: "Hybridní trénink",
     metric: "+32 kg",
-    detail: "na total za 16 týždňov",
+    detail: "na součet za 16 týdnů",
   },
   {
     index: "02",
-    name: "Lucia V.",
-    focus: "Strength",
+    name: "Lucie V.",
+    focus: "Síla",
     metric: "1.6× BW",
-    detail: "nový osobný rekord v drepe",
+    detail: "nový osobní rekord v dřepu",
   },
   {
     index: "03",
     name: "Tomáš R.",
-    focus: "Conditioning",
+    focus: "Kondice",
     metric: "−06:18",
-    detail: "z času na 10 kilometrov",
+    detail: "z času na 10 kilometrů",
   },
   {
     index: "04",
     name: "Nina P.",
-    focus: "Performance",
-    metric: "12 týž.",
-    detail: "konzistentného progresu",
+    focus: "Výkon",
+    metric: "12 týd.",
+    detail: "průběžného progresu",
   },
 ];
 
@@ -61,18 +61,18 @@ export function AboutSection() {
     <section className="section about-section" id="about">
       <div className="shell">
         <div className="editorial-grid about-composition">
-          <p className="section-kicker"><span>01</span> / About</p>
-          <h2 className="editorial-major">Coach. Athlete. Student of performance.</h2>
-          <MediaPlaceholder label="Coach portrait" ratio="portrait" index="01" theme="profile" />
+          <p className="section-kicker"><span>01</span> / O mně</p>
+          <h2 className="editorial-major">Trenér. Sportovec. Stále se zlepšuju.</h2>
+          <MediaPlaceholder label="Portrét trenéra" ratio="portrait" index="01" theme="profile" />
           <div className="about-copy">
             <p className="lead-copy">
-              Pripravujem ľudí na výkon, ktorý má zmysel aj mimo tréningovej haly.
+              Trénink pro mě není jen o vzhledu. Síla, kondice a kvalitní pohyb tvoří základ dlouhodobého výkonu.
             </p>
             <p className="body-copy">
-              Spájam silový tréning, kondíciu a atletický pohyb do jasného systému. Bez skratiek, s rešpektom k tvojmu cieľu aj životu mimo tréningu.
+              Pomáhám lidem trénovat systematicky, bezpečně a s jasným cílem.
             </p>
             <a className="text-link" href="#coaching">
-              Ako trénujeme <span aria-hidden="true">↓</span>
+              Jak trénujeme <span aria-hidden="true">↓</span>
             </a>
           </div>
         </div>
@@ -86,9 +86,9 @@ export function CoachingSection() {
     <section className="section coaching-section" id="coaching">
       <div className="shell">
         <div className="editorial-grid section-intro coaching-intro">
-          <p className="section-kicker"><span>02</span> / Coaching</p>
-          <h2 className="editorial-major">Built around what you want to do.</h2>
-          <p className="section-summary">Tréning je postavený okolo toho, čo chceš vedieť robiť — nie iba okolo toho, čo chceš vidieť v zrkadle.</p>
+          <p className="section-kicker"><span>02</span> / Trénink</p>
+          <h2 className="editorial-major">Trénink podle toho, čeho chceš dosáhnout.</h2>
+          <p className="section-summary">Trénink podle toho, čeho chceš dosáhnout — ne jen podle toho, co chceš vidět v zrcadle.</p>
         </div>
 
         <div className="coaching-services">
@@ -105,7 +105,7 @@ export function CoachingSection() {
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
                 <a className="service-row__arrow" href="#contact">
-                  Zistiť viac <span aria-hidden="true">↗</span>
+                Zjistit víc <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </article>
@@ -118,12 +118,12 @@ export function CoachingSection() {
 
 export function PhilosophySection() {
   return (
-    <section className="section philosophy-section">
+    <section className="section philosophy-section" id="process">
       <div className="shell">
         <div className="editorial-grid section-intro process-intro">
-          <p className="section-kicker"><span>03</span> / Process</p>
-          <h2 className="editorial-major">Simple process. Serious intent.</h2>
-          <p className="section-summary">Jasný rámec, ktorý dáva tréningu smer a zároveň priestor reagovať na reálny život.</p>
+          <p className="section-kicker"><span>03</span> / Proces</p>
+          <h2 className="editorial-major">Jednoduchý proces. Jasný cíl.</h2>
+          <p className="section-summary">Jasný rámec, který dává tréninku směr a zároveň prostor reagovat na reálný život.</p>
         </div>
 
         <div className="process-grid">
@@ -146,12 +146,12 @@ export function ResultsSection() {
   return (
     <section className="section results-section" id="results">
       <div className="shell editorial-grid results-intro">
-        <p className="section-kicker"><span>04</span> / Results</p>
-        <h2 className="editorial-major">The work shows.</h2>
+        <p className="section-kicker"><span>04</span> / Výsledky</p>
+        <h2 className="editorial-major">Výsledky mluví.</h2>
         <div className="results-intro__aside">
-          <p className="section-summary">Každý progres má vlastný kontext. Tu sú krátke záznamy práce, ktorá sa preniesla ďalej.</p>
+          <p className="section-summary">Každý progres má vlastní kontext. Tady jsou krátké záznamy práce, která se posunula dál.</p>
           <div className="results-controls" aria-hidden="true">
-            <span>Drag to explore</span>
+            <span>Táhni pro prohlédnutí</span>
             <div className="results-controls__line"><i /></div>
             <span>01 / 04</span>
           </div>
@@ -159,7 +159,7 @@ export function ResultsSection() {
       </div>
 
       <div className="results-viewport shell">
-        <div className="results-track" aria-label="Výsledky klientov">
+        <div className="results-track" aria-label="Výsledky klientů">
           {clients.map((client) => (
             <article className="result-card" key={client.index}>
               <MediaPlaceholder label={client.focus} ratio="portrait" index={client.index} theme="result" />
@@ -186,19 +186,19 @@ export function FinalCta() {
   return (
     <section className="final-cta" aria-labelledby="final-cta-title">
       <div className="shell final-cta__inner">
-        <p className="eyebrow">The standard</p>
+        <p className="eyebrow">Standard</p>
         <h2 className="display-type" id="final-cta-title">
-          Build a body that can do <span className="accent-word">more.</span>
+          Vybuduj tělo, které zvládne <span className="accent-word">víc.</span>
         </h2>
         <a className="cta-button" href="#contact">
-          Začať spoluprácu <span aria-hidden="true">↗</span>
+          Začít trénovat <span aria-hidden="true">↗</span>
         </a>
       </div>
     </section>
   );
 }
 
-const contactFields = ["Meno", "E-mail", "O čo máš záujem?", "Povedz mi o svojom cieli"];
+const contactFields = ["Jméno", "E-mail / Instagram", "Tvůj cíl", "Zpráva"];
 
 export function ContactSection() {
   return (
@@ -206,14 +206,14 @@ export function ContactSection() {
       <div className="shell">
         <div className="contact-grid">
           <div className="contact-intro">
-            <p className="section-kicker"><span>05</span> / Contact</p>
-            <h2 className="contact-title">Start the conversation.</h2>
-            <p className="lead-copy">Dobrý tréning začína dobrým kontextom. Napíš mi, kam sa chceš dostať.</p>
+            <p className="section-kicker"><span>05</span> / Kontakt</p>
+            <h2 className="contact-title">Začněme spolu.</h2>
+            <p className="lead-copy">Napiš mi svůj cíl a stručně popiš, s čím chceš pomoct.</p>
             <a href="mailto:hello@mtcoaching.sk">hello@mtcoaching.sk</a>
-            <p>Bratislava / Online coaching</p>
+            <p>Praha / Online trénink</p>
           </div>
 
-          <div className="contact-form-visual" aria-label="Ukážka kontaktného formulára">
+          <div className="contact-form-visual" aria-label="Ukázka kontaktního formuláře">
             {contactFields.map((field, index) => (
               <div className={`visual-field ${index === contactFields.length - 1 ? "visual-field--large" : ""}`} key={field}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
@@ -221,7 +221,7 @@ export function ContactSection() {
               </div>
             ))}
             <div className="visual-submit" aria-hidden="true">
-              Odoslať <span>→</span>
+              Odeslat <span>→</span>
             </div>
           </div>
         </div>

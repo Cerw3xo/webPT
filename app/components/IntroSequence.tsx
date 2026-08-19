@@ -1,31 +1,31 @@
 import { CinematicChapter } from "./CinematicChapter";
 
 const chapters = [
-  { number: "02", line: "Build endurance.", label: "Run / Condition / Move", theme: "endurance" as const },
-  { number: "03", line: "Build performance.", label: "Box / Move / Repeat", theme: "performance" as const },
+  { number: "02", line: "Buduj vytrvalost.", label: "Běh / kondice / pohyb", theme: "endurance" as const },
+  { number: "03", line: "Buduj výkon.", label: "Box / pohyb / opakování", theme: "performance" as const },
 ];
 
 export function IntroSequence() {
   return (
-    <section className="intro-sequence" id="top" aria-label="Tréningový manifest">
+    <section className="intro-sequence" id="top" aria-label="Tréninkový manifest">
       <CinematicChapter
         number="01"
-        discipline="Strength"
-        headline={["Build", "strength."]}
-        mediaLabel="Deadlift / strength training"
+        discipline="Síla"
+        headline={["Buduj", "sílu."]}
+        mediaLabel="Mrtvý tah / silový trénink"
       />
 
       {chapters.map((chapter, index) => (
         <article className="intro-chapter" data-chapter={chapter.number} key={chapter.number}>
           <div className="intro-chapter__content">
             <div className="intro-chapter__meta">
-              <p className="eyebrow">Chapter {chapter.number}</p>
+              <p className="eyebrow">Kapitola {chapter.number}</p>
               <span>{chapter.label}</span>
             </div>
             <div>
               <h1 className="display-type">{chapter.line}</h1>
               <a className="chapter-link" href="#coaching">
-                Explore the method <span aria-hidden="true">↗</span>
+                Prozkoumat metodu <span aria-hidden="true">↗</span>
               </a>
             </div>
           </div>
@@ -39,14 +39,14 @@ export function IntroSequence() {
 
       <article className="intro-final">
         <div className="shell intro-final__inner">
-          <p className="eyebrow">The outcome</p>
+          <p className="eyebrow">Výsledek</p>
           <h2 className="display-type">
-            Build a body
+            Vybuduj tělo,
             <br />
-            that can <span className="accent-word">do more.</span>
+            které zvládne <span className="accent-word">víc.</span>
           </h2>
           <a className="text-link" href="#coaching">
-            Begin the work <span aria-hidden="true">↓</span>
+            Začít trénovat <span aria-hidden="true">↓</span>
           </a>
         </div>
       </article>

@@ -15,7 +15,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "MT — Strength & Performance Coaching",
-  description: "Silový, kondičný a hybridný tréning pre telo, ktoré dokáže viac.",
+  description: "Silový, kondiční a hybridní trénink pro tělo, které zvládne víc.",
 };
 
 export default function RootLayout({
@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="sk">
+    <html lang="cs">
       <body className={`${antonio.variable} ${inter.variable}`}>{children}</body>
     </html>
   );
