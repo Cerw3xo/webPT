@@ -1,5 +1,6 @@
+import { CinematicChapter } from "./CinematicChapter";
+
 const chapters = [
-  { number: "01", line: "Build strength.", label: "Barbell / Deadlift / Gym", theme: "strength" as const },
   { number: "02", line: "Build endurance.", label: "Run / Condition / Move", theme: "endurance" as const },
   { number: "03", line: "Build performance.", label: "Box / Move / Repeat", theme: "performance" as const },
 ];
@@ -7,6 +8,13 @@ const chapters = [
 export function IntroSequence() {
   return (
     <section className="intro-sequence" id="top" aria-label="Tréningový manifest">
+      <CinematicChapter
+        number="01"
+        discipline="Strength"
+        headline={["Build", "strength."]}
+        mediaLabel="Deadlift / strength training"
+      />
+
       {chapters.map((chapter, index) => (
         <article className="intro-chapter" data-chapter={chapter.number} key={chapter.number}>
           <div className="intro-chapter__content">
