@@ -1,5 +1,4 @@
 import { MediaPlaceholder } from "./MediaPlaceholder";
-import { SectionHeader } from "./SectionHeader";
 
 const coachingServices = [
   {
@@ -61,9 +60,9 @@ export function AboutSection() {
   return (
     <section className="section about-section" id="about">
       <div className="shell">
-        <SectionHeader index="02" label="O mne" title="Coach. Athlete. Student of performance." />
-
-        <div className="about-grid">
+        <div className="editorial-grid about-composition">
+          <p className="section-kicker"><span>01</span> / About</p>
+          <h2 className="editorial-major">Coach. Athlete. Student of performance.</h2>
           <MediaPlaceholder label="Coach portrait" ratio="portrait" index="01" theme="profile" />
           <div className="about-copy">
             <p className="lead-copy">
@@ -84,11 +83,15 @@ export function AboutSection() {
 
 export function CoachingSection() {
   return (
-    <section className="section" id="coaching">
+    <section className="section coaching-section" id="coaching">
       <div className="shell">
-        <SectionHeader index="03" label="Coaching" title="Built around what you want to do." />
+        <div className="editorial-grid section-intro coaching-intro">
+          <p className="section-kicker"><span>02</span> / Coaching</p>
+          <h2 className="editorial-major">Built around what you want to do.</h2>
+          <p className="section-summary">Tréning je postavený okolo toho, čo chceš vedieť robiť — nie iba okolo toho, čo chceš vidieť v zrkadle.</p>
+        </div>
 
-        <div className="service-list">
+        <div className="coaching-services">
           {coachingServices.map((service) => (
             <article className="service-row" key={service.index}>
               <MediaPlaceholder
@@ -117,7 +120,11 @@ export function PhilosophySection() {
   return (
     <section className="section philosophy-section">
       <div className="shell">
-        <SectionHeader index="04" label="Metóda" title="Simple process. Serious intent." />
+        <div className="editorial-grid section-intro process-intro">
+          <p className="section-kicker"><span>03</span> / Process</p>
+          <h2 className="editorial-major">Simple process. Serious intent.</h2>
+          <p className="section-summary">Jasný rámec, ktorý dáva tréningu smer a zároveň priestor reagovať na reálny život.</p>
+        </div>
 
         <div className="process-grid">
           {process.map((step) => (
@@ -138,8 +145,17 @@ export function PhilosophySection() {
 export function ResultsSection() {
   return (
     <section className="section results-section" id="results">
-      <div className="shell">
-        <SectionHeader index="05" label="Výsledky" title="The work shows." />
+      <div className="shell editorial-grid results-intro">
+        <p className="section-kicker"><span>04</span> / Results</p>
+        <h2 className="editorial-major">The work shows.</h2>
+        <div className="results-intro__aside">
+          <p className="section-summary">Každý progres má vlastný kontext. Tu sú krátke záznamy práce, ktorá sa preniesla ďalej.</p>
+          <div className="results-controls" aria-hidden="true">
+            <span>Drag to explore</span>
+            <div className="results-controls__line"><i /></div>
+            <span>01 / 04</span>
+          </div>
+        </div>
       </div>
 
       <div className="results-viewport shell">
@@ -160,11 +176,6 @@ export function ResultsSection() {
               </div>
             </article>
           ))}
-        </div>
-        <div className="results-controls" aria-hidden="true">
-          <span>Drag to explore</span>
-          <div className="results-controls__line"><i /></div>
-          <span>01 / 04</span>
         </div>
       </div>
     </section>
@@ -193,10 +204,10 @@ export function ContactSection() {
   return (
     <section className="section contact-section" id="contact">
       <div className="shell">
-        <SectionHeader index="06" label="Kontakt" title="Start the conversation." />
-
         <div className="contact-grid">
           <div className="contact-intro">
+            <p className="section-kicker"><span>05</span> / Contact</p>
+            <h2 className="contact-title">Start the conversation.</h2>
             <p className="lead-copy">Dobrý tréning začína dobrým kontextom. Napíš mi, kam sa chceš dostať.</p>
             <a href="mailto:hello@mtcoaching.sk">hello@mtcoaching.sk</a>
             <p>Bratislava / Online coaching</p>
