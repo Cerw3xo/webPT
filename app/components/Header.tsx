@@ -22,8 +22,8 @@ export function Header() {
         ))}
       </nav>
 
-      <a className="social-link" href="#instagram" aria-label="Instagram placeholder">
-        Instagram <span aria-hidden="true">↗</span>
+      <a className="header-cta" href="#contact">
+        Začít trénovat <span aria-hidden="true">→</span>
       </a>
     </header>
   );

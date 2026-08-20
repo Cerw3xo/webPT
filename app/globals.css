@@ -2671,3 +2671,149 @@ body {
 .cinematic-chapter__progress-value {
   color: var(--color-accent);
 }
+
+/* Navigation and typography refinement */
+:root {
+  --font-display: var(--font-poppins), Arial, Helvetica, sans-serif;
+  --font-body: var(--font-poppins), Arial, Helvetica, sans-serif;
+  --font-ui: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+.display-type,
+.editorial-major,
+.contact-title,
+.service-row h3,
+.process-step h3,
+.result-card h3,
+.footer-mark,
+.brand-mark,
+.cinematic-chapter__headline {
+  font-family: var(--font-display);
+  font-stretch: normal;
+  font-weight: 600;
+}
+
+.site-header {
+  position: fixed;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  min-height: 4.25rem;
+  height: 4.25rem;
+  padding-inline: clamp(1.25rem, 3vw, 3.5rem);
+  background: rgb(8 8 8 / 55%);
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.brand-mark {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.065em;
+}
+
+.site-nav {
+  justify-self: end;
+  gap: clamp(1.1rem, 2vw, 2.25rem);
+  margin-right: clamp(1.25rem, 3vw, 3rem);
+}
+
+.site-nav a,
+.header-cta {
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  opacity: 0.72;
+  text-transform: uppercase;
+  transition: opacity 160ms ease;
+}
+
+.header-cta {
+  justify-self: end;
+  opacity: 0.92;
+  white-space: nowrap;
+}
+
+.header-cta span {
+  margin-left: 0.35rem;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.header-cta:hover,
+.header-cta:focus-visible {
+  color: var(--text-primary);
+  opacity: 1;
+}
+
+.section-kicker,
+.eyebrow,
+.media-placeholder__label,
+.media-placeholder__index,
+.visual-field p,
+.visual-field span,
+.visual-submit,
+.results-controls,
+.site-footer__top p,
+.site-footer__bottom {
+  font-family: var(--font-ui);
+  font-weight: 500;
+}
+
+.cinematic-chapter__headline {
+  font-size: clamp(4.25rem, 8.2vw, 8.75rem);
+  letter-spacing: -0.06em;
+  line-height: 0.86;
+}
+
+.intro-chapter__content .display-type {
+  font-size: clamp(3.75rem, 7vw, 7.5rem);
+  line-height: 0.9;
+}
+
+.intro-final .display-type {
+  font-size: clamp(3.75rem, 7.5vw, 8.25rem);
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+}
+
+.final-cta .display-type {
+  font-size: clamp(2.8rem, 3.6vw, 3.75rem);
+  line-height: 0.94;
+}
+
+.editorial-major,
+.contact-title {
+  letter-spacing: -0.045em;
+  line-height: 0.96;
+}
+
+@media (max-width: 720px) {
+  .site-header {
+    min-height: 4rem;
+    height: 4rem;
+  }
+
+  .header-cta {
+    font-size: 0.58rem;
+  }
+
+  .cinematic-chapter__headline {
+    font-size: clamp(3.5rem, 14vw, 5.5rem);
+    line-height: 0.9;
+  }
+
+  .intro-chapter__content .display-type,
+  .intro-final .display-type {
+    font-size: clamp(3.35rem, 14vw, 5.25rem);
+    line-height: 0.92;
+  }
+}

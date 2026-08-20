@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Antonio, Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 
-const antonio = Antonio({
-  variable: "--font-antonio",
-  subsets: ["latin"],
-  weight: ["600", "700"],
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600"],
 });
 
 const inter = Inter({
@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="cs">
-      <body className={`${antonio.variable} ${inter.variable}`}>{children}</body>
+      <body className={`${poppins.variable} ${inter.variable}`}>{children}</body>
     </html>
   );
 }
