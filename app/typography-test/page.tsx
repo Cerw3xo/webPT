@@ -1,13 +1,34 @@
-const czechSample = "PŘÍLIŠ ŽLUŤOUČKÝ KŮŇ ÚPĚL ĎÁBELSKÉ ÓDY";
-const slovakSample = "PÄŤ ŽLTÝCH ĽALIÍ ČUŠÍ PRI ĎATĽOVI";
-const uppercaseCharacters = "Č Ď Ě Ľ Ĺ Ň Ř Š Ť Ž Á Ä É Í Ó Ô Ú Ý";
-const lowercaseCharacters = "č ď ě ľ ĺ ň ř š ť ž á ä é í ó ô ú ý";
+import { Barlow_Condensed, Oswald, Roboto_Condensed } from "next/font/google";
 
-const specimens = [
-  { family: "Antonio", weight: 600, note: "Načtená váha" },
-  { family: "Antonio", weight: 700, note: "Načtená váha" },
-  { family: "Inter", weight: 400, note: "Regular" },
-  { family: "Inter", weight: 500, note: "Medium" },
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin", "latin-ext"],
+  weight: "600",
+  display: "swap",
+});
+
+const robotoCondensed = Roboto_Condensed({
+  subsets: ["latin", "latin-ext"],
+  weight: "600",
+  display: "swap",
+});
+
+const oswald = Oswald({
+  subsets: ["latin", "latin-ext"],
+  weight: "600",
+  display: "swap",
+});
+
+const headlines = [
+  "BUDUJ SÍLU.",
+  "BUDUJ VYTRVALOST.",
+  "BUDUJ VÝKON.",
+  "VYBUDUJ TĚLO,\nKTERÉ ZVLÁDNE VÍC.",
+];
+
+const fonts = [
+  { name: "Barlow Condensed", font: barlowCondensed.className },
+  { name: "Roboto Condensed", font: robotoCondensed.className },
+  { name: "Oswald", font: oswald.className },
 ];
 
 export default function TypographyTestPage() {
@@ -22,35 +43,29 @@ export default function TypographyTestPage() {
         color: "var(--text-primary)",
       }}
     >
-      <header style={{ maxWidth: "76rem", margin: "0 auto 4rem" }}>
-        <p style={{ margin: 0, color: "var(--text-muted)", fontSize: "0.72rem", letterSpacing: "0.14em", textTransform: "uppercase" }}>
-          Pouze pro vývoj / test diakritiky
+      <header style={{ maxWidth: "84rem", margin: "0 auto 4rem" }}>
+        <p style={{ margin: 0, color: "var(--text-muted)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+          Pouze pro vývoj / porovnání display fontů
         </p>
-        <h1 style={{ margin: "1rem 0 0", fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 7vw, 6rem)", fontWeight: 700, letterSpacing: "-0.05em", lineHeight: 0.9, textTransform: "uppercase" }}>
-          Typografický test
+        <h1 style={{ margin: "1rem 0 0", fontSize: "clamp(2.5rem, 7vw, 6rem)", fontWeight: 500, letterSpacing: "-0.05em", lineHeight: 0.9, textTransform: "uppercase" }}>
+          Česká a slovenská diakritika
         </h1>
         <p style={{ maxWidth: "44rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
-          Antonio je v této aplikaci načtený pouze ve vahách 600 a 700. Váhy 400 a 500 proto nejsou simulované.
+          Stejná váha, stejný obsah a stejná sazba pro srovnání proporcí, čitelnosti a charakteru titulkového písma.
         </p>
       </header>
 
-      <section style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(18rem, 1fr))", gap: "1px", maxWidth: "76rem", margin: "0 auto", background: "var(--border-subtle)", border: "1px solid var(--border-subtle)" }} aria-label="Vzorky písem">
-        {specimens.map((specimen) => (
-          <article key={`${specimen.family}-${specimen.weight}`} style={{ padding: "clamp(1.25rem, 3vw, 2.5rem)", background: "var(--bg-elevated)" }}>
-            <p style={{ margin: 0, color: "var(--text-muted)", fontFamily: "var(--font-body)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.13em", textTransform: "uppercase" }}>
-              {specimen.family} / {specimen.weight} / {specimen.note}
+      <section style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(20rem, 1fr))", gap: "1px", maxWidth: "84rem", margin: "0 auto", background: "var(--border-subtle)", border: "1px solid var(--border-subtle)" }} aria-label="Porovnání display fontů">
+        {fonts.map((font) => (
+          <article key={font.name} style={{ minWidth: 0, padding: "clamp(1.25rem, 3vw, 2.5rem)", background: "var(--bg-elevated)" }}>
+            <p style={{ margin: 0, color: "var(--text-muted)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.13em", textTransform: "uppercase" }}>
+              {font.name} / 600 / latin-ext
             </p>
-            <p style={{ margin: "2rem 0 0", fontFamily: specimen.family === "Antonio" ? "var(--font-display)" : "var(--font-body)", fontSize: specimen.family === "Antonio" ? "clamp(2.1rem, 4vw, 3.75rem)" : "clamp(1.5rem, 2.4vw, 2.25rem)", fontWeight: specimen.weight, letterSpacing: specimen.family === "Antonio" ? "-0.04em" : "-0.03em", lineHeight: 1, textTransform: specimen.family === "Antonio" ? "uppercase" : "none" }}>
-              {czechSample}
-            </p>
-            <p style={{ margin: "1.4rem 0 0", fontFamily: specimen.family === "Antonio" ? "var(--font-display)" : "var(--font-body)", fontSize: specimen.family === "Antonio" ? "clamp(1.7rem, 3vw, 2.8rem)" : "clamp(1.25rem, 2vw, 1.8rem)", fontWeight: specimen.weight, letterSpacing: specimen.family === "Antonio" ? "-0.035em" : "-0.02em", lineHeight: 1.1, textTransform: specimen.family === "Antonio" ? "uppercase" : "none" }}>
-              {slovakSample}
-            </p>
-            <p style={{ margin: "2rem 0 0", color: "var(--text-secondary)", fontFamily: specimen.family === "Antonio" ? "var(--font-display)" : "var(--font-body)", fontWeight: specimen.weight, lineHeight: 1.7 }}>
-              {uppercaseCharacters}
-              <br />
-              {lowercaseCharacters}
-            </p>
+            <div className={font.font} style={{ display: "grid", gap: "1.4rem", marginTop: "2.2rem", fontSize: "clamp(2.25rem, 4.3vw, 4.8rem)", fontWeight: 600, letterSpacing: "-0.035em", lineHeight: 0.88, textTransform: "uppercase", whiteSpace: "pre-line" }}>
+              {headlines.map((headline) => (
+                <p key={headline} style={{ margin: 0 }}>{headline}</p>
+              ))}
+            </div>
           </article>
         ))}
       </section>
