@@ -3,56 +3,56 @@ import { MediaPlaceholder } from "./MediaPlaceholder";
 const coachingServices = [
   {
     index: "01",
-    title: "Síla",
-    text: "Budování síly, svalů a kvalitní techniky.",
+    title: "Silový trénink",
+    text: "Budování svalů, síly a správných pohybových návyků.",
   },
   {
     index: "02",
-    title: "Kondice",
-    text: "Vytrvalost, pracovní kapacita a lepší kondice.",
+    title: "Kondice a pohyb",
+    text: "Lepší kondice, kontrola těla a vyšší pracovní kapacita.",
   },
   {
     index: "03",
     title: "Hybridní trénink",
-    text: "Síla, kondice a atletický pohyb v jednom systému.",
+    text: "Kombinace síly, kondice a atletického pohybu pro tělo, které zvládne víc.",
   },
 ];
 
 const process = [
-  { index: "01", title: "Zhodnocení", text: "Zjistíme výchozí stav." },
-  { index: "02", title: "Plán", text: "Nastavíme směr a priority." },
-  { index: "03", title: "Trénink", text: "Pracujeme systematicky." },
-  { index: "04", title: "Progres", text: "Sledujeme výsledky a upravujeme plán." },
+  { index: "01", title: "Zhodnocení", text: "Zjistíme aktuální stav, cíle a možnosti." },
+  { index: "02", title: "Plán", text: "Nastavíme strategii, která dává smysl." },
+  { index: "03", title: "Trénink", text: "Budujeme sílu, techniku a kondici." },
+  { index: "04", title: "Progres", text: "Sledujeme výsledky a upravujeme směr." },
 ];
 
 const clients = [
   {
     index: "01",
-    name: "Martin K.",
-    focus: "Hybridní trénink",
-    metric: "+32 kg",
-    detail: "na součet za 16 týdnů",
+    name: "Karel",
+    goal: "Síla + svalový růst",
+    process: "Systematický progres",
+    result: "Lepší výkon",
   },
   {
     index: "02",
-    name: "Lucie V.",
-    focus: "Síla",
-    metric: "1.6× BW",
-    detail: "nový osobní rekord v dřepu",
+    name: "Klient 02",
+    goal: "Redukce tuku",
+    process: "Síla jako základ",
+    result: "Silnější tělo",
   },
   {
     index: "03",
-    name: "Tomáš R.",
-    focus: "Kondice",
-    metric: "−06:18",
-    detail: "z času na 10 kilometrů",
+    name: "Klient 03",
+    goal: "Lepší kondice",
+    process: "Postupné budování kapacity",
+    result: "Více energie v pohybu",
   },
   {
     index: "04",
-    name: "Nina P.",
-    focus: "Výkon",
-    metric: "12 týd.",
-    detail: "průběžného progresu",
+    name: "Klient 04",
+    goal: "Hybridní výkonnost",
+    process: "Síla + vytrvalost",
+    result: "Stabilní progres",
   },
 ];
 
@@ -62,14 +62,17 @@ export function AboutSection() {
       <div className="shell">
         <div className="editorial-grid about-composition">
           <p className="section-kicker"><span>01</span> / O mně</p>
-          <h2 className="editorial-major">Trenér. Sportovec. Stále se zlepšuju.</h2>
+          <h2 className="editorial-major">Trenér. Atlet. Hybridní sportovec.</h2>
           <MediaPlaceholder label="Portrét trenéra" ratio="portrait" index="01" theme="profile" />
           <div className="about-copy">
             <p className="lead-copy">
-              Trénink pro mě není jen o vzhledu. Síla, kondice a kvalitní pohyb tvoří základ dlouhodobého výkonu.
+              Trénink pro mě nikdy nebyl pouze o vzhledu.
             </p>
             <p className="body-copy">
-              Pomáhám lidem trénovat systematicky, bezpečně a s jasným cílem.
+              Síla, kondice a kvalitní pohyb tvoří základ těla, které funguje dlouhodobě.
+            </p>
+            <p className="body-copy">
+              Pomáhám lidem budovat silnější, schopnější a sebevědomější verzi sebe sama.
             </p>
             <a className="text-link" href="#coaching">
               Jak trénujeme <span aria-hidden="true">↓</span>
@@ -116,12 +119,35 @@ export function CoachingSection() {
   );
 }
 
+export function DiagnosticSection() {
+  return (
+    <section className="section diagnostic-section" id="diagnostika">
+      <div className="shell">
+        <div className="editorial-grid diagnostic-composition">
+          <p className="section-kicker"><span>03</span> / Diagnostika</p>
+          <h2 className="editorial-major">Nehádám. Analyzuji.</h2>
+          <div className="diagnostic-copy">
+            <p className="lead-copy">Nejdu pouze podle tabulky cviků.</p>
+            <p className="body-copy">Nejdříve pochopím tvoje tělo, pohyb a cíle. Teprve potom nastavíme trénink, který má jasný směr.</p>
+          </div>
+          <div className="diagnostic-details" aria-label="Oblasti diagnostiky">
+            <span>Pohybová diagnostika</span>
+            <span>Technika cviků</span>
+            <span>Individuální nastavení</span>
+            <span>Odstranění slabých míst</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function PhilosophySection() {
   return (
     <section className="section philosophy-section" id="process">
       <div className="shell">
         <div className="editorial-grid section-intro process-intro">
-          <p className="section-kicker"><span>03</span> / Proces</p>
+          <p className="section-kicker"><span>04</span> / Proces</p>
           <h2 className="editorial-major">Jednoduchý proces. Jasný cíl.</h2>
           <p className="section-summary">Jasný rámec, který dává tréninku směr a zároveň prostor reagovat na reálný život.</p>
         </div>
@@ -146,10 +172,10 @@ export function ResultsSection() {
   return (
     <section className="section results-section" id="results">
       <div className="shell editorial-grid results-intro">
-        <p className="section-kicker"><span>04</span> / Výsledky</p>
+        <p className="section-kicker"><span>05</span> / Výsledky</p>
         <h2 className="editorial-major">Výsledky mluví.</h2>
         <div className="results-intro__aside">
-          <p className="section-summary">Každý progres má vlastní kontext. Tady jsou krátké záznamy práce, která se posunula dál.</p>
+          <p className="section-summary">Připraveno pro skutečné příběhy klientů — jejich cíl, průběh práce a výsledek v kontextu.</p>
           <div className="results-controls" aria-hidden="true">
             <span>Táhni pro prohlédnutí</span>
             <div className="results-controls__line"><i /></div>
@@ -162,17 +188,21 @@ export function ResultsSection() {
         <div className="results-track" aria-label="Výsledky klientů">
           {clients.map((client) => (
             <article className="result-card" key={client.index}>
-              <MediaPlaceholder label={client.focus} ratio="portrait" index={client.index} theme="result" />
+              <MediaPlaceholder label={client.goal} ratio="portrait" index={client.index} theme="result" />
               <div className="result-card__identity">
                 <div>
                   <h3>{client.name}</h3>
-                  <p>{client.focus}</p>
+                  <p>{client.goal}</p>
                 </div>
                 <span>{client.index}</span>
               </div>
+              <div className="result-card__process">
+                <span>Proces</span>
+                <p>{client.process}</p>
+              </div>
               <div className="result-card__metric">
-                <strong>{client.metric}</strong>
-                <span>{client.detail}</span>
+                <strong>{client.result}</strong>
+                <span>Výsledek</span>
               </div>
             </article>
           ))}
@@ -186,12 +216,12 @@ export function FinalCta() {
   return (
     <section className="final-cta" aria-labelledby="final-cta-title">
       <div className="shell final-cta__inner">
-        <p className="eyebrow">Standard</p>
+        <p className="eyebrow">Začni svůj proces.</p>
         <h2 className="display-type" id="final-cta-title">
           Vybuduj tělo, které zvládne <span className="accent-word">víc.</span>
         </h2>
         <a className="cta-button" href="#contact">
-          Začít trénovat <span aria-hidden="true">↗</span>
+          Úvodní konzultace <span aria-hidden="true">→</span>
         </a>
       </div>
     </section>
@@ -206,9 +236,9 @@ export function ContactSection() {
       <div className="shell">
         <div className="contact-grid">
           <div className="contact-intro">
-            <p className="section-kicker"><span>05</span> / Kontakt</p>
+            <p className="section-kicker"><span>06</span> / Kontakt</p>
             <h2 className="contact-title">Začněme spolu.</h2>
-            <p className="lead-copy">Napiš mi svůj cíl a stručně popiš, s čím chceš pomoct.</p>
+            <p className="lead-copy">Napiš mi svůj cíl a zjistíme, jak ti můžu pomoct.</p>
             <a href="mailto:hello@mtcoaching.sk">hello@mtcoaching.sk</a>
             <p>Praha / Online trénink</p>
           </div>

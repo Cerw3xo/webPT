@@ -4,6 +4,7 @@ import {
   AboutSection,
   CoachingSection,
   ContactSection,
+  DiagnosticSection,
   FinalCta,
   PhilosophySection,
   ResultsSection,
@@ -17,6 +18,7 @@ export default function Home() {
       <IntroSequence />
       <AboutSection />
       <CoachingSection />
+      <DiagnosticSection />
       <PhilosophySection />
       <ResultsSection />
       <FinalCta />

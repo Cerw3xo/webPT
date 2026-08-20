@@ -2817,3 +2817,97 @@ body {
     line-height: 0.92;
   }
 }
+
+/* Diagnostic and client-story content architecture */
+.diagnostic-section {
+  background: var(--bg-section);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.diagnostic-composition {
+  align-items: start;
+}
+
+.diagnostic-composition .section-kicker {
+  grid-column: 1 / span 2;
+}
+
+.diagnostic-composition .editorial-major {
+  grid-column: 3 / span 4;
+  max-width: 8ch;
+}
+
+.diagnostic-copy {
+  grid-column: 9 / span 4;
+}
+
+.diagnostic-copy .lead-copy {
+  max-width: 18ch;
+  margin: 0;
+}
+
+.diagnostic-copy .body-copy {
+  max-width: 29rem;
+  margin: 1.25rem 0 0;
+}
+
+.diagnostic-details {
+  display: grid;
+  grid-column: 3 / span 9;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.result-card__process {
+  display: grid;
+  grid-template-columns: minmax(4rem, 0.42fr) 1fr;
+  gap: 0.75rem;
+  padding-block: 0.8rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.result-card__process span,
+.result-card__metric span {
+  color: var(--text-muted);
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.result-card__process p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.result-card__metric strong {
+  font-size: clamp(1.45rem, 2vw, 2.1rem);
+  line-height: 1;
+}
+
+@media (max-width: 720px) {
+  .diagnostic-composition {
+    display: block;
+  }
+
+  .diagnostic-copy {
+    margin-top: 2rem;
+  }
+
+  .diagnostic-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
