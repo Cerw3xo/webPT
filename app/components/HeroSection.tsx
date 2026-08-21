@@ -4,8 +4,13 @@ import Image from "next/image";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 type ChapterMedia =
-  | { kind: "image"; src: string; alt: string }
+  | { kind: "image"; src: string; alt: string; width: number; height: number }
   | { kind: "placeholder"; label: string };
+
+type ImageMotion = {
+  from: { x: number; y: number; scale: number };
+  to: { x: number; y: number; scale: number };
+};
 
 type ChapterData = {
   number: string;
@@ -13,6 +18,7 @@ type ChapterData = {
   headline: [string, string];
   cta: string;
   media: ChapterMedia;
+  imageMotion: ImageMotion;
 };
 
 const chapters: ChapterData[] = [
@@ -25,6 +31,12 @@ const chapters: ChapterData[] = [
       kind: "image",
       src: "/Obrázok Codex 21. 8. 2026, 13_36_56.png",
       alt: "Atlet při přípravě na mrtvý tah",
+      width: 1672,
+      height: 941,
+    },
+    imageMotion: {
+      from: { x: 0, y: 0, scale: 1 },
+      to: { x: 0, y: -2.5, scale: 1.05 },
     },
   },
   {
@@ -32,14 +44,34 @@ const chapters: ChapterData[] = [
     discipline: "Vytrvalost",
     headline: ["Buduj", "vytrvalost."],
     cta: "Prozkoumat metodu",
-    media: { kind: "placeholder", label: "Běh / kondice / pohyb" },
+    media: {
+      kind: "image",
+      src: "/d17ad864-170e-41af-8d2c-92c60938a18f.jpeg",
+      alt: "Běžec při nočním tréninku",
+      width: 1600,
+      height: 1200,
+    },
+    imageMotion: {
+      from: { x: 3.5, y: 0.8, scale: 0.99 },
+      to: { x: -1.5, y: -1, scale: 1.04 },
+    },
   },
   {
     number: "03",
     discipline: "Výkon",
     headline: ["Buduj", "výkon."],
     cta: "Prozkoumat metodu",
-    media: { kind: "placeholder", label: "Box / atletický pohyb" },
+    media: {
+      kind: "image",
+      src: "/chapter-strength.jpg",
+      alt: "Detail úchopu činky při silovém tréninku",
+      width: 1600,
+      height: 1200,
+    },
+    imageMotion: {
+      from: { x: -2, y: 1, scale: 0.99 },
+      to: { x: 2.5, y: -1, scale: 1.045 },
+    },
   },
 ];
 
@@ -50,10 +82,19 @@ function chapterVisibility(progress: number, index: number) {
   return clamp(1 - Math.abs(phase - index));
 }
 
-function HeroMedia({ chapter, visibility, progress }: { chapter: ChapterData; visibility: number; progress: number }) {
+const interpolate = (from: number, to: number, progress: number) => from + (to - from) * progress;
+
+function chapterMotionProgress(progress: number, index: number) {
+  const phase = progress * (chapters.length - 1);
+  return clamp(phase - Math.max(0, index - 1));
+}
+
+function HeroMedia({ chapter, index, visibility, progress }: { chapter: ChapterData; index: number; visibility: number; progress: number }) {
+  const motionProgress = chapterMotionProgress(progress, index);
+  const motion = chapter.imageMotion;
   const style = {
     opacity: visibility,
-    transform: `scale(${(0.98 + progress * 0.02).toFixed(3)})`,
+    transform: `translate3d(${interpolate(motion.from.x, motion.to.x, motionProgress).toFixed(2)}%, ${interpolate(motion.from.y, motion.to.y, motionProgress).toFixed(2)}%, 0) scale(${interpolate(motion.from.scale, motion.to.scale, motionProgress).toFixed(3)})`,
   } satisfies CSSProperties;
 
   return (
@@ -63,8 +104,8 @@ function HeroMedia({ chapter, visibility, progress }: { chapter: ChapterData; vi
           className="hero-scene__image"
           src={chapter.media.src}
           alt={chapter.media.alt}
-          width={1672}
-          height={941}
+          width={chapter.media.width}
+          height={chapter.media.height}
           unoptimized
         />
       ) : (
@@ -77,10 +118,14 @@ function HeroMedia({ chapter, visibility, progress }: { chapter: ChapterData; vi
   );
 }
 
-function HeroChapter({ chapter, visibility }: { chapter: ChapterData; visibility: number }) {
+function HeroChapter({ chapter, index, visibility, progress }: { chapter: ChapterData; index: number; visibility: number; progress: number }) {
+  const phase = progress * (chapters.length - 1);
+  const translateY = phase < index
+    ? (index - phase) * 2.5
+    : -(phase - index) * 2.5;
   const style = {
     opacity: visibility,
-    transform: `translate3d(0, ${(1 - visibility) * 1.25}rem, 0)`,
+    transform: `translate3d(0, ${translateY.toFixed(2)}rem, 0)`,
   } satisfies CSSProperties;
 
   return (
@@ -105,7 +150,7 @@ function HeroContent({ progress }: { progress: number }) {
   return (
     <div className="hero-scene__content-layer">
       {chapters.map((chapter, index) => (
-        <HeroChapter chapter={chapter} visibility={chapterVisibility(progress, index)} key={chapter.number} />
+        <HeroChapter chapter={chapter} index={index} visibility={chapterVisibility(progress, index)} progress={progress} key={chapter.number} />
       ))}
     </div>
   );
@@ -170,7 +215,7 @@ export function HeroSection() {
       <div className="hero-scene__sticky">
         <div className="hero-scene__media" aria-hidden="true">
           {chapters.map((chapter, index) => (
-            <HeroMedia chapter={chapter} visibility={chapterVisibility(progress, index)} progress={progress} key={chapter.number} />
+            <HeroMedia chapter={chapter} index={index} visibility={chapterVisibility(progress, index)} progress={progress} key={chapter.number} />
           ))}
         </div>
 
