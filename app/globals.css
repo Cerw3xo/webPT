@@ -14,8 +14,8 @@
   --space-content: clamp(1.5rem, 4.5vw, 4.5rem);
   --content-max: 80rem;
   --space-section: clamp(7rem, 14vw, 14rem);
-  --font-display: var(--font-poppins), Arial, Helvetica, sans-serif;
-  --font-body: var(--font-inter), Arial, Helvetica, sans-serif;
+  --font-display: var(--font-archivo), Arial, Helvetica, sans-serif;
+  --font-body: var(--font-inter-tight), Arial, Helvetica, sans-serif;
 }
 
 @theme inline {
@@ -982,12 +982,13 @@ a {
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(90deg, var(--color-ink) 0%, rgb(8 8 8 / 96%) 23%, rgb(8 8 8 / 63%) 45%, rgb(8 8 8 / 14%) 74%, var(--color-ink) 100%),
+    linear-gradient(90deg, var(--color-ink) 0%, rgb(8 8 8 / 96%) 23%, rgb(8 8 8 / 63%) 45%, rgb(8 8 8 / 38%) 64%, var(--color-ink) 90%, var(--color-ink) 100%),
     linear-gradient(180deg, var(--color-ink) 0%, transparent 20%, transparent 72%, var(--color-ink) 100%);
   content: "";
 }
 
 .hero-scene__media-item {
+  background: var(--color-ink);
   transition: opacity 180ms linear, transform 220ms linear;
   will-change: opacity, transform;
 }
@@ -1097,10 +1098,10 @@ a {
 .hero-scene__headline {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(5.25rem, 10.4vw, 11rem);
+  font-size: clamp(4.65rem, 8.8vw, 9.5rem);
   font-weight: 900;
-  letter-spacing: -0.075em;
-  line-height: 0.76;
+  letter-spacing: -0.065em;
+  line-height: 0.8;
   text-transform: uppercase;
 }
 
@@ -1176,7 +1177,7 @@ a {
   }
 
   .hero-scene__headline {
-    font-size: clamp(5rem, 21vw, 7.5rem);
+    font-size: clamp(4.5rem, 19vw, 6.75rem);
   }
 
   .hero-scene__image {
@@ -2788,9 +2789,9 @@ body {
 
 /* Navigation and typography refinement */
 :root {
-  --font-display: var(--font-poppins), Arial, Helvetica, sans-serif;
-  --font-body: var(--font-poppins), Arial, Helvetica, sans-serif;
-  --font-ui: var(--font-inter), Arial, Helvetica, sans-serif;
+  --font-display: var(--font-archivo), Arial, Helvetica, sans-serif;
+  --font-body: var(--font-inter-tight), Arial, Helvetica, sans-serif;
+  --font-ui: var(--font-inter-tight), Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -3024,4 +3025,16 @@ body {
   .diagnostic-details {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
+
+/* Editorial labels use the same family as display typography. */
+.section-kicker,
+.eyebrow,
+.service-row__index,
+.process-step__index,
+.hero-scene__chapter-meta,
+.hero-scene__progress,
+.hero-scene__placeholder span {
+  font-family: var(--font-display);
+  font-weight: 500;
 }
