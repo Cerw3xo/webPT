@@ -53,7 +53,7 @@ function chapterVisibility(progress: number, index: number) {
 function HeroMedia({ chapter, visibility, progress }: { chapter: HeroChapter; visibility: number; progress: number }) {
   const style = {
     opacity: visibility,
-    transform: `scale(${(0.985 + progress * 0.025).toFixed(3)})`,
+    transform: `scale(${(0.98 + progress * 0.02).toFixed(3)})`,
   } satisfies CSSProperties;
 
   return (
@@ -85,11 +85,11 @@ function HeroChapterContent({ chapter, visibility }: { chapter: HeroChapter; vis
 
   return (
     <article className="hero-scene__chapter" style={style} aria-hidden={visibility < 0.05}>
-      <div className="hero-scene__chapter-meta">
-        <span>{chapter.number}</span>
-        <span>{chapter.discipline}</span>
-      </div>
       <div className="hero-scene__chapter-main">
+        <div className="hero-scene__chapter-meta">
+          <span>{chapter.number}</span>
+          <span>{chapter.discipline}</span>
+        </div>
         <h1 className="hero-scene__headline">
           <span>{chapter.headline[0]}</span>
           <span>{chapter.headline[1]}</span>
@@ -114,7 +114,6 @@ function ScrollProgress({ progress }: { progress: number }) {
         {chapters.map((chapter, index) => (
           <li className={index === activeIndex ? "is-active" : ""} key={chapter.number}>
             <span>{chapter.number}</span>
-            <span>{chapter.discipline}</span>
           </li>
         ))}
       </ol>
