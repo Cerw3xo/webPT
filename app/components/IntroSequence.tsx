@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CinematicChapter } from "./CinematicChapter";
 
 const chapters = [
@@ -13,6 +14,16 @@ export function IntroSequence() {
         discipline="Síla"
         headline={["Buduj", "sílu."]}
         mediaLabel="Mrtvý tah / silový trénink"
+        media={
+          <Image
+            className="cinematic-chapter__hero-image"
+            src="/Obrázok Codex 21. 8. 2026, 13_36_56.png"
+            alt="Atlet při přípravě na mrtvý tah"
+            width={1672}
+            height={941}
+            unoptimized
+          />
+        }
       />
 
       {chapters.map((chapter, index) => (
