@@ -842,7 +842,7 @@ a {
   position: relative;
   min-width: 0;
   overflow: hidden;
-  background: #141414;
+  background: var(--color-ink);
 }
 
 .cinematic-chapter__media-motion {
@@ -859,7 +859,17 @@ a {
   height: 100%;
   object-fit: cover;
   object-position: 66% center;
-  filter: contrast(1.04) brightness(0.88);
+  filter: grayscale(1) contrast(1.1) brightness(0.72);
+  mask-image: linear-gradient(to right, transparent 0%, #000 19%, #000 84%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 16%, #000 78%, transparent 100%);
+  mask-composite: intersect;
+  transform: translate3d(1.5%, 5%, 0) scale(0.9);
+  transform-origin: center center;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 19%, #000 84%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 16%, #000 78%, transparent 100%);
+  -webkit-mask-composite: source-in;
+}
+
+.cinematic-chapter__media-motion:has(.cinematic-chapter__hero-image) {
+  padding: 0;
 }
 
 .cinematic-chapter__media:has(.cinematic-chapter__hero-image)::after {
@@ -867,7 +877,7 @@ a {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: rgb(0 0 0 / 12%);
+  background: rgb(0 0 0 / 8%);
   content: "";
 }
 
