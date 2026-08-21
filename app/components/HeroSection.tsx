@@ -7,7 +7,7 @@ type ChapterMedia =
   | { kind: "image"; src: string; alt: string }
   | { kind: "placeholder"; label: string };
 
-type HeroChapter = {
+type ChapterData = {
   number: string;
   discipline: string;
   headline: [string, string];
@@ -15,7 +15,7 @@ type HeroChapter = {
   media: ChapterMedia;
 };
 
-const chapters: HeroChapter[] = [
+const chapters: ChapterData[] = [
   {
     number: "01",
     discipline: "Síla",
@@ -50,7 +50,7 @@ function chapterVisibility(progress: number, index: number) {
   return clamp(1 - Math.abs(phase - index));
 }
 
-function HeroMedia({ chapter, visibility, progress }: { chapter: HeroChapter; visibility: number; progress: number }) {
+function HeroMedia({ chapter, visibility, progress }: { chapter: ChapterData; visibility: number; progress: number }) {
   const style = {
     opacity: visibility,
     transform: `scale(${(0.98 + progress * 0.02).toFixed(3)})`,
@@ -77,7 +77,7 @@ function HeroMedia({ chapter, visibility, progress }: { chapter: HeroChapter; vi
   );
 }
 
-function HeroChapterContent({ chapter, visibility }: { chapter: HeroChapter; visibility: number }) {
+function HeroChapter({ chapter, visibility }: { chapter: ChapterData; visibility: number }) {
   const style = {
     opacity: visibility,
     transform: `translate3d(0, ${(1 - visibility) * 1.25}rem, 0)`,
@@ -87,8 +87,7 @@ function HeroChapterContent({ chapter, visibility }: { chapter: HeroChapter; vis
     <article className="hero-scene__chapter" style={style} aria-hidden={visibility < 0.05}>
       <div className="hero-scene__chapter-main">
         <div className="hero-scene__chapter-meta">
-          <span>{chapter.number}</span>
-          <span>{chapter.discipline}</span>
+          <span>{chapter.number} / {chapter.discipline}</span>
         </div>
         <h1 className="hero-scene__headline">
           <span>{chapter.headline[0]}</span>
@@ -102,7 +101,17 @@ function HeroChapterContent({ chapter, visibility }: { chapter: HeroChapter; vis
   );
 }
 
-function ScrollProgress({ progress }: { progress: number }) {
+function HeroContent({ progress }: { progress: number }) {
+  return (
+    <div className="hero-scene__content-layer">
+      {chapters.map((chapter, index) => (
+        <HeroChapter chapter={chapter} visibility={chapterVisibility(progress, index)} key={chapter.number} />
+      ))}
+    </div>
+  );
+}
+
+function HeroProgressIndicator({ progress }: { progress: number }) {
   const activeIndex = Math.min(chapters.length - 1, Math.round(progress * (chapters.length - 1)));
 
   return (
@@ -165,13 +174,8 @@ export function HeroSection() {
           ))}
         </div>
 
-        <div className="hero-scene__content-layer">
-          {chapters.map((chapter, index) => (
-            <HeroChapterContent chapter={chapter} visibility={chapterVisibility(progress, index)} key={chapter.number} />
-          ))}
-        </div>
-
-        <ScrollProgress progress={progress} />
+        <HeroContent progress={progress} />
+        <HeroProgressIndicator progress={progress} />
       </div>
     </section>
   );
