@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 type ChapterMedia =
   | { kind: "image"; src: string; alt: string; width: number; height: number }
+  | { kind: "video"; src: string; poster?: string; alt: string }
   | { kind: "placeholder"; label: string };
 
 type ImageMotion = {
@@ -21,7 +22,7 @@ type ChapterData = {
   imageMotion: ImageMotion;
 };
 
-const chapters: ChapterData[] = [
+export const chapters: ChapterData[] = [
   {
     number: "01",
     discipline: "Síla",
@@ -77,20 +78,47 @@ const chapters: ChapterData[] = [
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 
-function chapterVisibility(progress: number, index: number) {
-  const phase = progress * (chapters.length - 1);
-  return clamp(1 - Math.abs(phase - index));
-}
-
 const interpolate = (from: number, to: number, progress: number) => from + (to - from) * progress;
 
-function chapterMotionProgress(progress: number, index: number) {
-  const phase = progress * (chapters.length - 1);
-  return clamp(phase - Math.max(0, index - 1));
+const ease = (value: number) => {
+  const clamped = clamp(value);
+  return clamped * clamped * (3 - 2 * clamped);
+};
+
+function chapterWindow(index: number) {
+  const span = 1 / chapters.length;
+  return {
+    enterStart: span * (index - 0.4),
+    enterEnd: span * (index + 0.2),
+    exitStart: span * (index + 0.9),
+    exitEnd: span * (index + 1.4),
+  };
+}
+
+function chapterOpacity(progress: number, index: number) {
+  const { enterStart, enterEnd, exitStart, exitEnd } = chapterWindow(index);
+
+  if (progress < enterStart || progress > exitEnd) return 0;
+  if (progress < enterEnd) return ease((progress - enterStart) / (enterEnd - enterStart));
+  if (progress > exitStart) return 1 - ease((progress - exitStart) / (exitEnd - exitStart));
+  return 1;
+}
+
+function chapterLocalProgress(progress: number, index: number) {
+  const { enterEnd, exitStart } = chapterWindow(index);
+  return ease((progress - enterEnd) / (exitStart - enterEnd));
+}
+
+function chapterTextOffset(progress: number, index: number) {
+  const { enterStart, enterEnd, exitStart, exitEnd } = chapterWindow(index);
+
+  if (progress < enterEnd) return interpolate(2.5, 0, ease((progress - enterStart) / (enterEnd - enterStart)));
+  if (progress > exitStart) return interpolate(0, -2.5, ease((progress - exitStart) / (exitEnd - exitStart)));
+  return 0;
 }
 
 function HeroMedia({ chapter, index, visibility, progress }: { chapter: ChapterData; index: number; visibility: number; progress: number }) {
-  const motionProgress = chapterMotionProgress(progress, index);
+  const motionProgress = chapterLocalProgress(progress, index);
   const motion = chapter.imageMotion;
   const style = {
     opacity: visibility,
@@ -108,6 +136,18 @@ function HeroMedia({ chapter, index, visibility, progress }: { chapter: ChapterD
           height={chapter.media.height}
           unoptimized
         />
+      ) : chapter.media.kind === "video" ? (
+        <video
+          className="hero-scene__image"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={chapter.media.poster}
+          aria-label={chapter.media.alt}
+        >
+          <source src={chapter.media.src} />
+        </video>
       ) : (
         <div className={`hero-scene__placeholder hero-scene__placeholder--${chapter.number}`}>
           <span>{chapter.media.label}</span>
@@ -119,10 +159,7 @@ function HeroMedia({ chapter, index, visibility, progress }: { chapter: ChapterD
 }
 
 function HeroChapter({ chapter, index, visibility, progress }: { chapter: ChapterData; index: number; visibility: number; progress: number }) {
-  const phase = progress * (chapters.length - 1);
-  const translateY = phase < index
-    ? (index - phase) * 2.5
-    : -(phase - index) * 2.5;
+  const translateY = chapterTextOffset(progress, index);
   const style = {
     opacity: visibility,
     transform: `translate3d(0, ${translateY.toFixed(2)}rem, 0)`,
@@ -150,14 +187,14 @@ function HeroContent({ progress }: { progress: number }) {
   return (
     <div className="hero-scene__content-layer">
       {chapters.map((chapter, index) => (
-        <HeroChapter chapter={chapter} index={index} visibility={chapterVisibility(progress, index)} progress={progress} key={chapter.number} />
+        <HeroChapter chapter={chapter} index={index} visibility={chapterOpacity(progress, index)} progress={progress} key={chapter.number} />
       ))}
     </div>
   );
 }
 
 function HeroProgressIndicator({ progress }: { progress: number }) {
-  const activeIndex = Math.min(chapters.length - 1, Math.round(progress * (chapters.length - 1)));
+  const activeIndex = Math.min(chapters.length - 1, Math.floor(progress * chapters.length));
 
   return (
     <aside className="hero-scene__progress" aria-label="Postup kapitol">
@@ -215,7 +252,7 @@ export function HeroSection() {
       <div className="hero-scene__sticky">
         <div className="hero-scene__media" aria-hidden="true">
           {chapters.map((chapter, index) => (
-            <HeroMedia chapter={chapter} index={index} visibility={chapterVisibility(progress, index)} progress={progress} key={chapter.number} />
+            <HeroMedia chapter={chapter} index={index} visibility={chapterOpacity(progress, index)} progress={progress} key={chapter.number} />
           ))}
         </div>
 
