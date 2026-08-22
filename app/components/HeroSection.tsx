@@ -30,10 +30,10 @@ export const chapters: ChapterData[] = [
     cta: "Prozkoumat sílu",
     media: {
       kind: "image",
-      src: "/Obrázok Codex 21. 8. 2026, 13_36_56.png",
+      src: "/3.jpg",
       alt: "Atlet při přípravě na mrtvý tah",
-      width: 1672,
-      height: 941,
+      width: 1376,
+      height: 768,
     },
     imageMotion: {
       from: { x: 0, y: 0, scale: 1 },
@@ -47,10 +47,10 @@ export const chapters: ChapterData[] = [
     cta: "Prozkoumat metodu",
     media: {
       kind: "image",
-      src: "/d17ad864-170e-41af-8d2c-92c60938a18f.jpeg",
-      alt: "Běžec při nočním tréninku",
-      width: 1600,
-      height: 1200,
+      src: "/1.jpg",
+      alt: "Atlet při tréninku na air bike",
+      width: 1376,
+      height: 768,
     },
     imageMotion: {
       from: { x: 3.5, y: 0.8, scale: 0.99 },
@@ -64,10 +64,10 @@ export const chapters: ChapterData[] = [
     cta: "Prozkoumat metodu",
     media: {
       kind: "image",
-      src: "/chapter-strength.jpg",
-      alt: "Detail úchopu činky při silovém tréninku",
-      width: 1600,
-      height: 1200,
+      src: "/2.jpg",
+      alt: "Atlet při boxerském tréninku",
+      width: 1376,
+      height: 768,
     },
     imageMotion: {
       from: { x: -2, y: 1, scale: 0.99 },
