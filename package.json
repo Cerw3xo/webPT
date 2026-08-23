@@ -12,6 +12,7 @@
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
   },
   "dependencies": {
+    "motion": "^12.35.2",
     "react": "19.2.6",
     "react-dom": "19.2.6"
   },

@@ -950,7 +950,7 @@ a {
 
 /* Pinned cinematic hero */
 .hero-scene {
-  height: 300svh;
+  height: var(--hero-scroll-height, 510vh);
   background: var(--color-ink);
 }
 
@@ -966,9 +966,15 @@ a {
 .hero-scene__media,
 .hero-scene__media-item,
 .hero-scene__content-layer,
-.hero-scene__chapter {
+.hero-scene__chapter,
+.hero-scene__chapter-group,
+.hero-scene__final {
   position: absolute;
   inset: 0;
+}
+
+.hero-scene__chapter-group {
+  z-index: 0;
 }
 
 .hero-scene__media {
@@ -990,8 +996,7 @@ a {
 
 .hero-scene__media-item {
   background: var(--color-ink);
-  transition: opacity 180ms linear, transform 220ms linear;
-  will-change: opacity, transform;
+  will-change: opacity, transform, filter;
 }
 
 .hero-scene__image,
@@ -1006,7 +1011,7 @@ a {
   object-position: 64% 55%;
   opacity: 0.74;
   filter: grayscale(1) contrast(1.14) brightness(0.64);
-  transform: translate3d(-1.5%, 5%, 0) scale(0.95);
+  transform: none;
 }
 
 .hero-scene__placeholder {
@@ -1068,7 +1073,6 @@ a {
   flex-direction: column;
   justify-content: center;
   padding: clamp(5.5rem, 8vw, 8rem) clamp(2rem, 5vw, 5rem);
-  transition: opacity 180ms linear, transform 220ms linear;
   will-change: opacity, transform;
 }
 
@@ -1134,8 +1138,10 @@ a {
   top: 0;
   left: 0;
   width: 1px;
+  height: 100%;
   background: var(--color-accent);
-  transition: height 120ms linear;
+  transform-origin: top;
+  will-change: transform;
 }
 
 .hero-scene__progress ol {
@@ -1158,20 +1164,22 @@ a {
   transition: color 180ms linear;
 }
 
-.hero-scene__progress li.is-active,
-.hero-scene__progress li.is-active span:first-child {
+.hero-scene__final {
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  background: var(--color-ink);
   color: var(--color-paper);
+  pointer-events: none;
+  will-change: opacity, transform, filter;
+}
+
+.hero-scene__final .intro-final__inner {
+  width: 100%;
+  pointer-events: auto;
 }
 
 @media (max-width: 720px) {
-  .hero-scene {
-    height: 100svh;
-  }
-
-  .hero-scene__sticky {
-    position: relative;
-  }
-
   .hero-scene__chapter {
     width: 100%;
     padding: 7rem var(--space-page) 2rem;
@@ -1184,7 +1192,6 @@ a {
   .hero-scene__image {
     object-position: 64% 56%;
     opacity: 0.54;
-    transform: translate3d(-1.5%, 4%, 0) scale(1.01);
   }
 
   .hero-scene__progress {
