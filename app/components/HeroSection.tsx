@@ -27,13 +27,13 @@ type ChapterData = {
 
 /** Centralized values extracted from the Lovable reference motion system. */
 export const HERO_TIMING = {
-  chapterHeight: 1.4,
+  chapterHeight: 2.0,
   chapterCutoff: 0.74,
   fadeRatio: 0.32,
   spring: { stiffness: 90, damping: 26, mass: 0.4 },
   chapterGroupFade: { input: [0.68, 0.78], output: [1, 0] },
   mediaBlur: { input: [0, 0.15, 0.85, 1], output: [10, 0, 0, 10] },
-  textY: { from: 28, to: -28 },
+  textY: { from: 20, to: -20 },
   final: {
     opacityInput: [0, 0.35, 1],
     opacityOutput: [0, 1, 1],
