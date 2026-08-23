@@ -223,21 +223,23 @@ function FinalStatement({ progress }: { progress: MotionValue<number> }) {
   const filter = useTransform(blur, (value) => `blur(${value}px)`);
 
   return (
-    <motion.article className="hero-scene__final" style={{ opacity, y, filter }}>
-      <div className="hero-scene__final-composition">
-        <div className="shell intro-final__inner">
-          <p className="eyebrow">Výsledek</p>
-          <h2 className="display-type">
-            Vybuduj tělo,
-            <br />
-            které zvládne <span className="accent-word">víc.</span>
-          </h2>
-          <a className="text-link" href="#coaching">
-            Začít trénovat <span aria-hidden="true">↓</span>
-          </a>
+    <article className="hero-scene__final">
+      <motion.div className="hero-scene__final-motion" style={{ opacity, y, filter }}>
+        <div className="hero-scene__final-composition">
+          <div className="shell intro-final__inner">
+            <p className="eyebrow">Výsledek</p>
+            <h2 className="display-type">
+              Vybuduj tělo,
+              <br />
+              které zvládne <span className="accent-word">víc.</span>
+            </h2>
+            <a className="text-link" href="#coaching">
+              Začít trénovat <span aria-hidden="true">↓</span>
+            </a>
+          </div>
         </div>
-      </div>
-    </motion.article>
+      </motion.div>
+    </article>
   );
 }
 
