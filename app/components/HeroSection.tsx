@@ -224,16 +224,18 @@ function FinalStatement({ progress }: { progress: MotionValue<number> }) {
 
   return (
     <motion.article className="hero-scene__final" style={{ opacity, y, filter }}>
-      <div className="shell intro-final__inner">
-        <p className="eyebrow">Výsledek</p>
-        <h2 className="display-type">
-          Vybuduj tělo,
-          <br />
-          které zvládne <span className="accent-word">víc.</span>
-        </h2>
-        <a className="text-link" href="#coaching">
-          Začít trénovat <span aria-hidden="true">↓</span>
-        </a>
+      <div className="hero-scene__final-composition">
+        <div className="shell intro-final__inner">
+          <p className="eyebrow">Výsledek</p>
+          <h2 className="display-type">
+            Vybuduj tělo,
+            <br />
+            které zvládne <span className="accent-word">víc.</span>
+          </h2>
+          <a className="text-link" href="#coaching">
+            Začít trénovat <span aria-hidden="true">↓</span>
+          </a>
+        </div>
       </div>
     </motion.article>
   );
