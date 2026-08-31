@@ -1,20 +1,41 @@
+"use client";
+
 import { MediaPlaceholder } from "./MediaPlaceholder";
+import { SectionLabel } from "./SectionLabel";
+import { useSite } from "./SiteProvider";
 
 export function AboutSection() {
+  const { content } = useSite();
+
   return (
     <section className="section about-section" id="about">
       <div className="shell">
-        <div className="editorial-grid about-composition">
-          <p className="section-kicker"><span>01</span> / O mně</p>
-          <h2 className="editorial-major">Trenér. Atlet. Hybridní sportovec.</h2>
-          <MediaPlaceholder label="Portrét trenéra" ratio="portrait" index="01" theme="profile" />
-          <div className="about-copy">
-            <p className="lead-copy">Trénink pro mě nikdy nebyl pouze o vzhledu.</p>
-            <p className="body-copy">Síla, kondice a kvalitní pohyb tvoří základ těla, které funguje dlouhodobě.</p>
-            <p className="body-copy">Pomáhám lidem budovat silnější, schopnější a sebevědomější verzi sebe sama.</p>
-            <a className="text-link" href="#coaching">
-              Jak trénujeme <span aria-hidden="true">↓</span>
-            </a>
+        <div className="about-layout">
+          <MediaPlaceholder
+            label={content.about.portraitLabel}
+            ratio="portrait"
+            index="01"
+            theme="profile"
+            imageSrc="/IMG_6418.jpg"
+            imageAlt={content.about.portraitAlt}
+            imagePosition="50% 34%"
+          />
+
+          <div className="about-content">
+            <SectionLabel number="03" label={content.about.label} />
+            <h2 className="editorial-major">
+              {content.about.headlineFirst}{" "}
+              <span className="editorial-major__muted">{content.about.headlineMuted}</span>{" "}
+              {content.about.headline}
+            </h2>
+            <div className="about-copy">
+              <p className="lead-copy">{content.about.lead}</p>
+              <p className="body-copy">{content.about.bodyOne}</p>
+              <p className="body-copy">{content.about.bodyTwo}</p>
+              <a className="text-link" href="#coaching">
+                {content.about.cta} <span aria-hidden="true">↓</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

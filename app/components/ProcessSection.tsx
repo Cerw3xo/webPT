@@ -1,24 +1,24 @@
-const steps = [
-  { index: "01", title: "Zhodnocení", text: "Zjistíme aktuální stav, cíle a možnosti." },
-  { index: "02", title: "Plán", text: "Nastavíme strategii, která dává smysl." },
-  { index: "03", title: "Trénink", text: "Budujeme sílu, techniku a kondici." },
-  { index: "04", title: "Progres", text: "Sledujeme výsledky a upravujeme směr." },
-];
+"use client";
+
+import { SectionLabel } from "./SectionLabel";
+import { useSite } from "./SiteProvider";
 
 export function ProcessSection() {
+  const { content } = useSite();
+
   return (
     <section className="section philosophy-section" id="process">
       <div className="shell">
         <div className="editorial-grid section-intro process-intro">
-          <p className="section-kicker"><span>04</span> / Proces</p>
-          <h2 className="editorial-major">Jednoduchý proces. Jasný cíl.</h2>
-          <p className="section-summary">Jasný rámec, který dává tréninku směr a zároveň prostor reagovat na reálný život.</p>
+          <SectionLabel number="02" label={content.process.label} />
+          <h2 className="editorial-major"><span className="editorial-major__muted">{content.process.headlineMuted}</span> {content.process.headline}</h2>
+          <p className="section-summary">{content.process.summary}</p>
         </div>
 
         <div className="process-grid">
-          {steps.map((step) => (
-            <article className="process-step" key={step.index}>
-              <span className="process-step__index">{step.index}</span>
+          {content.process.steps.map((step, index) => (
+            <article className="process-step" key={step.title}>
+              <span className="process-step__index">{String(index + 1).padStart(2, "0")}</span>
               <div>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>

@@ -14,10 +14,10 @@ export default function Home() {
     <main>
       <Header />
       <IntroSequence />
-      <AboutSection />
       <ServicesSection />
-      <DiagnosticSection />
       <ProcessSection />
+      <AboutSection />
+      <DiagnosticSection />
       <ResultsSection />
       <FinalCta />
       <ContactSection />

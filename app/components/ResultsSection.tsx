@@ -1,48 +1,41 @@
-import { MediaPlaceholder } from "./MediaPlaceholder";
+"use client";
 
-const clientStories = [
-  { index: "01", name: "Karel", goal: "Síla + svalový růst", process: "Systematický progres", result: "Lepší výkon" },
-  { index: "02", name: "Klient 02", goal: "Redukce tuku", process: "Síla jako základ", result: "Silnější tělo" },
-  { index: "03", name: "Klient 03", goal: "Lepší kondice", process: "Postupné budování kapacity", result: "Více energie v pohybu" },
-  { index: "04", name: "Klient 04", goal: "Hybridní výkonnost", process: "Síla + vytrvalost", result: "Stabilní progres" },
-];
+import { SectionLabel } from "./SectionLabel";
+import { useSite } from "./SiteProvider";
 
 export function ResultsSection() {
+  const { content } = useSite();
+
   return (
     <section className="section results-section" id="results">
       <div className="shell editorial-grid results-intro">
-        <p className="section-kicker"><span>05</span> / Výsledky</p>
-        <h2 className="editorial-major">Výsledky mluví.</h2>
+        <SectionLabel number="05" label={content.references.label} />
+        <h2 className="editorial-major"><span className="editorial-major__muted">{content.references.headlineMuted}</span> {content.references.headline}</h2>
         <div className="results-intro__aside">
-          <p className="section-summary">Připraveno pro skutečné příběhy klientů — jejich cíl, průběh práce a výsledek v kontextu.</p>
-          <div className="results-controls" aria-hidden="true">
-            <span>Táhni pro prohlédnutí</span>
-            <div className="results-controls__line"><i /></div>
-            <span>01 / 04</span>
-          </div>
+          <p className="section-summary">{content.references.summary}</p>
         </div>
       </div>
 
       <div className="results-viewport shell">
-        <div className="results-track" aria-label="Výsledky klientů">
-          {clientStories.map((client) => (
-            <article className="result-card" key={client.index}>
-              <MediaPlaceholder label={client.goal} ratio="portrait" index={client.index} theme="result" />
-              <div className="result-card__identity">
-                <div>
-                  <h3>{client.name}</h3>
-                  <p>{client.goal}</p>
+        <div className="results-track results-track--messages" aria-label={content.references.label}>
+          {content.references.cards.map((card, index) => (
+            <article className="result-card result-message-card" key={card.label}>
+              <div className="result-message-card__meta">
+                <span>{card.label}</span>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+              </div>
+              <div className="result-message-card__thread">
+                <div className="message-bubble message-bubble--coach">
+                  <p>{card.message}</p>
+                  <span>{content.references.coach}</span>
                 </div>
-                <span>{client.index}</span>
+                <div className="message-bubble message-bubble--pending">
+                  <span>{content.references.pending}</span>
+                </div>
               </div>
-              <div className="result-card__process">
-                <span>Proces</span>
-                <p>{client.process}</p>
-              </div>
-              <div className="result-card__metric">
-                <strong>{client.result}</strong>
-                <span>Výsledek</span>
-              </div>
+              <a className="text-link result-message-card__cta" href="#contact">
+                {content.references.cta} <span aria-hidden="true">→</span>
+              </a>
             </article>
           ))}
         </div>

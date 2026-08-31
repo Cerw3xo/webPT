@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useSpring, useTransform, type MotionValue } from "motion/react";
+import { useSite } from "./SiteProvider";
 
 type ChapterMedia =
   | { kind: "image"; src: string; alt: string; width: number; height: number }
@@ -20,7 +21,6 @@ type ChapterData = {
   number: string;
   discipline: string;
   headline: [string, string];
-  cta: string;
   media: ChapterMedia;
   imageMotion: ImageMotion;
 };
@@ -30,10 +30,11 @@ export const HERO_TIMING = {
   chapterHeight: 2.0,
   chapterCutoff: 0.74,
   fadeRatio: 0.32,
+  textFadeRatio: 0.18,
   spring: { stiffness: 90, damping: 26, mass: 0.4 },
   chapterGroupFade: { input: [0.68, 0.78], output: [1, 0] },
   mediaBlur: { input: [0, 0.15, 0.85, 1], output: [10, 0, 0, 10] },
-  textY: { from: 20, to: -20 },
+  textY: { from: 32, to: -32 },
   final: {
     opacityInput: [0, 0.35, 1],
     opacityOutput: [0, 1, 1],
@@ -54,7 +55,6 @@ export const chapters: ChapterData[] = [
     number: "01",
     discipline: "Síla",
     headline: ["Buduj", "sílu."],
-    cta: "Prozkoumat sílu",
     media: { kind: "image", src: "/3.jpg", alt: "Atlet při přípravě na mrtvý tah", width: 1376, height: 768 },
     imageMotion: HERO_TIMING.chapters.strength,
   },
@@ -63,7 +63,6 @@ export const chapters: ChapterData[] = [
     number: "02",
     discipline: "Vytrvalost",
     headline: ["Buduj", "vytrvalost."],
-    cta: "Prozkoumat metodu",
     media: { kind: "image", src: "/1.jpg", alt: "Atlet při tréninku na air bike", width: 1376, height: 768 },
     imageMotion: HERO_TIMING.chapters.endurance,
   },
@@ -72,7 +71,6 @@ export const chapters: ChapterData[] = [
     number: "03",
     discipline: "Výkon",
     headline: ["Buduj", "výkon."],
-    cta: "Prozkoumat metodu",
     media: { kind: "image", src: "/2.jpg", alt: "Atlet při boxerském tréninku", width: 1376, height: 768 },
     imageMotion: HERO_TIMING.chapters.performance,
   },
@@ -84,9 +82,9 @@ type ChapterTiming = {
   localInput: [number, number];
 };
 
-function getChapterTiming(index: number, total: number): ChapterTiming {
+function getChapterTiming(index: number, total: number, fadeRatio = HERO_TIMING.fadeRatio): ChapterTiming {
   const span = 1 / total;
-  const fade = span * HERO_TIMING.fadeRatio;
+  const fade = span * fadeRatio;
   const start = index * span;
   const end = (index + 1) * span;
 
@@ -101,8 +99,8 @@ function percent(value: number) {
   return `${value}%`;
 }
 
-function useChapterMotion(progress: MotionValue<number>, index: number, total: number) {
-  const timing = getChapterTiming(index, total);
+function useChapterMotion(progress: MotionValue<number>, index: number, total: number, fadeRatio = HERO_TIMING.fadeRatio) {
+  const timing = getChapterTiming(index, total, fadeRatio);
   const opacity = useTransform(progress, timing.opacityInput, timing.opacityOutput);
   const local = useTransform(progress, timing.localInput, [0, 1]);
   return { opacity, local };
@@ -155,22 +153,21 @@ function HeroChapter({
   progress: MotionValue<number>;
   intensity: number;
 }) {
-  const { opacity, local } = useChapterMotion(progress, index, chapters.length);
+  const { opacity, local } = useChapterMotion(progress, index, chapters.length, HERO_TIMING.textFadeRatio);
   const y = useTransform(local, [0, 1], [HERO_TIMING.textY.from * intensity, HERO_TIMING.textY.to * intensity]);
 
   return (
     <motion.article className="hero-scene__chapter" style={{ opacity, y }}>
       <div className="hero-scene__chapter-main">
         <div className="hero-scene__chapter-meta">
-          <span>{chapter.number} / {chapter.discipline}</span>
+          <span className="hero-scene__chapter-number">{chapter.number}</span>
+          <span className="hero-scene__chapter-separator" aria-hidden="true" />
+          <span className="hero-scene__chapter-discipline">{chapter.discipline}</span>
         </div>
         <h1 className="hero-scene__headline">
           <span>{chapter.headline[0]}</span>
           <span>{chapter.headline[1]}</span>
         </h1>
-        <a className="chapter-link" href="#coaching">
-          {chapter.cta} <span aria-hidden="true">↗</span>
-        </a>
       </div>
     </motion.article>
   );
@@ -199,11 +196,11 @@ function ProgressTick({
   );
 }
 
-function HeroProgressIndicator({ progress }: { progress: MotionValue<number> }) {
+function HeroProgressIndicator({ progress, label }: { progress: MotionValue<number>; label: string }) {
   const fill = useTransform(progress, [0, 1], [0, 1]);
 
   return (
-    <aside className="hero-scene__progress" aria-label="Postup kapitol">
+    <aside className="hero-scene__progress" aria-label={label}>
       <div className="hero-scene__progress-line" aria-hidden="true">
         <motion.i style={{ scaleY: fill }} />
       </div>
@@ -217,6 +214,7 @@ function HeroProgressIndicator({ progress }: { progress: MotionValue<number> }) 
 }
 
 function FinalStatement({ progress }: { progress: MotionValue<number> }) {
+  const { content } = useSite();
   const opacity = useTransform(progress, HERO_TIMING.final.opacityInput, HERO_TIMING.final.opacityOutput);
   const y = useTransform(progress, [0, 1], HERO_TIMING.final.y);
   const blur = useTransform(progress, HERO_TIMING.final.blurInput, HERO_TIMING.final.blurOutput);
@@ -227,14 +225,14 @@ function FinalStatement({ progress }: { progress: MotionValue<number> }) {
       <motion.div className="hero-scene__final-motion" style={{ opacity, y, filter }}>
         <div className="hero-scene__final-composition">
           <div className="shell intro-final__inner">
-            <p className="eyebrow">Výsledek</p>
+            <p className="eyebrow">{content.hero.finalLabel}</p>
             <h2 className="display-type">
-              Vybuduj tělo,
+              {content.hero.finalLineOne}
               <br />
-              které zvládne <span className="accent-word">víc.</span>
+              <span className="hero-scene__final-muted">{content.hero.finalLineTwo}</span> {content.hero.finalLineThree}
             </h2>
             <a className="text-link" href="#coaching">
-              Začít trénovat <span aria-hidden="true">↓</span>
+              {content.hero.finalCta} <span aria-hidden="true">↓</span>
             </a>
           </div>
         </div>
@@ -244,6 +242,7 @@ function FinalStatement({ progress }: { progress: MotionValue<number> }) {
 }
 
 export function HeroSection() {
+  const { content } = useSite();
   const containerRef = useRef<HTMLElement>(null);
   const [isCompact, setIsCompact] = useState(false);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
@@ -253,6 +252,11 @@ export function HeroSection() {
   const chapterGroupOpacity = useTransform(smooth, HERO_TIMING.chapterGroupFade.input, HERO_TIMING.chapterGroupFade.output);
   const motionIntensity = isCompact ? 0.55 : 1;
   const scrollHeight = `${chapters.length * HERO_TIMING.chapterHeight * 100 + 90}vh`;
+  const localizedChapters = chapters.map((chapter, index) => ({
+    ...chapter,
+    discipline: content.hero.chapters[index].discipline,
+    headline: [...content.hero.chapters[index].headline] as [string, string],
+  }));
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 720px)");
@@ -263,20 +267,20 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="hero-scene" ref={containerRef} style={{ "--hero-scroll-height": scrollHeight } as React.CSSProperties} aria-label="Tréninkový manifest">
+    <section className="hero-scene" ref={containerRef} style={{ "--hero-scroll-height": scrollHeight } as React.CSSProperties} aria-label={content.hero.ariaLabel}>
       <div className="hero-scene__sticky">
         <motion.div className="hero-scene__chapter-group" style={{ opacity: chapterGroupOpacity }}>
           <div className="hero-scene__media" aria-hidden="true">
-            {chapters.map((chapter, index) => (
+            {localizedChapters.map((chapter, index) => (
               <HeroBackground chapter={chapter} index={index} progress={chapterProgress} intensity={motionIntensity} key={chapter.id} />
             ))}
           </div>
           <div className="hero-scene__content-layer">
-            {chapters.map((chapter, index) => (
+            {localizedChapters.map((chapter, index) => (
               <HeroChapter chapter={chapter} index={index} progress={chapterProgress} intensity={motionIntensity} key={chapter.id} />
             ))}
           </div>
-          <HeroProgressIndicator progress={chapterProgress} />
+          <HeroProgressIndicator progress={chapterProgress} label={content.hero.progressLabel} />
         </motion.div>
         <FinalStatement progress={finalProgress} />
       </div>

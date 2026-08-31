@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo, Inter_Tight } from "next/font/google";
+import { SiteProvider } from "./components/SiteProvider";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -15,8 +16,8 @@ const interTight = Inter_Tight({
 });
 
 export const metadata: Metadata = {
-  title: "MT — Strength & Performance Coaching",
-  description: "Silový, kondiční a hybridní trénink pro tělo, které zvládne víc.",
+  title: "Matej Červenka — osobní trenér Zlín",
+  description: "Osobní silový a kondiční trénink v Zlíně pro začátečníky a mírně pokročilé.",
 };
 
 export default function RootLayout({
@@ -26,7 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="cs">
-      <body className={`${archivo.variable} ${interTight.variable}`}>{children}</body>
+      <body className={`${archivo.variable} ${interTight.variable}`}>
+        <SiteProvider>{children}</SiteProvider>
+      </body>
     </html>
   );
 }
