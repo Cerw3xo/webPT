@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useSite } from "./SiteProvider";
+import { useSite } from "./SiteContext";
 
 function InstagramIcon() {
   return (

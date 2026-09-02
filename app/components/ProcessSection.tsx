@@ -1,7 +1,8 @@
 "use client";
 
 import { SectionLabel } from "./SectionLabel";
-import { useSite } from "./SiteProvider";
+import { EditorialCta } from "./EditorialCta";
+import { useSite } from "./SiteContext";
 
 export function ProcessSection() {
   const { content } = useSite();
@@ -11,8 +12,10 @@ export function ProcessSection() {
       <div className="shell">
         <div className="editorial-grid section-intro process-intro">
           <SectionLabel number="02" label={content.process.label} />
-          <h2 className="editorial-major"><span className="editorial-major__muted">{content.process.headlineMuted}</span> {content.process.headline}</h2>
-          <p className="section-summary">{content.process.summary}</p>
+          <h2 className="editorial-major process-heading">
+            <span>{content.process.headline}</span>
+            <span className="editorial-major__muted">{content.process.headlineMuted}</span>
+          </h2>
         </div>
 
         <div className="process-grid">
@@ -25,6 +28,10 @@ export function ProcessSection() {
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="process-cta-row">
+          <EditorialCta href="#contact" label={content.process.cta} />
         </div>
       </div>
     </section>

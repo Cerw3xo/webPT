@@ -1,7 +1,8 @@
 "use client";
 
 import { SectionLabel } from "./SectionLabel";
-import { useSite } from "./SiteProvider";
+import { EditorialCta } from "./EditorialCta";
+import { useSite } from "./SiteContext";
 
 export function ResultsSection() {
   const { content } = useSite();
@@ -33,9 +34,11 @@ export function ResultsSection() {
                   <span>{content.references.pending}</span>
                 </div>
               </div>
-              <a className="text-link result-message-card__cta" href="#contact">
-                {content.references.cta} <span aria-hidden="true">→</span>
-              </a>
+              <EditorialCta
+                className="text-link result-message-card__cta"
+                href="#contact"
+                label={content.references.cta}
+              />
             </article>
           ))}
         </div>

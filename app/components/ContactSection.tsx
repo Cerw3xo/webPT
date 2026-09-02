@@ -2,7 +2,7 @@
 
 import type { FormEvent } from "react";
 import { SectionLabel } from "./SectionLabel";
-import { useSite } from "./SiteProvider";
+import { useSite } from "./SiteContext";
 
 const contactEmail = "matejcervenka@icloud.com";
 const phoneDisplay = "+420 774 030 859";
@@ -37,30 +37,24 @@ export function ContactSection() {
   return (
     <section className="section contact-section" id="contact">
       <div className="shell">
-        <div className="contact-grid">
-          <div className="contact-intro">
-            <SectionLabel number="06" label={content.contact.label} />
-            <h2 className="contact-title"><span className="editorial-major__muted">{content.contact.headlineMuted}</span> {content.contact.headline}</h2>
-            <p className="lead-copy">{content.contact.summary}</p>
-            <p className="contact-availability"><span aria-hidden="true" />{content.contact.availability}</p>
-            <div className="contact-links">
-              <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-              <a href={phoneHref}>{phoneDisplay}</a>
-            </div>
-            <p>{content.contact.location}</p>
-          </div>
+        <header className="contact-header">
+          <SectionLabel number="06" label={content.contact.label} />
+          <h2 className="contact-title">
+            <span>{content.contact.headlineMuted}</span>
+            <span className="editorial-major__muted">{content.contact.headline}</span>
+          </h2>
+          <p className="contact-summary">{content.contact.summary}</p>
+        </header>
 
+        <div className="contact-grid">
           <form className="contact-form-visual" aria-label={content.contact.formLabel} onSubmit={handleSubmit}>
             <label className="visual-field">
-              <span>01</span>
               <input name="name" type="text" autoComplete="name" placeholder={content.contact.fields.name} aria-label={content.contact.fields.name} required />
             </label>
             <label className="visual-field">
-              <span>02</span>
               <input name="replyTo" type="text" autoComplete="email" placeholder={content.contact.fields.contact} aria-label={content.contact.fields.contact} required />
             </label>
             <label className="visual-field">
-              <span>03</span>
               <select
                 name="goal"
                 value={contactGoal}
@@ -76,14 +70,31 @@ export function ContactSection() {
               </select>
             </label>
             <label className="visual-field visual-field--large">
-              <span>04</span>
               <textarea name="message" placeholder={content.contact.fields.message} aria-label={content.contact.fields.message} rows={4} />
             </label>
-            <button className="visual-submit" type="submit">
-              {content.contact.submit} <span aria-hidden="true">→</span>
+            <button className="visual-submit editorial-cta" type="submit">
+              <span className="editorial-cta__label">{content.contact.submit}</span>
+              <span className="editorial-cta__line" aria-hidden="true" />
+              <span className="editorial-cta__arrow" aria-hidden="true">→</span>
             </button>
             <p className="contact-form-note">{content.contact.formNote}</p>
           </form>
+
+          <aside className="contact-details" aria-label={content.contact.label}>
+            <a className="contact-detail" href={phoneHref}>
+              <span>{phoneDisplay}</span>
+              <i aria-hidden="true" />
+            </a>
+            <a className="contact-detail" href={`mailto:${contactEmail}`}>
+              <span>{contactEmail}</span>
+              <i aria-hidden="true" />
+            </a>
+            <p className="contact-detail contact-detail--availability">
+              <span>{content.contact.availability}</span>
+              <i aria-hidden="true" />
+            </p>
+            <p className="contact-location">{content.contact.location}</p>
+          </aside>
         </div>
       </div>
     </section>

@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useSpring, useTransform, type MotionValue } from "motion/react";
-import { useSite } from "./SiteProvider";
+import { EditorialCta } from "./EditorialCta";
+import { useSite } from "./SiteContext";
 
 type ChapterMedia =
   | { kind: "image"; src: string; alt: string; width: number; height: number }
@@ -25,8 +26,27 @@ type ChapterData = {
   imageMotion: ImageMotion;
 };
 
+type HeroTiming = {
+  chapterHeight: number;
+  chapterCutoff: number;
+  fadeRatio: number;
+  textFadeRatio: number;
+  spring: { stiffness: number; damping: number; mass: number };
+  chapterGroupFade: { input: number[]; output: number[] };
+  mediaBlur: { input: number[]; output: number[] };
+  textY: { from: number; to: number };
+  final: {
+    opacityInput: number[];
+    opacityOutput: number[];
+    y: number[];
+    blurInput: number[];
+    blurOutput: number[];
+  };
+  chapters: Record<ChapterData["id"], ImageMotion>;
+};
+
 /** Centralized values extracted from the Lovable reference motion system. */
-export const HERO_TIMING = {
+const HERO_TIMING: HeroTiming = {
   chapterHeight: 2.0,
   chapterCutoff: 0.74,
   fadeRatio: 0.32,
@@ -47,9 +67,9 @@ export const HERO_TIMING = {
     endurance: { scale: [1.14, 1.06], x: [4, -4], y: [0, 0] },
     performance: { scale: [1.22, 1.06], x: [-3, 3], y: [-2, 2] },
   },
-} as const;
+};
 
-export const chapters: ChapterData[] = [
+const chapters: ChapterData[] = [
   {
     id: "strength",
     number: "01",
@@ -231,9 +251,7 @@ function FinalStatement({ progress }: { progress: MotionValue<number> }) {
               <br />
               <span className="hero-scene__final-muted">{content.hero.finalLineTwo}</span> {content.hero.finalLineThree}
             </h2>
-            <a className="text-link" href="#coaching">
-              {content.hero.finalCta} <span aria-hidden="true">↓</span>
-            </a>
+            <EditorialCta className="text-link" href="#coaching" label={content.hero.finalCta} />
           </div>
         </div>
       </motion.div>
@@ -266,6 +284,23 @@ export function HeroSection() {
     return () => media.removeEventListener("change", update);
   }, []);
 
+  const skipHero = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+
+    const target = document.querySelector<HTMLElement>("#coaching");
+    if (!target) return;
+
+    const root = document.documentElement;
+    const previousScrollBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    target.scrollIntoView();
+    window.history.replaceState(null, "", "#coaching");
+
+    window.requestAnimationFrame(() => {
+      root.style.scrollBehavior = previousScrollBehavior;
+    });
+  };
+
   return (
     <section className="hero-scene" ref={containerRef} style={{ "--hero-scroll-height": scrollHeight } as React.CSSProperties} aria-label={content.hero.ariaLabel}>
       <div className="hero-scene__sticky">
@@ -281,6 +316,10 @@ export function HeroSection() {
             ))}
           </div>
           <HeroProgressIndicator progress={chapterProgress} label={content.hero.progressLabel} />
+          <a className="hero-scene__skip" href="#coaching" onClick={skipHero}>
+            <span>{content.hero.skipCta}</span>
+            <span className="hero-scene__skip-arrow" aria-hidden="true">↓</span>
+          </a>
         </motion.div>
         <FinalStatement progress={finalProgress} />
       </div>

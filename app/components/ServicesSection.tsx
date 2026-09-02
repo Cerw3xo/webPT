@@ -2,26 +2,24 @@
 
 import { MediaPlaceholder } from "./MediaPlaceholder";
 import { SectionLabel } from "./SectionLabel";
-import { useSite } from "./SiteProvider";
+import { EditorialCta } from "./EditorialCta";
+import { useSite } from "./SiteContext";
 
 const serviceMedia = [
   {
     index: "01",
-    goal: "strength" as const,
     imageSrc: "/strenght.png",
     imagePosition: "50% 56%",
     theme: "strength" as const,
   },
   {
     index: "02",
-    goal: "shape" as const,
     imageSrc: "/loss-fat.png",
     imagePosition: "50% 52%",
     theme: "endurance" as const,
   },
   {
     index: "03",
-    goal: "performance" as const,
     imageSrc: "/endurance.png",
     imagePosition: "50% 48%",
     theme: "performance" as const,
@@ -29,7 +27,7 @@ const serviceMedia = [
 ];
 
 export function ServicesSection() {
-  const { content, setContactGoal } = useSite();
+  const { content } = useSite();
   const services = serviceMedia.map((service, index) => ({ ...service, ...content.services.items[index] }));
 
   return (
@@ -37,32 +35,38 @@ export function ServicesSection() {
       <div className="shell">
         <div className="editorial-grid section-intro coaching-intro">
           <SectionLabel number="01" label={content.services.label} />
-          <h2 className="editorial-major"><span className="editorial-major__muted">{content.services.headlineMuted}</span> {content.services.headline}</h2>
-          <p className="section-summary">{content.services.summary}</p>
+          <h2 className="editorial-major training-heading">
+            <span>{content.services.headline}</span>
+            <span>
+              {content.services.headlineContinuation}{" "}
+              <span className="editorial-major__muted">{content.services.headlineMuted}</span>
+            </span>
+          </h2>
         </div>
 
-        <div className="coaching-services">
+        <div className="training-grid">
           {services.map((service) => (
-            <article className="service-row" key={service.index}>
+            <article className="training-card" key={service.index}>
               <MediaPlaceholder
                 label={service.category}
-                ratio="landscape"
+                ratio="square"
                 index={service.index}
                 theme={service.theme}
                 imageSrc={service.imageSrc}
                 imageAlt={service.imageAlt}
                 imagePosition={service.imagePosition}
               />
-              <div className="service-row__content">
-                <span className="service-row__index">{service.index}</span>
+              <div className="training-card__content">
+                <span className="training-card__index">{service.index}</span>
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
-                <a className="service-row__arrow" href="#contact" onClick={() => setContactGoal(service.goal)}>
-                  {content.services.cta} <span aria-hidden="true">↗</span>
-                </a>
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="training-cta-row">
+          <EditorialCta href="#contact" label={content.services.sectionCta} />
         </div>
       </div>
     </section>

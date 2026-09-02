@@ -1,6 +1,6 @@
 "use client";
 
-import { useSite } from "./SiteProvider";
+import { useSite } from "./SiteContext";
 
 export function Header() {
   const { content, locale, setLocale } = useSite();
@@ -25,28 +25,37 @@ export function Header() {
         </nav>
 
         <div className="header-actions">
-          <div className="language-switcher" aria-label={content.header.languageLabel}>
+          <div
+            className="language-switcher language-switcher--contrast"
+            aria-label={content.header.languageLabel}
+            style={{ backgroundColor: "#000000" }}
+          >
             <button
-              className={`language-switcher__option${locale === "cs" ? " language-switcher__option--active" : ""}`}
+              className={`language-switcher__option${locale === "cs" ? " language-switcher__option--selected" : ""}`}
               type="button"
               aria-pressed={locale === "cs"}
+              style={{
+                backgroundColor: locale === "cs" ? "var(--primary)" : "#000000",
+                color: locale === "cs" ? "var(--accent)" : "var(--text-secondary)",
+              }}
               onClick={() => setLocale("cs")}
             >
               CZ
             </button>
             <button
-              className={`language-switcher__option${locale === "sk" ? " language-switcher__option--active" : ""}`}
+              className={`language-switcher__option${locale === "sk" ? " language-switcher__option--selected" : ""}`}
               type="button"
               aria-pressed={locale === "sk"}
+              style={{
+                backgroundColor: locale === "sk" ? "var(--primary)" : "#000000",
+                color: locale === "sk" ? "var(--accent)" : "var(--text-secondary)",
+              }}
               onClick={() => setLocale("sk")}
             >
               SK
             </button>
           </div>
 
-          <a className="header-cta" href="#contact">
-            {content.header.cta} <span aria-hidden="true">→</span>
-          </a>
         </div>
       </div>
     </header>
