@@ -35,9 +35,10 @@ export function ResultsSection() {
                 </div>
               </div>
               <EditorialCta
-                className="text-link result-message-card__cta"
+                className={`text-link result-message-card__cta${index === 0 ? " editorial-cta--border-glow" : ""}`}
                 href="#contact"
                 label={content.references.cta}
+                variant="micro-accent"
               />
             </article>
           ))}

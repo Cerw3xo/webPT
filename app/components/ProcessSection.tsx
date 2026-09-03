@@ -31,7 +31,7 @@ export function ProcessSection() {
         </div>
 
         <div className="process-cta-row">
-          <EditorialCta href="#contact" label={content.process.cta} />
+          <EditorialCta href="#contact" label={content.process.cta} variant="minimal-text" />
         </div>
       </div>
     </section>

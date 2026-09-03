@@ -1,0 +1,4 @@
+# Server-only Resend credentials for local development.
+RESEND_API_KEY=re_replace_me
+RESEND_FROM_EMAIL="Matej Cervenka <form@your-verified-domain.example>"
+CONTACT_EMAIL=matejcervenka@icloud.com

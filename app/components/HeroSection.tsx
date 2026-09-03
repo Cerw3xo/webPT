@@ -54,7 +54,7 @@ const HERO_TIMING: HeroTiming = {
   spring: { stiffness: 90, damping: 26, mass: 0.4 },
   chapterGroupFade: { input: [0.68, 0.78], output: [1, 0] },
   mediaBlur: { input: [0, 0.15, 0.85, 1], output: [10, 0, 0, 10] },
-  textY: { from: 32, to: -32 },
+  textY: { from: 40, to: -40 },
   final: {
     opacityInput: [0, 0.35, 1],
     opacityOutput: [0, 1, 1],
@@ -63,9 +63,9 @@ const HERO_TIMING: HeroTiming = {
     blurOutput: [14, 0],
   },
   chapters: {
-    strength: { scale: [1.05, 1.18], x: [0, -1.5], y: [1.5, -1.5] },
-    endurance: { scale: [1.14, 1.06], x: [4, -4], y: [0, 0] },
-    performance: { scale: [1.22, 1.06], x: [-3, 3], y: [-2, 2] },
+    strength: { scale: [1, 1.05], x: [0, 0], y: [0, -1.25] },
+    endurance: { scale: [1.02, 1.06], x: [3.5, -2], y: [0, -0.5] },
+    performance: { scale: [1.02, 1.06], x: [-2, 2.25], y: [0.5, -0.5] },
   },
 };
 
@@ -251,7 +251,12 @@ function FinalStatement({ progress }: { progress: MotionValue<number> }) {
               <br />
               <span className="hero-scene__final-muted">{content.hero.finalLineTwo}</span> {content.hero.finalLineThree}
             </h2>
-            <EditorialCta className="text-link" href="#coaching" label={content.hero.finalCta} />
+            <EditorialCta
+              className="text-link editorial-cta--border-glow editorial-cta--subtle-glow"
+              href="#coaching"
+              label={content.hero.finalCta}
+              variant="micro-accent"
+            />
           </div>
         </div>
       </motion.div>

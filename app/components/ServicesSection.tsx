@@ -66,7 +66,12 @@ export function ServicesSection() {
         </div>
 
         <div className="training-cta-row">
-          <EditorialCta href="#contact" label={content.services.sectionCta} />
+          <EditorialCta
+            className="editorial-cta--border-glow editorial-cta--subtle-glow"
+            href="#contact"
+            label={content.services.sectionCta}
+            variant="micro-accent"
+          />
         </div>
       </div>
     </section>
