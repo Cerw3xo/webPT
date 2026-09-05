@@ -77,11 +77,11 @@
 
 @keyframes editorial-cta-glow {
   from {
-    transform: translateX(-105%);
+    transform: translateX(-100%);
   }
 
   to {
-    transform: translateX(265%);
+    transform: translateX(263.16%);
   }
 }
 
