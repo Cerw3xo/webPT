@@ -1,0 +1,106 @@
+.media-placeholder {
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+  background: var(--bg-elevated);
+  color: var(--text-dim);
+}
+
+.media-placeholder--portrait {
+  aspect-ratio: 4 / 5;
+}
+
+.media-placeholder--landscape {
+  aspect-ratio: 16 / 10;
+}
+
+.media-placeholder--square {
+  aspect-ratio: 1;
+}
+
+.media-placeholder--strength, .media-placeholder--performance {
+  background: var(--bg-surface);
+}
+
+.media-placeholder--endurance, .media-placeholder--profile, .media-placeholder--result {
+  background: var(--bg-elevated);
+}
+
+.media-placeholder__image {
+  object-fit: cover;
+}
+
+.media-placeholder::before, .media-placeholder::after, .media-placeholder__cross::before, .media-placeholder__cross::after {
+  position: absolute;
+  background: var(--border-subtle);
+  content: "";
+}
+
+.media-placeholder::before {
+  inset: 50% 0 auto;
+  height: 1px;
+}
+
+.media-placeholder::after {
+  inset: 0 auto 0 50%;
+  width: 1px;
+}
+
+.media-placeholder__cross::before {
+  top: -20%;
+  left: 50%;
+  width: 1px;
+  height: 140%;
+  transform: rotate(36deg);
+}
+
+.media-placeholder__cross::after {
+  top: -20%;
+  left: 50%;
+  width: 1px;
+  height: 140%;
+  transform: rotate(-36deg);
+}
+
+.media-placeholder--with-image::before, .media-placeholder--with-image::after {
+  display: none;
+}
+
+.media-placeholder__frame {
+  position: absolute;
+  inset: 12%;
+  border: 1px solid var(--border-default);
+}
+
+.media-placeholder--endurance .media-placeholder__frame {
+  border-radius: 50%;
+}
+
+.media-placeholder--performance .media-placeholder__frame {
+  transform: rotate(45deg) scale(.75);
+}
+
+.media-placeholder__label, .media-placeholder__index {
+  position: absolute;
+  z-index: 1;
+  bottom: 1.25rem;
+  color: var(--text-dim);
+  font-family: var(--font-ui);
+  font-size: .6rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.media-placeholder__label {
+  left: 1.25rem;
+}
+
+.media-placeholder__index {
+  right: 1.25rem;
+}
+
+.media-placeholder--with-image .media-placeholder__label, .media-placeholder--with-image .media-placeholder__index {
+  bottom: calc(1.25rem - 20px);
+  color: var(--text-primary);
+}

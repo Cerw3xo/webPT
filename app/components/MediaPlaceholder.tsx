@@ -1,4 +1,5 @@
 import Image from "next/image";
+import "./MediaPlaceholder.css";
 
 type MediaPlaceholderProps = {
   label: string;

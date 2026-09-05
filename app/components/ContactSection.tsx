@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { SectionLabel } from "./SectionLabel";
 import { useSite } from "./SiteContext";
+import "./ContactSection.css";
+import "./Typography.css";
 
 const contactEmail = "matejcervenka@icloud.com";
 const phoneDisplay = "+420 774 030 859";
@@ -55,10 +57,10 @@ export function ContactSection() {
   };
 
   return (
-    <section className="section contact-section" id="contact">
-      <div className="shell">
+    <section className="contact-section" id="contact">
+      <div className="container gutter">
         <header className="contact-header">
-          <SectionLabel number="06" label={content.contact.label} />
+          <SectionLabel number="07" label={content.contact.label} />
           <h2 className="contact-title">
             <span>{content.contact.headlineMuted}</span>
             <span className="editorial-major__muted">{content.contact.headline}</span>
@@ -96,7 +98,7 @@ export function ContactSection() {
             <label className="visual-field visual-field--large">
               <textarea name="message" placeholder={content.contact.fields.message} aria-label={content.contact.fields.message} rows={4} />
             </label>
-            <button className="visual-submit editorial-cta editorial-cta--minimal-text" type="submit" disabled={submitState === "submitting"}>
+            <button className="visual-submit editorial-cta" type="submit" disabled={submitState === "submitting"}>
               <span className="editorial-cta__label">
                 {submitState === "submitting" ? content.contact.sending : content.contact.submit}
               </span>

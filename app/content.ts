@@ -118,6 +118,34 @@ export const siteContent = {
       coach: "Matej · trenér",
       pending: "Reference se připravují",
     },
+    faq: {
+      ariaLabel: "Časté otázky",
+      label: "Otázky",
+      headline: "Dřív než se",
+      headlineMuted: "ozveš.",
+      items: [
+        {
+          question: "Pro koho je spolupráce vhodná?",
+          answer: "Pro kohokoli, kdo chce trénovat s jasnou strukturou — od úplného začátku po pokročilé, kteří se zasekli na místě.",
+        },
+        {
+          question: "Jak probíhá první konzultace?",
+          answer: "Je zdarma a nezávazná. Projdeme tvůj cíl, historii a pohyb — a navrhnu, jak by mohla spolupráce vypadat.",
+        },
+        {
+          question: "Musím mít zkušenosti?",
+          answer: "Ne. Techniku stavíme od základů. Zkušenost je výhoda, ne podmínka.",
+        },
+        {
+          question: "Řešíme i stravu?",
+          answer: "Ano, v rovině praktických doporučení — příjem, bílkoviny a načasování. Bez extrémů a striktních jídelníčků.",
+        },
+        {
+          question: "Jak dlouho trvá, než uvidím výsledky?",
+          answer: "První změny v síle a pocitu z pohybu obvykle přijdou během 4–6 týdnů. Viditelná změna postavy je otázkou měsíců konzistence.",
+        },
+      ],
+    },
     contact: {
       label: "Kontakt",
       headlineMuted: "Vybuduj tělo,",
@@ -265,6 +293,34 @@ export const siteContent = {
       ],
       coach: "Matej · tréner",
       pending: "Referencie sa pripravujú",
+    },
+    faq: {
+      ariaLabel: "Časté otázky",
+      label: "Otázky",
+      headline: "Skôr než sa",
+      headlineMuted: "ozveš.",
+      items: [
+        {
+          question: "Pre koho je spolupráca vhodná?",
+          answer: "Pre kohokoľvek, kto chce trénovať s jasnou štruktúrou — od úplného začiatku po pokročilých, ktorí sa zasekli na mieste.",
+        },
+        {
+          question: "Ako prebieha prvá konzultácia?",
+          answer: "Je zadarmo a nezáväzná. Prejdeme tvoj cieľ, históriu a pohyb — a navrhnem, ako by mohla spolupráca vyzerať.",
+        },
+        {
+          question: "Musím mať skúsenosti?",
+          answer: "Nie. Techniku staviame od základov. Skúsenosť je výhoda, nie podmienka.",
+        },
+        {
+          question: "Riešime aj stravu?",
+          answer: "Áno, v rovine praktických odporúčaní — príjem, bielkoviny, načasovanie. Bez extrémov a striktných jedálničkov.",
+        },
+        {
+          question: "Ako dlho trvá, kým uvidím výsledky?",
+          answer: "Prvé zmeny v sile a pocite z pohybu zvyčajne do 4–6 týždňov. Viditeľná zmena postavy je otázkou mesiacov konzistencie.",
+        },
+      ],
     },
     contact: {
       label: "Kontakt",

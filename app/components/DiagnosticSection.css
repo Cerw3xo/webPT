@@ -1,0 +1,110 @@
+.diagnostic-section {
+  padding-block: var(--section-space);
+  background: var(--bg-main);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.diagnostic-composition {
+  display: grid;
+  grid-template-columns: repeat(12,minmax(0,1fr));
+  gap: clamp(3.5rem,5vw,5rem);
+  align-items: start;
+}
+
+.diagnostic-intro {
+  grid-column: 1 / span 5;
+}
+
+.diagnostic-intro .editorial-major {
+  max-width: none;
+  margin: 2.25rem 0 0;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem,3.6vw,3.65rem);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: .98;
+  text-transform: uppercase;
+}
+
+.diagnostic-intro .editorial-major>span {
+  display: block;
+}
+
+.diagnostic-summary {
+  max-width: 42ch;
+  margin: 1.75rem 0 0;
+  color: var(--text-muted);
+  font-size: clamp(.86rem,.95vw,.95rem);
+  line-height: 1.7;
+}
+
+.diagnostic-details {
+  grid-column: 7 / span 6;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.diagnostic-detail {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0,1fr);
+  gap: 1rem;
+  padding-block: clamp(1.6rem,2.25vw,2.15rem);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.diagnostic-detail__index {
+  padding-top: .1rem;
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: .65rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+}
+
+.diagnostic-detail h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: clamp(.88rem,1vw,1rem);
+  font-weight: 600;
+  letter-spacing: .12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.diagnostic-detail p {
+  max-width: 46ch;
+  margin: .8rem 0 0;
+  color: var(--text-muted);
+  font-size: clamp(.78rem,.85vw,.875rem);
+  line-height: 1.65;
+}
+
+@media (max-width:1024px) {
+  .diagnostic-composition {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .diagnostic-intro,.diagnostic-details {
+    grid-column: 1;
+  }
+}
+
+@media (max-width:720px) {
+  .diagnostic-section {
+    padding-block: 5rem;
+  }
+
+  .diagnostic-intro .editorial-major {
+    margin-top: 1.75rem;
+    font-size: clamp(2rem,9vw,3rem);
+  }
+
+  .diagnostic-detail {
+    grid-template-columns: 2.5rem minmax(0,1fr);
+    padding-block: 1.5rem;
+  }
+}

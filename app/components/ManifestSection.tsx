@@ -1,31 +1,33 @@
 "use client";
 
 import { useSite } from "./SiteContext";
+import g from "./sections.module.css";
+import styles from "./ManifestSection.module.css";
 
 export function ManifestSection() {
   const { content } = useSite();
 
   return (
-    <section className="section manifest-section" id="manifest" aria-label={content.manifest.label}>
-      <div className="shell">
-        <div className="manifest-layout">
-          <p className="manifest-label">
-            <span className="manifest-label__accent" aria-hidden="true" />
-            <span className="manifest-label__line" aria-hidden="true" />
+    <section className={`${styles.section} ${g.padLarge} gutter`} id="manifest" aria-label={content.manifest.label}>
+      <div className={g.inner}>
+        <div className={styles.grid}>
+          <p className={styles.labelCol}>
+            <span className={styles.labelAccent} aria-hidden="true" />
+            <span className={styles.labelLine} aria-hidden="true" />
             <span>{content.manifest.label}</span>
           </p>
 
-          <div className="manifest-content">
-            <h2 className="manifest-quote">
+          <div className={styles.contentCol}>
+            <h2 className={styles.statement}>
               <span>{content.manifest.statement}</span>{" "}
-              <span className="manifest-quote__muted">{content.manifest.statementMuted}</span>
+              <span className={styles.statementSoft}>{content.manifest.statementMuted}</span>
             </h2>
 
-            <dl className="manifest-pillars">
+            <dl className={styles.pillars}>
               {content.manifest.pillars.map((pillar) => (
-                <div className="manifest-pillar" key={pillar.title}>
-                  <dt>{pillar.title}</dt>
-                  <dd>{pillar.description}</dd>
+                <div className={styles.pillar} key={pillar.title}>
+                  <dt className={g.microLabel}>{pillar.title}</dt>
+                  <dd className={`${g.body} ${styles.pillarValue}`}>{pillar.description}</dd>
                 </div>
               ))}
             </dl>

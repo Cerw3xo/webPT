@@ -2,14 +2,16 @@
 
 import { SectionLabel } from "./SectionLabel";
 import { useSite } from "./SiteContext";
+import "./DiagnosticSection.css";
+import "./Typography.css";
 
 export function DiagnosticSection() {
   const { content } = useSite();
 
   return (
-    <section className="section diagnostic-section" id="diagnostika">
-      <div className="shell">
-        <div className="editorial-grid diagnostic-composition">
+    <section className="diagnostic-section" id="diagnostika">
+      <div className="container gutter">
+        <div className="diagnostic-composition">
           <div className="diagnostic-intro">
             <SectionLabel number="04" label={content.diagnostic.label} />
             <h2 className="editorial-major">

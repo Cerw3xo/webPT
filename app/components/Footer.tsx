@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useSite } from "./SiteContext";
+import "./Footer.css";
 
 function InstagramIcon() {
   return (
@@ -18,7 +19,7 @@ export function Footer() {
 
   return (
     <footer className="site-footer" id="instagram">
-      <div className="shell site-footer__top">
+      <div className="container gutter site-footer__top">
         <a className="footer-logo-link" href="#top" aria-label={content.footer.homeLabel}>
           <Image
             className="footer-logo"
@@ -31,7 +32,7 @@ export function Footer() {
         <p>{content.footer.tagline}</p>
       </div>
 
-      <div className="shell site-footer__bottom">
+      <div className="container gutter site-footer__bottom">
         <p>© {new Date().getFullYear()} Matej Červenka</p>
         <nav aria-label={content.footer.navigationLabel}>
           {content.navigation.map((item) => (

@@ -2,13 +2,15 @@
 
 import { SectionLabel } from "./SectionLabel";
 import { useSite } from "./SiteContext";
+import "./ResultsSection.css";
+import "./Typography.css";
 
 export function ResultsSection() {
   const { content } = useSite();
 
   return (
-    <section className="section results-section" id="results">
-      <div className="shell editorial-grid results-intro">
+    <section className="results-section" id="results">
+      <div className="container gutter results-intro">
         <SectionLabel number="05" label={content.references.label} />
         <h2 className="editorial-major"><span className="editorial-major__muted">{content.references.headlineMuted}</span> {content.references.headline}</h2>
         <div className="results-intro__aside">
@@ -16,7 +18,7 @@ export function ResultsSection() {
         </div>
       </div>
 
-      <div className="results-viewport shell">
+      <div className="results-viewport container gutter">
         <div className="results-track results-track--messages" aria-label={content.references.label}>
           {content.references.cards.map((card, index) => (
             <article className="result-card result-message-card" key={card.label}>

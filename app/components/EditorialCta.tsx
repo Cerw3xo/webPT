@@ -1,3 +1,5 @@
+import "./EditorialCta.css";
+
 type EditorialCtaProps = {
   href: string;
   label: string;
@@ -5,9 +7,7 @@ type EditorialCtaProps = {
 };
 
 export function EditorialCta({ href, label, className }: EditorialCtaProps) {
-  const classes = ["editorial-cta", "editorial-cta--minimal-text", className]
-    .filter(Boolean)
-    .join(" ");
+  const classes = ["editorial-cta", className].filter(Boolean).join(" ");
 
   return (
     <a className={classes} href={href}>

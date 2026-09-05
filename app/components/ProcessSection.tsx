@@ -3,34 +3,36 @@
 import { SectionLabel } from "./SectionLabel";
 import { EditorialCta } from "./EditorialCta";
 import { useSite } from "./SiteContext";
+import g from "./sections.module.css";
+import styles from "./ProcessSection.module.css";
 
 export function ProcessSection() {
   const { content } = useSite();
 
   return (
-    <section className="section philosophy-section" id="process">
-      <div className="shell">
-        <div className="editorial-grid section-intro process-intro">
+    <section className={`${styles.section} ${g.pad} gutter`} id="process">
+      <div className={g.inner}>
+        <div>
           <SectionLabel number="02" label={content.process.label} />
-          <h2 className="editorial-major process-heading">
+          <h2 className={`${g.h2} ${styles.heading}`}>
             <span>{content.process.headline}</span>
-            <span className="editorial-major__muted">{content.process.headlineMuted}</span>
+            <span className={g.soft}>{content.process.headlineMuted}</span>
           </h2>
         </div>
 
-        <div className="process-grid">
+        <div className={styles.grid}>
           {content.process.steps.map((step, index) => (
-            <article className="process-step" key={step.title}>
-              <span className="process-step__index">{String(index + 1).padStart(2, "0")}</span>
+            <article className={`${styles.cell} ${styles.step}`} key={step.title}>
+              <span className={styles.num}>{String(index + 1).padStart(2, "0")}</span>
               <div>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
+                <h3 className={styles.title}>{step.title}</h3>
+                <p className={`${g.body} ${styles.copy}`}>{step.text}</p>
               </div>
             </article>
           ))}
         </div>
 
-        <div className="process-cta-row">
+        <div className={styles.ctaRow}>
           <EditorialCta href="#contact" label={content.process.cta} />
         </div>
       </div>

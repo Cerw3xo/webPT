@@ -1,0 +1,111 @@
+.inner {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+}
+
+.pad {
+  padding-block: 6rem;
+}
+
+.padLarge {
+  padding-block: 7rem;
+}
+
+.h2 {
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 5vw, 3.9rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 0.96;
+  text-transform: uppercase;
+}
+
+.h2Large {
+  font-size: clamp(2rem, 5.4vw, 4.2rem);
+  line-height: 0.94;
+}
+
+.h2Huge {
+  font-size: clamp(2.2rem, 7vw, 6rem);
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+}
+
+.soft {
+  color: var(--headline-muted);
+}
+
+.lead {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.75;
+}
+
+.body {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.microLabel {
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.tag {
+  color: var(--accent);
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
+
+.cardTitle {
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.grid12 {
+  display: grid;
+  gap: 3.5rem;
+}
+
+.rule {
+  border-top: 1px solid var(--border-subtle);
+}
+
+@media (min-width: 640px) {
+  .pad {
+    padding-block: 8rem;
+  }
+
+  .padLarge {
+    padding-block: 10rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pad {
+    padding-block: 10rem;
+  }
+
+  .padLarge {
+    padding-block: 13rem;
+  }
+
+  .grid12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 2.5rem;
+  }
+}

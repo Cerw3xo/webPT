@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import "./PageLoader.css";
 
 const MINIMUM_DISPLAY_TIME = 1700;
 const EXIT_DURATION = 650;

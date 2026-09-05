@@ -1,3 +1,5 @@
+import "./SectionLabel.css";
+
 type SectionLabelProps = {
   number: string;
   label: string;

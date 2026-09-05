@@ -6,6 +6,7 @@ import { ServicesSection } from "./components/ServicesSection";
 import { DiagnosticSection } from "./components/DiagnosticSection";
 import { ProcessSection } from "./components/ProcessSection";
 import { ResultsSection } from "./components/ResultsSection";
+import { FaqSection } from "./components/FaqSection";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
 import { PageLoader } from "./components/PageLoader";
@@ -22,6 +23,7 @@ export default function Home() {
       <AboutSection />
       <DiagnosticSection />
       <ResultsSection />
+      <FaqSection />
       <ContactSection />
       <Footer />
     </main>
