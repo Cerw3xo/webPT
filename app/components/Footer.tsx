@@ -23,7 +23,7 @@ export function Footer() {
         <a className="footer-logo-link" href="#top" aria-label={content.footer.homeLabel}>
           <Image
             className="footer-logo"
-            src="/Obrázok Codex 31. 8. 2026, 12_46_43.png"
+            src="/matej-cervenka-logo.png"
             alt=""
             width={1672}
             height={941}

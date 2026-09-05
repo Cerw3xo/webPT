@@ -87,7 +87,7 @@ export function PageLoader() {
         <div className="page-loader__logo-wrap" aria-hidden="true">
           <Image
             className="page-loader__logo"
-            src="/Obrázok Codex 31. 8. 2026, 12_46_43.png"
+            src="/matej-cervenka-logo.png"
             alt=""
             width={1672}
             height={941}
