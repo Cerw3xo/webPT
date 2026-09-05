@@ -251,11 +251,13 @@ function FinalStatement({ progress }: { progress: MotionValue<number> }) {
               <br />
               <span className="hero-scene__final-muted">{content.hero.finalLineTwo}</span> {content.hero.finalLineThree}
             </h2>
+            <div className="hero-scene__final-copy">
+              <p>{content.hero.finalLead}</p>
+              <p className="hero-scene__final-services">{content.hero.finalServices}</p>
+            </div>
             <EditorialCta
-              className="text-link editorial-cta--border-glow editorial-cta--subtle-glow"
               href="#coaching"
               label={content.hero.finalCta}
-              variant="micro-accent"
             />
           </div>
         </div>

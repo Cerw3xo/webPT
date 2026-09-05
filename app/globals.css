@@ -365,19 +365,6 @@ video {
   color: var(--text-dim);
 }
 
-.text-link {
-  display: inline-flex;
-  gap: 1.25rem;
-  align-items: center;
-  margin-top: clamp(2.5rem, 5vw, 5rem);
-  padding-bottom: 0.55rem;
-  border-bottom: 1px solid currentColor;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
 .section {
   padding-block: var(--space-section);
   background: var(--bg-main);
@@ -1223,6 +1210,38 @@ video {
   color: var(--headline-muted);
 }
 
+.hero-scene__final-copy {
+  max-width: 48rem;
+  margin: clamp(1.5rem, 2.2vw, 2.15rem) auto 0;
+}
+
+.hero-scene__final-copy p {
+  margin: 0;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: clamp(0.78rem, 0.9vw, 0.9rem);
+  line-height: 1.6;
+}
+
+.hero-scene__final-copy p + p {
+  margin-top: 0.35rem;
+}
+
+.hero-scene__final-copy .hero-scene__final-services {
+  margin-top: 1rem;
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.hero-scene__final .editorial-cta {
+  margin-top: clamp(1.25rem, 1.8vw, 1.75rem);
+}
+
 @media (max-width: 720px) {
   .hero-scene__chapter {
     width: 100%;
@@ -1241,6 +1260,21 @@ video {
 
   .hero-scene__final-composition {
     padding-top: 4rem;
+  }
+
+  .hero-scene__final-copy {
+    max-width: 32rem;
+    margin-top: 1.25rem;
+    padding-inline: 0.5rem;
+  }
+
+  .hero-scene__final-copy p {
+    font-size: 0.78rem;
+  }
+
+  .hero-scene__final-copy .hero-scene__final-services {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
   }
 
   .hero-scene__image {
@@ -1300,12 +1334,10 @@ video {
   color: var(--text-dim);
 }
 
-.text-link,
 .service-row__arrow {
   transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
 }
 
-.text-link:hover,
 .service-row__arrow:hover {
   color: var(--accent);
   border-color: var(--accent);
@@ -1578,10 +1610,6 @@ video {
   max-width: 34rem;
   font-size: 0.9rem;
   line-height: 1.7;
-}
-
-.text-link {
-  margin-top: 2.5rem;
 }
 
 .service-row {
@@ -3007,10 +3035,6 @@ body {
   margin: 0;
 }
 
-.result-message-card__cta {
-  margin-top: auto;
-}
-
 .contact-availability {
   display: flex;
   gap: 0.65rem;
@@ -3733,123 +3757,7 @@ body {
   }
 }
 
-/* Temporary CTA comparison variants. Keep these scoped to existing conversion actions. */
-.editorial-cta--micro-accent,
-.editorial-cta--minimal-text,
-.visual-submit.editorial-cta--minimal-text {
-  min-height: 48px;
-  font-family: var(--font-display);
-  transition:
-    background-color 200ms ease,
-    border-color 200ms ease,
-    box-shadow 200ms ease,
-    color 200ms ease,
-    transform 200ms ease;
-}
-
-.editorial-cta--micro-accent:focus-visible,
-.editorial-cta--minimal-text:focus-visible,
-.visual-submit.editorial-cta--minimal-text:focus-visible {
-  outline: 0;
-  box-shadow: 0 0 0 3px rgb(118 87 217 / 14%);
-}
-
-.editorial-cta--micro-accent {
-  display: inline-flex;
-  width: fit-content;
-  gap: 0.85rem;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.25rem;
-  white-space: nowrap;
-}
-
-.editorial-cta--micro-accent .editorial-cta__line {
-  display: none;
-}
-
-.editorial-cta--micro-accent .editorial-cta__arrow {
-  position: static;
-  margin-left: 0;
-  color: #7657d9;
-  transform: translateY(-1px);
-  transition: transform 200ms ease;
-}
-
-.editorial-cta--micro-accent:hover .editorial-cta__arrow,
-.editorial-cta--micro-accent:focus-visible .editorial-cta__arrow {
-  transform: translate(3px, -1px);
-}
-
-.editorial-cta--micro-accent {
-  background: #101012;
-  border: 1px solid rgb(255 255 255 / 10%);
-  border-radius: 11px;
-  color: #f8fafc;
-}
-
-.editorial-cta--micro-accent:hover,
-.editorial-cta--micro-accent:focus-visible {
-  background: #121214;
-  border-color: rgb(118 87 217 / 55%);
-  color: #f8fafc;
-}
-
-.editorial-cta--subtle-glow {
-  background: color-mix(in srgb, var(--accent) 6%, var(--background));
-  border-color: transparent;
-}
-
-.editorial-cta--subtle-glow:hover,
-.editorial-cta--subtle-glow:focus-visible {
-  background: color-mix(in srgb, var(--accent) 9%, var(--background));
-  border-color: transparent;
-}
-
-/* Reusable CTA treatment: a restrained highlight travels around the full border. */
-@property --cta-border-glow-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
-}
-
-.editorial-cta--border-glow {
-  --cta-border-glow-angle: 0deg;
-  position: relative;
-  isolation: isolate;
-}
-
-.editorial-cta--border-glow::before {
-  position: absolute;
-  z-index: 1;
-  inset: -1px;
-  padding: 1px;
-  border-radius: inherit;
-  background: conic-gradient(
-    from var(--cta-border-glow-angle),
-    transparent 0deg 285deg,
-    rgb(118 87 217 / 18%) 305deg,
-    rgb(173 70 255 / 95%) 326deg,
-    rgb(118 87 217 / 28%) 346deg,
-    transparent 360deg
-  );
-  content: "";
-  filter: drop-shadow(0 0 4px rgb(118 87 217 / 28%));
-  pointer-events: none;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: cta-border-glow 5.5s linear infinite;
-}
-
-@keyframes cta-border-glow {
-  to {
-    --cta-border-glow-angle: 360deg;
-  }
-}
-
+/* Shared primary CTA treatment. */
 .editorial-cta--minimal-text,
 .visual-submit.editorial-cta--minimal-text {
   position: relative;
@@ -3866,6 +3774,13 @@ body {
   border-radius: 0;
   box-shadow: none;
   color: #e2e8f0;
+  font-family: var(--font-display);
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    color 200ms ease,
+    transform 200ms ease;
 }
 
 .editorial-cta--minimal-text::before,
@@ -3918,6 +3833,7 @@ body {
 }
 
 .editorial-cta--minimal-text:focus-visible {
+  outline: 0;
   box-shadow: 0 0 0 3px rgb(118 87 217 / 14%);
 }
 
@@ -3932,20 +3848,9 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .editorial-cta--border-glow::before {
-    animation: none;
-  }
-
   .editorial-cta--minimal-text::after {
     animation: none;
     transform: translateX(82%);
-  }
-}
-
-@media (max-width: 640px) {
-  .editorial-cta--micro-accent {
-    max-width: 100%;
-    padding-inline: 1.1rem;
   }
 }
 

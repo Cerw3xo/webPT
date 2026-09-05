@@ -2,11 +2,10 @@ type EditorialCtaProps = {
   href: string;
   label: string;
   className?: string;
-  variant?: "micro-accent" | "minimal-text";
 };
 
-export function EditorialCta({ href, label, className, variant }: EditorialCtaProps) {
-  const classes = ["editorial-cta", variant ? `editorial-cta--${variant}` : "", className]
+export function EditorialCta({ href, label, className }: EditorialCtaProps) {
+  const classes = ["editorial-cta", "editorial-cta--minimal-text", className]
     .filter(Boolean)
     .join(" ");
 
