@@ -48,13 +48,11 @@
 .placeholder span:last-child { top: var(--gutter-x); color: var(--accent); }
 
 .overlay { pointer-events: none; }
-.keylight { background: radial-gradient(58% 62% at 56% 34%, rgb(255 255 255 / 22%), transparent 72%); mix-blend-mode: soft-light; }
-.shadowTint { background: linear-gradient(to bottom, rgb(0 0 0 / 8%), rgb(0 0 0 / 30%)); mix-blend-mode: multiply; }
-.vignette { background: radial-gradient(120% 90% at 60% 40%, transparent 26%, rgb(8 8 8 / 38%) 64%, var(--bg-deep) 100%); }
+.keylight { background-image: var(--hero-keylight); mix-blend-mode: soft-light; }
+.shadowTint { background-image: var(--hero-shadow-tint); mix-blend-mode: multiply; }
+.vignette { background-image: var(--hero-vignette); }
 .scrim {
-  background:
-    linear-gradient(90deg, var(--bg-deep) 0%, rgb(0 0 0 / 96%) 23%, rgb(0 0 0 / 63%) 45%, rgb(0 0 0 / 38%) 64%, var(--bg-deep) 90%, var(--bg-deep) 100%),
-    linear-gradient(180deg, var(--bg-deep) 0%, transparent 20%, transparent 72%, var(--bg-deep) 100%);
+  background-image: var(--hero-side-scrim), var(--hero-scrim);
 }
 
 @media (max-width: 720px) {

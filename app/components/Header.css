@@ -7,7 +7,7 @@
   width: 100%;
   min-height: 4.5rem;
   height: 4.5rem;
-  background: rgb(0 0 0 / 62%);
+  background: color-mix(in srgb, var(--background) 72%, transparent);
   border-bottom: 1px solid var(--border-subtle);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -86,7 +86,7 @@
   align-items: center;
   overflow: hidden;
   border: 1px solid var(--border-default);
-  background: #000;
+  background: var(--background);
   border-radius: 999px;
   color: var(--text-secondary);
   font-family: var(--font-ui);
@@ -103,7 +103,7 @@
   padding: .375rem .75rem;
   appearance: none;
   border: 0;
-  background: #000;
+  background: var(--background);
   color: var(--text-secondary);
   transition: color 240ms ease,background-color 240ms ease;
 }
@@ -114,7 +114,7 @@
 }
 
 .language-switcher__option:not(.language-switcher__option--selected):hover,.language-switcher__option:not(.language-switcher__option--selected):focus-visible {
-  background: #000;
+  background: var(--background);
   color: var(--accent);
 }
 

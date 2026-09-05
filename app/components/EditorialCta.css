@@ -11,7 +11,7 @@
   border-radius: 0;
   background: transparent;
   box-shadow: none;
-  color: #e2e8f0;
+  color: var(--text-secondary);
   font-family: var(--font-display);
   font-size: .78rem;
   font-weight: 600;
@@ -33,14 +33,14 @@
 
 .editorial-cta::before {
   width: 100%;
-  background: rgb(255 255 255 / 18%);
+  background: var(--border);
   transition: background-color 200ms ease;
 }
 
 .editorial-cta::after {
   width: 38%;
-  background: linear-gradient(90deg, transparent, rgb(118 87 217 / 88%), transparent);
-  filter: drop-shadow(0 0 4px rgb(118 87 217 / 38%));
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 88%, transparent), transparent);
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--accent) 38%, transparent));
   animation: editorial-cta-glow 3.8s ease-in-out infinite alternate;
 }
 
@@ -50,7 +50,7 @@
 
 .editorial-cta__arrow {
   margin-left: 0;
-  color: #7657d9;
+  color: var(--accent);
   font-size: 1.2rem;
   line-height: 1;
   transform: translateY(-2px);
@@ -59,11 +59,11 @@
 
 .editorial-cta:hover, .editorial-cta:focus-visible, .visual-submit.editorial-cta:hover, .visual-submit.editorial-cta:focus-visible {
   background: transparent;
-  color: #f8fafc;
+  color: var(--foreground);
 }
 
 .editorial-cta:hover::before, .editorial-cta:focus-visible::before {
-  background: rgb(118 87 217 / 32%);
+  background: color-mix(in srgb, var(--accent) 32%, transparent);
 }
 
 .editorial-cta:hover .editorial-cta__arrow, .editorial-cta:focus-visible .editorial-cta__arrow {
@@ -72,7 +72,7 @@
 
 .editorial-cta:focus-visible {
   outline: 0;
-  box-shadow: 0 0 0 3px rgb(118 87 217 / 14%);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent);
 }
 
 @keyframes editorial-cta-glow {

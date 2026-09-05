@@ -182,7 +182,7 @@ a.contact-detail:hover i,a.contact-detail:focus-visible i {
   height: .45rem;
   background: var(--accent);
   border-radius: 50%;
-  box-shadow: 0 0 0 .2rem rgb(150 108 215 / 12%);
+  box-shadow: 0 0 0 .2rem color-mix(in srgb, var(--accent) 12%, transparent);
 }
 
 .contact-location {

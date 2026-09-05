@@ -10,17 +10,17 @@ import styles from "./ServicesSection.module.css";
 const serviceMedia = [
   {
     index: "01",
-    imageSrc: "/strenght.png",
-    imagePosition: "50% 56%",
+    imageSrc: "/pillar-strength.jpg",
+    imagePosition: "50% 50%",
   },
   {
     index: "02",
-    imageSrc: "/loss-fat.png",
+    imageSrc: "/pillar-conditioning.jpg",
     imagePosition: "50% 52%",
   },
   {
     index: "03",
-    imageSrc: "/endurance.png",
+    imageSrc: "/pillar-hybrid.jpg",
     imagePosition: "50% 48%",
   },
 ];
