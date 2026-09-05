@@ -10,17 +10,17 @@ import styles from "./ServicesSection.module.css";
 const serviceMedia = [
   {
     index: "01",
-    imageSrc: "/pillar-strength.jpg",
-    imagePosition: "50% 50%",
+    imageSrc: "/strenght.png",
+    imagePosition: "50% 56%",
   },
   {
     index: "02",
-    imageSrc: "/pillar-conditioning.jpg",
+    imageSrc: "/loss-fat.png",
     imagePosition: "50% 52%",
   },
   {
     index: "03",
-    imageSrc: "/pillar-hybrid.jpg",
+    imageSrc: "/endurance.png",
     imagePosition: "50% 48%",
   },
 ];
@@ -57,7 +57,7 @@ export function ServicesSection() {
                     src={service.imageSrc}
                     alt={service.imageAlt}
                     fill
-                    sizes="(max-width: 767px) 100vw, 33vw"
+                    sizes="(max-width: 899px) 100vw, 33vw"
                     style={{ objectPosition: service.imagePosition }}
                   />
                   <div className={styles.imageTint} aria-hidden="true" />

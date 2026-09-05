@@ -23,6 +23,7 @@ export const HERO_TIMING = {
   chapterHeight: 2,
   chapterCutoff: 0.74,
   fadeRatio: 0.32,
+  mobileTextFadeRatio: 0.18,
   spring: { stiffness: 90, damping: 26, mass: 0.4 },
   chapterGroupFade: { input: [0.68, 0.78], output: [1, 0] },
   mediaBlur: { input: [0, 0.15, 0.85, 1], output: [10, 0, 0, 10] },

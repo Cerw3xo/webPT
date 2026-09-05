@@ -7,8 +7,11 @@ import s from "./ChapterContent.module.css";
 type Props = { chapter: Chapter; index: number; total: number; progress: MotionValue<number>; intensity: number };
 
 export function ChapterContent({ chapter, index, total, progress, intensity }: Props) {
-  const { opacity, local } = useChapterMotion(progress, index, total);
-  const y = useTransform(local, [0, 1], [HERO_TIMING.textY.from * intensity, HERO_TIMING.textY.to * intensity]);
+  const compact = intensity < 1;
+  const fadeRatio = compact ? HERO_TIMING.mobileTextFadeRatio : HERO_TIMING.fadeRatio;
+  const textIntensity = compact ? 0.8 : intensity;
+  const { opacity, local } = useChapterMotion(progress, index, total, fadeRatio, !compact);
+  const y = useTransform(local, [0, 1], [HERO_TIMING.textY.from * textIntensity, HERO_TIMING.textY.to * textIntensity]);
 
   return (
     <motion.article className={s.wrap} style={{ opacity }}>

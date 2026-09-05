@@ -13,7 +13,7 @@
   box-shadow: none;
   color: var(--text-secondary);
   font-family: var(--font-display);
-  font-size: .78rem;
+  font-size: .9rem;
   font-weight: 600;
   letter-spacing: .28em;
   line-height: 1;
@@ -89,5 +89,21 @@
   .editorial-cta::after {
     animation: none;
     transform: translateX(82%);
+  }
+}
+
+@media (max-width: 420px) {
+  .editorial-cta,
+  .visual-submit.editorial-cta {
+    max-width: 100%;
+    font-size: clamp(.72rem, 3vw, .9rem);
+    letter-spacing: clamp(.14em, .8vw, .28em);
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  .editorial-cta__label {
+    min-width: 0;
+    text-wrap: balance;
   }
 }

@@ -30,3 +30,9 @@
 @media (max-width: 720px) {
   .skip { bottom: 1.25rem; padding: 0.7rem 0.8rem; font-size: 0.6rem; }
 }
+
+@media (max-height: 600px) and (max-width: 960px) {
+  .skip {
+    bottom: .75rem;
+  }
+}

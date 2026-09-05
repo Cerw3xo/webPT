@@ -18,7 +18,14 @@ export function DiagnosticSection() {
               <span>{content.diagnostic.headline}</span>
               <span className="editorial-major__muted">{content.diagnostic.headlineMuted}</span>
             </h2>
-            <p className="diagnostic-summary">{content.diagnostic.summary}</p>
+            <div className="diagnostic-summary">
+              {content.diagnostic.summary.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+            <p className="diagnostic-conclusion">
+              <strong>{content.diagnostic.conclusion}</strong>
+            </p>
           </div>
 
           <ol className="diagnostic-details" aria-label={content.diagnostic.detailsLabel}>

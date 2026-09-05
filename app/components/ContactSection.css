@@ -25,11 +25,18 @@
 }
 
 .contact-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   max-width: 42ch;
   margin: 2.25rem 0 0;
   color: var(--text-muted);
-  font-size: clamp(.9rem,1vw,1rem);
-  line-height: 1.7;
+  font-size: var(--font-size-lead);
+  line-height: 1.65;
+}
+
+.contact-summary p {
+  margin: 0;
 }
 
 .contact-grid {
@@ -63,7 +70,7 @@
   background: transparent;
   color: var(--text-primary);
   font-family: var(--font-body);
-  font-size: .875rem;
+  font-size: 1rem;
   letter-spacing: 0;
   line-height: 1.5;
   text-transform: none;
@@ -101,7 +108,7 @@
   max-width: 30rem;
   margin: 1.25rem 0 0;
   color: var(--text-dim);
-  font-size: .7rem;
+  font-size: .8rem;
   line-height: 1.5;
 }
 
@@ -151,6 +158,11 @@
   text-transform: uppercase;
   border-bottom: 1px solid var(--border-subtle);
   transition: color 260ms ease;
+}
+
+.contact-detail > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .contact-detail i {
@@ -213,18 +225,13 @@ a.contact-detail:hover i,a.contact-detail:focus-visible i {
 }
 
 @media (max-width:640px) {
-  .contact-section {
-    padding-block: 5.5rem;
-  }
-
   .contact-title {
     margin-top: 1.75rem;
-    font-size: clamp(2.5rem,11.5vw,3.75rem);
+    font-size: clamp(2.2rem,10.25vw,3.5rem);
   }
 
   .contact-summary {
     margin-top: 1.75rem;
-    font-size: .9rem;
   }
 
   .contact-grid {
@@ -232,7 +239,12 @@ a.contact-detail:hover i,a.contact-detail:focus-visible i {
   }
 
   .contact-detail {
+    gap: 1rem;
     font-size: .85rem;
+  }
+
+  .contact-detail i {
+    width: 1.5rem;
   }
 
   .visual-field input,.visual-field select,.visual-field textarea {
@@ -241,5 +253,11 @@ a.contact-detail:hover i,a.contact-detail:focus-visible i {
 
   .visual-field--large,.visual-field--large textarea {
     min-height: 7.5rem;
+  }
+}
+
+@media (max-width:420px) {
+  .contact-detail:not(.contact-detail--availability) i {
+    display: none;
   }
 }

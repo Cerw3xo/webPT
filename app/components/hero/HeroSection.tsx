@@ -29,7 +29,7 @@ export function HeroSection() {
   }));
 
   useEffect(() => {
-    const media = window.matchMedia("(max-width: 720px)");
+    const media = window.matchMedia("(max-width: 720px), (max-height: 600px) and (max-width: 960px)");
     const update = () => setIsCompact(media.matches);
     update();
     media.addEventListener("change", update);
@@ -61,7 +61,7 @@ export function HeroSection() {
           <ScrollProgressIndicator chapters={localizedChapters} progress={chapterProgress} label={content.hero.progressLabel} />
           <a className={s.skip} href="#coaching" onClick={skipHero}>
             <span>{content.hero.skipCta}</span>
-            <span className={s.skipArrow} aria-hidden="true">↓</span>
+            <span className={s.skipArrow} aria-hidden="true">→</span>
           </a>
         </motion.div>
         <FinalStatement progress={finalProgress} />

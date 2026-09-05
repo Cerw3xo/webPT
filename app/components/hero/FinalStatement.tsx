@@ -24,9 +24,10 @@ export function FinalStatement({ progress }: { progress: MotionValue<number> }) 
             </h2>
             <div className={s.copy}>
               <p>{content.hero.finalLead}</p>
+              <p>{content.hero.finalDescription}</p>
               <p className={s.services}>{content.hero.finalServices}</p>
             </div>
-            <EditorialCta href="#coaching" label={content.hero.finalCta} />
+            <EditorialCta href="#contact" label={content.hero.finalCta} />
           </div>
         </div>
       </motion.div>

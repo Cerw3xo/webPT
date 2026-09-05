@@ -5,7 +5,7 @@
 
 .grid {
   display: grid;
-  gap: 4rem;
+  gap: 2.5rem;
   align-items: start;
 }
 
@@ -53,6 +53,15 @@
   color: var(--headline-muted);
 }
 
+.statement > span {
+  display: block;
+}
+
+.summary {
+  max-width: 52ch;
+  margin-top: 1.5rem;
+}
+
 .pillars {
   display: grid;
   gap: 2.5rem;
@@ -74,12 +83,14 @@
 @media (min-width: 640px) {
   .pillars {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
   }
 }
 
 @media (min-width: 1024px) {
   .grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 4rem;
   }
 
   .labelCol {

@@ -37,8 +37,8 @@
   max-width: 40ch;
   margin: 0;
   color: var(--text-muted);
-  font-size: clamp(.86rem,.95vw,.95rem);
-  line-height: 1.7;
+  font-size: var(--font-size-lead);
+  line-height: 1.65;
 }
 
 .results-track--messages {
@@ -91,7 +91,7 @@
 .message-bubble p {
   margin: 0;
   color: var(--text-primary);
-  font-size: clamp(.9rem,1vw,1rem);
+  font-size: var(--font-size-body);
   line-height: 1.6;
 }
 
@@ -122,18 +122,15 @@
   margin: 0;
 }
 
-@media (max-width:720px) {
-  .results-section {
-    padding-block: 5rem;
-  }
-
+@media (max-width:900px) {
   .results-intro {
     display: block;
+    margin-bottom: 3rem;
   }
 
   .results-intro>.editorial-major {
     margin-top: 1.5rem;
-    font-size: clamp(2.25rem,10vw,3.25rem);
+    font-size: clamp(2rem,9vw,3.25rem);
   }
 
   .results-intro__aside {
@@ -146,7 +143,7 @@
 
   .results-track--messages {
     grid-template-columns: none;
-    grid-auto-columns: 82vw;
+    grid-auto-columns: min(82vw,28rem);
     grid-auto-flow: column;
     width: calc(100vw - var(--gutter-x));
     overflow-x: auto;
@@ -154,8 +151,8 @@
   }
 
   .result-message-card {
-    width: 82vw;
-    min-width: 82vw;
+    width: min(82vw,28rem);
+    min-width: min(82vw,28rem);
     min-height: 25rem;
     scroll-snap-align: start;
   }

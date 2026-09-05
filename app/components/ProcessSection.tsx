@@ -18,6 +18,7 @@ export function ProcessSection() {
             <span>{content.process.headline}</span>
             <span className={g.soft}>{content.process.headlineMuted}</span>
           </h2>
+          <p className={`${g.lead} ${styles.summary}`}>{content.process.summary}</p>
         </div>
 
         <div className={styles.grid}>

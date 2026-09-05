@@ -26,7 +26,7 @@
   margin-inline: auto;
   color: var(--foreground);
   font-family: var(--font-display);
-  font-size: clamp(3.25rem, 6.35vw, 7.5rem);
+  font-size: clamp(2.25rem, 3.9vw, 4.5rem);
   font-weight: 600;
   letter-spacing: normal;
   line-height: 0.9;
@@ -35,7 +35,8 @@
 }
 .soft { color: var(--headline-muted); }
 .copy { max-width: 48rem; margin: clamp(1.5rem, 2.2vw, 2.15rem) auto 0; }
-.copy p { color: var(--text-muted); font-size: clamp(0.78rem, 0.9vw, 0.9rem); line-height: 1.6; }
+.copy p { color: var(--text-muted); font-size: var(--font-size-body); line-height: 1.6; }
+.copy > p + p { margin-top: 0.75rem; }
 .copy .services {
   margin-top: 1rem;
   color: var(--text-secondary);
@@ -50,8 +51,47 @@
 
 @media (max-width: 720px) {
   .composition { padding-top: 4rem; }
-  .heading { max-width: 12ch; font-size: clamp(3.25rem, 12.5vw, 4.75rem); white-space: normal; }
+  .heading { max-width: 18ch; font-size: clamp(2.1rem, 8.5vw, 3.25rem); white-space: normal; }
   .copy { max-width: 32rem; margin-top: 1.25rem; padding-inline: 0.5rem; }
-  .copy p { font-size: 0.78rem; }
   .copy .services { font-size: 0.6rem; letter-spacing: 0.12em; }
+}
+
+@media (max-height: 600px) and (max-width: 960px) {
+  .composition {
+    padding-top: 4rem;
+  }
+
+  .kicker {
+    margin-bottom: .65rem;
+    font-size: .58rem;
+  }
+
+  .heading {
+    max-width: 22ch;
+    font-size: clamp(1.75rem, 8vh, 2.5rem);
+    line-height: .92;
+    white-space: normal;
+  }
+
+  .copy {
+    max-width: 42rem;
+    margin-top: .75rem;
+  }
+
+  .copy p {
+    font-size: .875rem;
+    line-height: 1.35;
+  }
+
+  .copy > p + p {
+    margin-top: .35rem;
+  }
+
+  .copy .services {
+    margin-top: .5rem;
+  }
+
+  .inner > a {
+    margin-top: .65rem;
+  }
 }
