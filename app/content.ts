@@ -31,7 +31,7 @@ export const siteContent = {
       finalDescription: "Individuální trénink pro začátečníky i pokročilé. Jasný plán, správná technika a vedení krok za krokem podle tvého cíle.",
       finalServices: "1:1 TRÉNINK · DUO",
       finalCta: "Domluvit úvodní trénink",
-      skipCta: "Přeskočit intro",
+      skipCta: "Přeskočit",
     },
     manifest: {
       label: "Manifest",
@@ -228,7 +228,7 @@ export const siteContent = {
       finalDescription: "Individuálny tréning pre začiatočníkov aj pokročilých. Jasný plán, správna technika a vedenie krok za krokom podľa tvojho cieľa.",
       finalServices: "1:1 TRÉNING · DUO",
       finalCta: "Dohodnúť úvodný tréning",
-      skipCta: "Preskočiť intro",
+      skipCta: "Preskočiť",
     },
     manifest: {
       label: "Manifest",

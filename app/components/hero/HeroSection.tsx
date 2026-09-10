@@ -61,7 +61,7 @@ export function HeroSection() {
           <ScrollProgressIndicator chapters={localizedChapters} progress={chapterProgress} label={content.hero.progressLabel} />
           <a className={s.skip} href="#coaching" onClick={skipHero}>
             <span>{content.hero.skipCta}</span>
-            <span className={s.skipArrow} aria-hidden="true">→</span>
+            <span className={s.skipArrow} aria-hidden="true">↓</span>
           </a>
         </motion.div>
         <FinalStatement progress={finalProgress} />
