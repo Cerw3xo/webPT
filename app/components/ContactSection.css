@@ -243,7 +243,7 @@ a.contact-detail:hover i,a.contact-detail:focus-visible i {
     font-size: .85rem;
   }
 
-  .contact-detail i {
+  .contact-detail:not(.contact-detail--availability) i {
     width: 1.5rem;
   }
 

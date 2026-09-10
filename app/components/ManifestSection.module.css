@@ -39,7 +39,7 @@
 }
 
 .statement {
-  max-width: 28ch;
+  max-width: 32ch;
   margin: 0;
   color: var(--text-primary);
   font-family: var(--font-display);
@@ -55,11 +55,6 @@
 
 .statement > span {
   display: block;
-}
-
-.summary {
-  max-width: 52ch;
-  margin-top: 1.5rem;
 }
 
 .pillars {

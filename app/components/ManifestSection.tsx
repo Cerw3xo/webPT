@@ -19,11 +19,12 @@ export function ManifestSection() {
 
           <div className={styles.contentCol}>
             <h2 className={styles.statement}>
-              <span>{content.manifest.statement}</span>
-              <span className={styles.statementSoft}>{content.manifest.statementMuted}</span>
+              <span>
+                {content.manifest.statement}{" "}
+                <span className={styles.statementSoft}>{content.manifest.statementMuted}</span>
+              </span>
+              <span className={styles.statementSoft}>{content.manifest.description}</span>
             </h2>
-
-            <p className={`${g.lead} ${styles.summary}`}>{content.manifest.description}</p>
 
             <dl className={styles.pillars}>
               {content.manifest.pillars.map((pillar) => (
