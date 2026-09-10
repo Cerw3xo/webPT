@@ -19,9 +19,9 @@ export default function Home() {
       <IntroSequence />
       <ManifestSection />
       <ServicesSection />
-      <ProcessSection />
       <AboutSection />
       <DiagnosticSection />
+      <ProcessSection />
       <ResultsSection />
       <FaqSection />
       <ContactSection />

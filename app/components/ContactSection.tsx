@@ -29,7 +29,6 @@ export function ContactSection() {
     const name = String(data.get("name") ?? "").trim();
     const replyTo = String(data.get("replyTo") ?? "").trim();
     const goal = String(data.get("goal") ?? "").trim();
-    const message = String(data.get("message") ?? "").trim();
     const website = String(data.get("website") ?? "").trim();
 
     setSubmitState("submitting");
@@ -38,7 +37,7 @@ export function ContactSection() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, replyTo, goal, message, website, startedAt: startedAt.current }),
+        body: JSON.stringify({ name, replyTo, goal, website, startedAt: startedAt.current }),
       });
 
       const result = await response.json() as { ok?: boolean };
@@ -65,6 +64,7 @@ export function ContactSection() {
             <span>{content.contact.headlineMuted}</span>
             <span className="editorial-major__muted">{content.contact.headline}</span>
           </h2>
+          <p className="contact-offer">{content.contact.offer}</p>
           <div className="contact-summary">
             {content.contact.summary.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
@@ -98,9 +98,6 @@ export function ContactSection() {
                 ))}
                 <option value="other">{content.contact.otherGoal}</option>
               </select>
-            </label>
-            <label className="visual-field visual-field--large">
-              <textarea name="message" placeholder={content.contact.fields.message} aria-label={content.contact.fields.message} rows={4} />
             </label>
             <button className="visual-submit editorial-cta" type="submit" disabled={submitState === "submitting"}>
               <span className="editorial-cta__label">

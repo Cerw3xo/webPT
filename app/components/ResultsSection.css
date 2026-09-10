@@ -13,6 +13,10 @@
   margin-bottom: clamp(3.5rem,5vw,5rem);
 }
 
+.results-section--empty .results-intro {
+  margin-bottom: 0;
+}
+
 .results-intro>.section-kicker {
   grid-column: 1 / span 2;
 }
@@ -43,10 +47,13 @@
 
 .results-track--messages {
   display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
   gap: 1.25rem;
   width: 100%;
 }
+
+.results-track--2 { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.results-track--3 { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.results-track--4 { grid-template-columns: repeat(4,minmax(0,1fr)); }
 
 .result-message-card {
   display: flex;
@@ -82,6 +89,18 @@
   padding-block: 2.25rem;
 }
 
+.result-message-card__media {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  margin-top: 1.25rem;
+}
+
+.result-message-card__media img {
+  object-fit: cover;
+}
+
 .message-bubble {
   max-width: 90%;
   padding: 1.05rem 1.15rem;
@@ -105,21 +124,10 @@
   text-transform: uppercase;
 }
 
-.message-bubble--coach {
+.message-bubble--client {
   align-self: flex-start;
   background: var(--bg-elevated);
   border-radius: .2rem 1rem 1rem;
-}
-
-.message-bubble--pending {
-  align-self: flex-end;
-  padding: .75rem .9rem;
-  border: 1px solid var(--border-default);
-  border-radius: 1rem .2rem 1rem 1rem;
-}
-
-.message-bubble--pending span {
-  margin: 0;
 }
 
 @media (max-width:900px) {

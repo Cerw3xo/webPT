@@ -13,7 +13,7 @@ export function DiagnosticSection() {
       <div className="container gutter">
         <div className="diagnostic-composition">
           <div className="diagnostic-intro">
-            <SectionLabel number="04" label={content.diagnostic.label} />
+            <SectionLabel number="03" label={content.diagnostic.label} />
             <h2 className="editorial-major">
               <span>{content.diagnostic.headline}</span>
               <span className="editorial-major__muted">{content.diagnostic.headlineMuted}</span>

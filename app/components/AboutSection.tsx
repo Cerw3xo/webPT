@@ -26,7 +26,7 @@ export function AboutSection() {
         </div>
 
         <div className={styles.textCol}>
-          <SectionLabel number="03" label={content.about.label} />
+          <SectionLabel number="02" label={content.about.label} />
           <h2 className={`${g.h2} ${g.h2Large} ${styles.heading}`}>
             <span>{content.about.headlineFirst}</span>
             <span className={g.soft}>{content.about.headlineMuted}</span>
