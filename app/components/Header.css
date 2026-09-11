@@ -76,7 +76,7 @@
 
 @media (min-width: 1440px) {
   .site-nav a {
-    font-size: 1rem;
+    font-size: .9375rem;
   }
 }
 
@@ -123,6 +123,12 @@
 .language-switcher__option--selected {
   background: var(--primary) !important;
   color: var(--accent) !important;
+}
+
+@media (min-width: 1440px) {
+  .language-switcher {
+    font-size: .725rem;
+  }
 }
 
 .language-switcher__option:not(.language-switcher__option--selected):hover,.language-switcher__option:not(.language-switcher__option--selected):focus-visible {

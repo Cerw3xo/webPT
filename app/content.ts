@@ -45,6 +45,22 @@ export const siteContent = {
       headlineContinuation: "čeho chceš",
       headlineMuted: "dosáhnout.",
       sectionCta: "Domluvit úvodní konzultaci",
+      collaboration: {
+        label: "Jak můžeme spolupracovat",
+        formats: [
+          {
+            title: "Osobní trénink 1:1",
+            text: "Individuální vedení, technika a trénink nastavený podle tvého cíle, zkušeností a možností.",
+          },
+          {
+            title: "Duo trénink",
+            text: "Trénink ve dvojici pro ty, kteří chtějí cvičit společně a přitom mít osobní vedení.",
+          },
+        ],
+        addonTitle: "Vlastní tréninkový plán",
+        addonLabel: "Doplněk k osobním tréninkům",
+        addonText: "Chceš mezi společnými tréninky cvičit i sám? Připravím ti plán navazující na naše osobní tréninky, podle kterého můžeš pokračovat samostatně.",
+      },
       items: [
         {
           title: "Získej sílu a svaly",
@@ -111,10 +127,16 @@ export const siteContent = {
     },
     references: {
       label: "Reference",
-      headlineMuted: "Skutečná zpětná vazba.",
-      headline: "Bez přikrášlení.",
-      summary: "První zkušenosti klientů právě sbírám. Zveřejním pouze skutečné reference se souhlasem klientů.",
-      cards: [] as { name: string; age?: number; message: string; image?: string }[],
+      headline: "Co říkají klienti.",
+      carouselLabel: "Reference klientů",
+      previousLabel: "Předchozí reference",
+      nextLabel: "Další reference",
+      cards: [
+        { name: "Demo 01", goal: "Cíl bude doplněn", quote: "[TEXT REFERENCE DOPLNÍM]", service: "Typ spolupráce bude doplněn" },
+        { name: "Demo 02", goal: "Cíl bude doplněn", quote: "[TEXT REFERENCE DOPLNÍM]", service: "Typ spolupráce bude doplněn" },
+        { name: "Demo 03", goal: "Cíl bude doplněn", quote: "[TEXT REFERENCE DOPLNÍM]", service: "Typ spolupráce bude doplněn" },
+        { name: "Demo 04", goal: "Cíl bude doplněn", quote: "[TEXT REFERENCE DOPLNÍM]", service: "Typ spolupráce bude doplněn" },
+      ],
     },
     faq: {
       ariaLabel: "Časté otázky",
@@ -215,6 +237,22 @@ export const siteContent = {
       headlineContinuation: "čo chceš",
       headlineMuted: "dosiahnuť.",
       sectionCta: "Dohodnúť úvodnú konzultáciu",
+      collaboration: {
+        label: "Ako môžeme spolupracovať",
+        formats: [
+          {
+            title: "Osobný tréning 1:1",
+            text: "Individuálne vedenie, technika a tréning nastavený podľa tvojho cieľa, skúseností a možností.",
+          },
+          {
+            title: "Duo tréning",
+            text: "Tréning vo dvojici pre tých, ktorí chcú cvičiť spoločne a pritom mať osobné vedenie.",
+          },
+        ],
+        addonTitle: "Vlastný tréningový plán",
+        addonLabel: "Doplnok k osobným tréningom",
+        addonText: "Chceš medzi spoločnými tréningmi cvičiť aj sám? Pripravím ti plán nadväzujúci na naše osobné tréningy, podľa ktorého môžeš pokračovať samostatne.",
+      },
       items: [
         {
           title: "Získaj silu a svaly",
@@ -281,10 +319,16 @@ export const siteContent = {
     },
     references: {
       label: "Referencie",
-      headlineMuted: "Skutočná spätná väzba.",
-      headline: "Bez prikrášlenia.",
-      summary: "Prvé skúsenosti klientov práve zbieram. Zverejním iba skutočné referencie so súhlasom klientov.",
-      cards: [] as { name: string; age?: number; message: string; image?: string }[],
+      headline: "Čo hovoria klienti.",
+      carouselLabel: "Referencie klientov",
+      previousLabel: "Predchádzajúca referencia",
+      nextLabel: "Ďalšia referencia",
+      cards: [
+        { name: "Demo 01", goal: "Cieľ bude doplnený", quote: "[TEXT REFERENCIE DOPLNÍM]", service: "Typ spolupráce bude doplnený" },
+        { name: "Demo 02", goal: "Cieľ bude doplnený", quote: "[TEXT REFERENCIE DOPLNÍM]", service: "Typ spolupráce bude doplnený" },
+        { name: "Demo 03", goal: "Cieľ bude doplnený", quote: "[TEXT REFERENCIE DOPLNÍM]", service: "Typ spolupráce bude doplnený" },
+        { name: "Demo 04", goal: "Cieľ bude doplnený", quote: "[TEXT REFERENCIE DOPLNÍM]", service: "Typ spolupráce bude doplnený" },
+      ],
     },
     faq: {
       ariaLabel: "Časté otázky",

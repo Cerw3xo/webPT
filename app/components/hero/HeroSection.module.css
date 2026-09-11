@@ -24,6 +24,44 @@
   animation: hero-media-cycle 18s linear infinite;
 }
 
+.singleMediaLayer {
+  top: -2%;
+  right: auto;
+  bottom: -2%;
+  left: 0;
+  width: 116%;
+  opacity: 1;
+  animation: none;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, .22) 18%,
+    rgba(0, 0, 0, .58) 38%,
+    #000 58%,
+    #000 80%,
+    rgba(0, 0, 0, .72) 89%,
+    rgba(0, 0, 0, .4) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, .22) 18%,
+    rgba(0, 0, 0, .58) 38%,
+    #000 58%,
+    #000 80%,
+    rgba(0, 0, 0, .72) 89%,
+    rgba(0, 0, 0, .4) 100%
+  );
+}
+
+.singleMediaLayer .mediaImage {
+  object-fit: contain;
+  object-position: left center;
+  opacity: .82;
+  filter: grayscale(.75) contrast(1.1) saturate(.72) brightness(.72);
+  animation-name: hero-camera-drift-single;
+}
+
 .mediaLayer:nth-child(2) { animation-delay: 6s; }
 .mediaLayer:nth-child(3) { animation-delay: 12s; }
 
@@ -31,7 +69,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 64% 55%;
+  object-position: 50% 45%;
   opacity: .74;
   filter: grayscale(1) contrast(1.14) saturate(.78) brightness(.64);
   animation: hero-camera-drift 7.5s ease-out infinite alternate;
@@ -56,7 +94,27 @@
 }
 
 .scrim {
-  background-image: var(--hero-side-scrim), var(--hero-scrim);
+  background-image:
+    linear-gradient(
+      90deg,
+      var(--background) 0%,
+      color-mix(in srgb, var(--background) 88%, transparent) 20%,
+      color-mix(in srgb, var(--background) 48%, transparent) 45%,
+      color-mix(in srgb, var(--background) 24%, transparent) 64%,
+      color-mix(in srgb, var(--background) 28%, transparent) 70%,
+      color-mix(in srgb, var(--background) 38%, transparent) 77%,
+      color-mix(in srgb, var(--background) 52%, transparent) 84%,
+      color-mix(in srgb, var(--background) 68%, transparent) 90%,
+      color-mix(in srgb, var(--background) 84%, transparent) 95%,
+      var(--background) 100%
+    ),
+    linear-gradient(
+      to top,
+      color-mix(in srgb, var(--background) 76%, transparent) 0%,
+      color-mix(in srgb, var(--background) 34%, transparent) 24%,
+      color-mix(in srgb, var(--background) 10%, transparent) 68%,
+      color-mix(in srgb, var(--background) 55%, transparent) 100%
+    );
 }
 
 @keyframes hero-media-cycle {
@@ -70,10 +128,36 @@
   to { transform: scale(1.075) translate3d(-.6%, -.5%, 0); }
 }
 
+@keyframes hero-camera-drift-single {
+  from { transform: scale(.9) translate3d(13%, 1.8%, 0); }
+  to { transform: scale(.915) translate3d(13.25%, 1.6%, 0); }
+}
+
+@media (min-width: 721px) and (max-width: 1279px) {
+  .singleMediaLayer {
+    top: -6%;
+    bottom: -6%;
+  }
+
+  .singleMediaLayer .mediaImage {
+    object-fit: cover;
+    object-position: 60% 50%;
+  }
+}
+
 @media (max-width: 720px) {
-  .mediaImage {
-    object-position: 54% 56%;
-    opacity: .56;
+  .singleMediaLayer {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .singleMediaLayer .mediaImage {
+    object-fit: cover;
+    object-position: 58% 50%;
+    opacity: .62;
   }
 
   .vignette {

@@ -72,6 +72,29 @@ export function ServicesSection() {
           ))}
         </div>
 
+        <div className={styles.collaboration}>
+          <p className={styles.collaborationLabel}>{content.services.collaboration.label}</p>
+
+          <div className={styles.formats}>
+            {content.services.collaboration.formats.map((format, index) => (
+              <article className={styles.format} key={format.title}>
+                <p className={`${g.tag} ${styles.formatIndex}`}>0{index + 1}</p>
+                <h3 className={styles.formatTitle}>{format.title}</h3>
+                <p className={`${g.body} ${styles.formatCopy}`}>{format.text}</p>
+              </article>
+            ))}
+          </div>
+
+          <article className={styles.addon}>
+            <span className={styles.addonMark} aria-hidden="true">+</span>
+            <div className={styles.addonHeading}>
+              <p className={styles.addonLabel}>{content.services.collaboration.addonLabel}</p>
+              <h3 className={styles.addonTitle}>{content.services.collaboration.addonTitle}</h3>
+            </div>
+            <p className={`${g.body} ${styles.addonCopy}`}>{content.services.collaboration.addonText}</p>
+          </article>
+        </div>
+
         <div className={styles.ctaRow}>
           <EditorialCta
             href="#contact"

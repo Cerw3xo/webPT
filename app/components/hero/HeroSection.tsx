@@ -3,8 +3,13 @@
 import Image from "next/image";
 import { useSite } from "../SiteContext";
 import { FinalStatement } from "./FinalStatement";
-import { chapters } from "./chapters";
 import s from "./HeroSection.module.css";
+
+const temporaryHeroMedia = {
+  src: "/Obrázok Codex 11. 9. 2026, 13_00_15 (1).png",
+  width: 1672,
+  height: 940,
+};
 
 export function HeroSection() {
   const { content } = useSite();
@@ -12,21 +17,17 @@ export function HeroSection() {
   return (
     <section className={s.section} aria-label={content.hero.ariaLabel}>
       <div className={s.media} aria-hidden="true">
-        {chapters.map((chapter, index) => (
-          chapter.media.kind === "image" ? (
-            <div className={s.mediaLayer} key={chapter.id}>
-              <Image
-                className={s.mediaImage}
-                src={chapter.media.src}
-                alt=""
-                width={chapter.media.width}
-                height={chapter.media.height}
-                priority={index === 0}
-                unoptimized
-              />
-            </div>
-          ) : null
-        ))}
+        <div className={`${s.mediaLayer} ${s.singleMediaLayer}`}>
+          <Image
+            className={s.mediaImage}
+            src={temporaryHeroMedia.src}
+            alt=""
+            width={temporaryHeroMedia.width}
+            height={temporaryHeroMedia.height}
+            priority
+            unoptimized
+          />
+        </div>
         <div className={`${s.overlay} ${s.keylight}`} />
         <div className={`${s.overlay} ${s.shadowTint}`} />
         <div className={`${s.overlay} ${s.vignette}`} />
