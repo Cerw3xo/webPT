@@ -133,6 +133,11 @@
   to { transform: scale(.915) translate3d(13.25%, 1.6%, 0); }
 }
 
+@keyframes hero-camera-drift-single-mobile {
+  from { transform: scale(.9) translate3d(11%, 3%, 0); }
+  to { transform: scale(.915) translate3d(11.25%, 2.8%, 0); }
+}
+
 @media (min-width: 721px) and (max-width: 1279px) {
   .singleMediaLayer {
     top: -6%;
@@ -147,17 +152,38 @@
 
 @media (max-width: 720px) {
   .singleMediaLayer {
-    top: 0;
+    top: -2%;
     right: 0;
-    bottom: 0;
+    bottom: -2%;
     left: 0;
     width: 100%;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, .32) 14%,
+      rgba(0, 0, 0, .68) 30%,
+      #000 48%,
+      #000 80%,
+      rgba(0, 0, 0, .72) 88%,
+      rgba(0, 0, 0, .4) 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, .32) 14%,
+      rgba(0, 0, 0, .68) 30%,
+      #000 48%,
+      #000 80%,
+      rgba(0, 0, 0, .72) 88%,
+      rgba(0, 0, 0, .4) 100%
+    );
   }
 
   .singleMediaLayer .mediaImage {
     object-fit: cover;
     object-position: 58% 50%;
     opacity: .62;
+    animation-name: hero-camera-drift-single-mobile;
   }
 
   .vignette {
@@ -180,7 +206,13 @@
         color-mix(in srgb, var(--background) 30%, transparent) 96%,
         var(--background) 100%
       ),
-      var(--hero-scrim);
+      linear-gradient(
+        to top,
+        color-mix(in srgb, var(--background) 76%, transparent) 0%,
+        color-mix(in srgb, var(--background) 36%, transparent) 26%,
+        color-mix(in srgb, var(--background) 10%, transparent) 68%,
+        color-mix(in srgb, var(--background) 55%, transparent) 100%
+      );
   }
 }
 
