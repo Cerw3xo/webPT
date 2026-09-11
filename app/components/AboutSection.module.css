@@ -65,24 +65,34 @@
 
 .copy {
   display: flex;
-  max-width: 36rem;
+  width: 100%;
   margin-top: 2rem;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-.emphasis {
-  color: var(--foreground);
-  font-weight: 500;
+.copy > p {
+  max-width: 36rem;
 }
 
 .stats {
+  position: relative;
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
   margin-top: 2.5rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--border-subtle);
+}
+
+.stats::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(100%, 36rem);
+  height: 1px;
+  background: var(--border-subtle);
+  content: "";
 }
 
 .stat {

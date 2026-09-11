@@ -1,80 +1,135 @@
 .wrap {
-  position: absolute;
-  z-index: 4;
-  inset: 0;
+  position: relative;
+  z-index: 2;
   display: grid;
-  width: 100%;
-  height: 100%;
-  place-items: center;
+  min-height: 100svh;
+  align-items: center;
+  padding-block: 6.5rem 2.5rem;
   color: var(--text-primary);
-  pointer-events: none;
 }
-.motion, .composition { width: 100%; height: 100%; }
-.motion { background: var(--bg-deep); will-change: opacity, transform, filter; }
-.composition { display: grid; padding-top: 4.25rem; place-items: center; }
-.inner { text-align: center; pointer-events: auto; }
+
+.inner {
+  text-align: left;
+  animation: hero-copy-in .9s cubic-bezier(.22, 1, .36, 1) both;
+}
+
 .kicker {
-  margin-bottom: 1.25rem;
-  color: var(--text-dim);
-  font-family: var(--font-display);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-.heading {
-  margin-inline: auto;
-  color: var(--foreground);
-  font-family: var(--font-display);
-  font-size: clamp(2.25rem, 3.9vw, 4.5rem);
-  font-weight: 600;
-  letter-spacing: normal;
-  line-height: 0.9;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.soft { color: var(--headline-muted); }
-.copy { max-width: 48rem; margin: clamp(1.5rem, 2.2vw, 2.15rem) auto 0; }
-.copy p { color: var(--text-muted); font-size: var(--font-size-body); line-height: 1.6; }
-.copy > p + p { margin-top: 0.75rem; }
-.copy .services {
-  margin-top: 1rem;
+  margin-bottom: 1.75rem;
   color: var(--text-secondary);
   font-family: var(--font-display);
-  font-size: 0.66rem;
+  font-size: .85rem;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.heading {
+  max-width: none;
+  margin: 0;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: clamp(2.65rem, 5.4vw, 5.5rem);
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: .9;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.secondLine {
+  white-space: nowrap;
+}
+
+.soft {
+  color: var(--headline-muted);
+}
+
+.copy {
+  max-width: 41rem;
+  margin-top: clamp(1.75rem, 2.4vw, 2.5rem);
+}
+
+.copy p {
+  color: var(--text-muted);
+  font-size: clamp(1.05rem, .98rem + .25vw, 1.2rem);
+  line-height: 1.55;
+}
+
+.copy > p + p {
+  margin-top: .75rem;
+}
+
+.copy .services,
+.copy .disciplines {
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-size: .88rem;
+  font-weight: 500;
+  letter-spacing: .16em;
   line-height: 1.5;
   text-transform: uppercase;
 }
-.inner > a { margin-top: clamp(1.25rem, 1.8vw, 1.75rem); }
 
-@media (max-width: 720px) {
-  .composition { padding-top: 4rem; }
-  .heading { max-width: 18ch; font-size: clamp(2.1rem, 8.5vw, 3.25rem); white-space: normal; }
-  .copy { max-width: 32rem; margin-top: 1.25rem; padding-inline: 0.5rem; }
-  .copy .services { font-size: 0.6rem; letter-spacing: 0.12em; }
+.copy .services {
+  margin-top: 1.25rem;
 }
 
-@media (max-height: 600px) and (max-width: 960px) {
-  .composition {
-    padding-top: 4rem;
+.copy .disciplines {
+  margin-top: .65rem;
+  color: var(--text-dim);
+  font-size: .8rem;
+}
+
+.inner > a {
+  margin-top: clamp(1.5rem, 2vw, 2rem);
+}
+
+@keyframes hero-copy-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 720px) {
+  .wrap {
+    padding-block: 5.25rem 1.5rem;
+  }
+
+  .heading {
+    font-size: clamp(2rem, 8vw, 3.75rem);
+  }
+
+  .copy {
+    max-width: 33rem;
+    margin-top: 1.35rem;
+  }
+
+  .copy p {
+    font-size: clamp(.95rem, 3.9vw, 1.05rem);
+    line-height: 1.45;
+  }
+
+  .copy .services,
+  .copy .disciplines {
+    font-size: .76rem;
+    letter-spacing: .12em;
+  }
+}
+
+@media (max-height: 650px) {
+  .wrap {
+    padding-block: 4.75rem 1rem;
   }
 
   .kicker {
     margin-bottom: .65rem;
-    font-size: .58rem;
+    font-size: .72rem;
   }
 
   .heading {
-    max-width: 22ch;
-    font-size: clamp(1.75rem, 8vh, 2.5rem);
-    line-height: .92;
-    white-space: normal;
+    font-size: clamp(2rem, 8.6vh, 3.25rem);
   }
 
   .copy {
-    max-width: 42rem;
     margin-top: .75rem;
   }
 
@@ -84,14 +139,21 @@
   }
 
   .copy > p + p {
-    margin-top: .35rem;
+    margin-top: .3rem;
   }
 
   .copy .services {
-    margin-top: .5rem;
+    margin-top: .45rem;
   }
 
   .inner > a {
-    margin-top: .65rem;
+    min-height: 42px;
+    margin-top: .55rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inner {
+    animation: none;
   }
 }

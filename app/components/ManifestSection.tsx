@@ -12,7 +12,7 @@ export function ManifestSection() {
       <div className={g.inner}>
         <div className={styles.grid}>
           <p className={styles.labelCol}>
-            <span className={styles.labelAccent} aria-hidden="true" />
+            <span className={styles.labelAccent}>00</span>
             <span className={styles.labelLine} aria-hidden="true" />
             <span>{content.manifest.label}</span>
           </p>
@@ -26,14 +26,6 @@ export function ManifestSection() {
               <span className={styles.statementSoft}>{content.manifest.description}</span>
             </h2>
 
-            <dl className={styles.pillars}>
-              {content.manifest.pillars.map((pillar) => (
-                <div className={styles.pillar} key={pillar.title}>
-                  <dt className={g.microLabel}>{pillar.title}</dt>
-                  <dd className={`${g.body} ${styles.pillarValue}`}>{pillar.description}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@ export function ProcessSection() {
     <section className={`${styles.section} ${g.pad} gutter`} id="process">
       <div className={g.inner}>
         <div>
-          <SectionLabel number="04" label={content.process.label} />
+          <SectionLabel number="03" label={content.process.label} />
           <h2 className={`${g.h2} ${styles.heading}`}>
             <span>{content.process.headline}</span>
             <span className={g.soft}>{content.process.headlineMuted}</span>

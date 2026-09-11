@@ -20,8 +20,8 @@ export default function Home() {
       <ManifestSection />
       <ServicesSection />
       <AboutSection />
-      <DiagnosticSection />
       <ProcessSection />
+      <DiagnosticSection />
       <ResultsSection />
       <FaqSection />
       <ContactSection />

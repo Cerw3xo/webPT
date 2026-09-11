@@ -74,6 +74,12 @@
   opacity: 1;
 }
 
+@media (min-width: 1440px) {
+  .site-nav a {
+    font-size: 1rem;
+  }
+}
+
 .header-actions {
   display: flex;
   gap: 1rem;
@@ -95,7 +101,7 @@
   border-radius: 999px;
   color: var(--text-secondary);
   font-family: var(--font-ui);
-  font-size: .6875rem;
+  font-size: .7875rem;
   font-weight: 500;
   letter-spacing: .22em;
   line-height: 1;
@@ -110,6 +116,7 @@
   border: 0;
   background: var(--background);
   color: var(--text-secondary);
+  transform: translateY(1px);
   transition: color 240ms ease,background-color 240ms ease;
 }
 

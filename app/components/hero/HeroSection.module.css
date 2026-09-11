@@ -1,72 +1,118 @@
-.section { position: relative; background: var(--bg-deep); }
-.sticky { position: sticky; top: 0; width: 100%; height: 100svh; overflow: hidden; background: var(--bg-deep); isolation: isolate; }
-.chapters { position: absolute; z-index: 0; inset: 0; }
-.skip {
+.section {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--bg-deep);
+}
+
+.media,
+.mediaLayer,
+.overlay {
   position: absolute;
-  z-index: 3;
-  bottom: clamp(1.5rem, 3vw, 2.75rem);
-  right: var(--gutter-x);
-  display: flex;
-  min-width: 48px;
-  min-height: 48px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: .35rem;
-  padding: .25rem .5rem;
-  border: 0;
-  background: transparent;
-  color: var(--text-muted);
-  font-family: var(--font-ui);
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  line-height: 1;
-  text-align: center;
-  text-transform: uppercase;
-  white-space: nowrap;
-  transition: color 220ms ease;
-}
-.skip:hover, .skip:focus-visible {
-  color: var(--text-primary);
-}
-.skip:focus-visible { outline: 1px solid var(--ring); outline-offset: 3px; }
-.skipArrow {
-  color: var(--accent);
-  font-size: 1rem;
-  line-height: 1;
-  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--accent) 45%, transparent));
-  transition: transform 240ms cubic-bezier(.22,1,.36,1), filter 240ms ease;
-  animation: skip-arrow-glow 2.8s ease-in-out infinite alternate;
-}
-.skip:hover .skipArrow, .skip:focus-visible .skipArrow {
-  animation-play-state: paused;
-  filter: drop-shadow(0 0 7px color-mix(in srgb, var(--accent) 72%, transparent));
-  transform: translateY(3px);
+  inset: 0;
 }
 
-@keyframes skip-arrow-glow {
-  from {
-    filter: drop-shadow(0 0 2px color-mix(in srgb, var(--accent) 32%, transparent));
-  }
+.media {
+  z-index: 0;
+  background: var(--bg-deep);
+}
 
-  to {
-    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 62%, transparent));
-  }
+.mediaLayer {
+  opacity: 0;
+  animation: hero-media-cycle 18s linear infinite;
+}
+
+.mediaLayer:nth-child(2) { animation-delay: 6s; }
+.mediaLayer:nth-child(3) { animation-delay: 12s; }
+
+.mediaImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 64% 55%;
+  opacity: .74;
+  filter: grayscale(1) contrast(1.14) saturate(.78) brightness(.64);
+  animation: hero-camera-drift 7.5s ease-out infinite alternate;
+}
+
+.overlay {
+  pointer-events: none;
+}
+
+.keylight {
+  background-image: var(--hero-keylight);
+  mix-blend-mode: soft-light;
+}
+
+.shadowTint {
+  background-image: var(--hero-shadow-tint);
+  mix-blend-mode: multiply;
+}
+
+.vignette {
+  background-image: var(--hero-vignette);
+}
+
+.scrim {
+  background-image: var(--hero-side-scrim), var(--hero-scrim);
+}
+
+@keyframes hero-media-cycle {
+  0%, 100% { opacity: 0; }
+  5%, 30% { opacity: 1; }
+  36% { opacity: 0; }
+}
+
+@keyframes hero-camera-drift {
+  from { transform: scale(1.035) translate3d(0, 0, 0); }
+  to { transform: scale(1.075) translate3d(-.6%, -.5%, 0); }
 }
 
 @media (max-width: 720px) {
-  .skip { bottom: 1.25rem; font-size: 0.6rem; }
-}
+  .mediaImage {
+    object-position: 54% 56%;
+    opacity: .56;
+  }
 
-@media (max-height: 600px) and (max-width: 960px) {
-  .skip {
-    bottom: .75rem;
+  .vignette {
+    background-image: radial-gradient(
+      145% 112% at 60% 42%,
+      transparent 40%,
+      color-mix(in srgb, var(--background) 34%, transparent) 78%,
+      color-mix(in srgb, var(--background) 88%, transparent) 100%
+    );
+  }
+
+  .scrim {
+    background-image:
+      linear-gradient(
+        90deg,
+        var(--background) 0%,
+        color-mix(in srgb, var(--background) 86%, transparent) 18%,
+        color-mix(in srgb, var(--background) 42%, transparent) 58%,
+        transparent 82%,
+        color-mix(in srgb, var(--background) 30%, transparent) 96%,
+        var(--background) 100%
+      ),
+      var(--hero-scrim);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .skipArrow {
+  .mediaLayer {
+    display: none;
     animation: none;
+  }
+
+  .mediaLayer:first-child {
+    display: block;
+    opacity: 1;
+  }
+
+  .mediaImage {
+    animation: none;
+    transform: scale(1.04);
   }
 }

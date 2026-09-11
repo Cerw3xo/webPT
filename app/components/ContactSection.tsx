@@ -64,7 +64,7 @@ export function ContactSection() {
             <span>{content.contact.headlineMuted}</span>
             <span className="editorial-major__muted">{content.contact.headline}</span>
           </h2>
-          <p className="contact-offer">{content.contact.offer}</p>
+          {content.contact.offer ? <p className="contact-offer">{content.contact.offer}</p> : null}
           <div className="contact-summary">
             {content.contact.summary.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>

@@ -35,11 +35,6 @@ export function AboutSection() {
             {content.about.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
-            <p>
-              {content.about.bridge}{" "}
-              <strong className={styles.emphasis}>{content.about.emphasis}</strong>{" "}
-              {content.about.conclusion}
-            </p>
             <dl className={styles.stats} aria-label={content.about.label}>
               {content.about.stats.map((stat) => (
                 <div className={styles.stat} data-localized-stat key={stat.label}>
