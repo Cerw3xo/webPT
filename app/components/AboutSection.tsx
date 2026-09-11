@@ -16,7 +16,7 @@ export function AboutSection() {
           <div className={styles.media}>
             <Image
               className={styles.portrait}
-              src="/IMG_6477.JPG"
+              src="/IMG_6477.jpeg"
               alt={content.about.portraitAlt}
               fill
               sizes="(max-width: 1023px) 100vw, 42vw"

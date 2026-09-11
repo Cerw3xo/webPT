@@ -10,17 +10,17 @@ import styles from "./ServicesSection.module.css";
 const serviceMedia = [
   {
     index: "01",
-    imageSrc: "/strenght.png",
+    imageSrc: "/strenght.jpeg",
     imagePosition: "50% 56%",
   },
   {
     index: "02",
-    imageSrc: "/loss-fat.png",
+    imageSrc: "/loss-fat.jpeg",
     imagePosition: "50% 52%",
   },
   {
     index: "03",
-    imageSrc: "/endurance.png",
+    imageSrc: "/endurance.jpeg",
     imagePosition: "50% 48%",
   },
 ];
@@ -38,7 +38,7 @@ export function ServicesSection() {
           </div>
           <div className={styles.headTitle}>
             <h2 className={`${g.h2} ${styles.heading}`}>
-              <span>{content.services.headline}</span>
+              <span>{content.services.headline}</span>{" "}
               <span>
                 {content.services.headlineContinuation}{" "}
                 <span className={g.soft}>{content.services.headlineMuted}</span>

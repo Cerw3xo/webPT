@@ -19,7 +19,7 @@ export function FinalStatement() {
         </h1>
         <div className={s.copy}>
           <p>{content.hero.finalLead}</p>
-          <p>{content.hero.finalDescription}</p>
+          {content.hero.finalDescription ? <p>{content.hero.finalDescription}</p> : null}
           <p className={s.services}>{content.hero.finalServices}</p>
           <p className={s.disciplines}>{disciplines}</p>
         </div>

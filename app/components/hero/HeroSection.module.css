@@ -134,8 +134,8 @@
 }
 
 @keyframes hero-camera-drift-single-mobile {
-  from { transform: scale(.9) translate3d(11%, 3%, 0); }
-  to { transform: scale(.915) translate3d(11.25%, 2.8%, 0); }
+  from { transform: scale(1.01) translate3d(13%, 3%, 0); }
+  to { transform: scale(1.025) translate3d(13.25%, 2.8%, 0); }
 }
 
 @media (min-width: 721px) and (max-width: 1279px) {
@@ -151,6 +151,10 @@
 }
 
 @media (max-width: 720px) {
+  .media {
+    top: 4rem;
+  }
+
   .singleMediaLayer {
     top: -2%;
     right: 0;

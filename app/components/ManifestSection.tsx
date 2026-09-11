@@ -22,7 +22,7 @@ export function ManifestSection() {
               <span>
                 {content.manifest.statement}{" "}
                 <span className={styles.statementSoft}>{content.manifest.statementMuted}</span>
-              </span>
+              </span>{" "}
               <span className={styles.statementSoft}>{content.manifest.description}</span>
             </h2>
 
