@@ -6,7 +6,7 @@ import { FinalStatement } from "./FinalStatement";
 import s from "./HeroSection.module.css";
 
 const temporaryHeroMedia = {
-  src: "/Obrázok Codex 11. 9. 2026, 13_00_15 (1).png",
+  src: "/hero-matej.png",
   width: 1672,
   height: 940,
 };
