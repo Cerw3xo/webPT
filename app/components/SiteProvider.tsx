@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { flushSync } from "react-dom";
-import { siteContent, type ContactGoal, type Locale } from "../content";
+import { siteContent, type Locale } from "../content";
 import { SiteContext } from "./SiteContext";
 
 const localizedCopySelector = [
@@ -37,7 +37,6 @@ function waitForAnimations(animations: Animation[]) {
 
 export function SiteProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("cs");
-  const [contactGoal, setContactGoal] = useState<ContactGoal>("");
   const isChangingLocale = useRef(false);
 
   useEffect(() => {
@@ -99,8 +98,8 @@ export function SiteProvider({ children }: { children: ReactNode }) {
   }, [locale]);
 
   const value = useMemo(
-    () => ({ locale, setLocale, content: siteContent[locale], contactGoal, setContactGoal }),
-    [contactGoal, locale, setLocale],
+    () => ({ locale, setLocale, content: siteContent[locale] }),
+    [locale, setLocale],
   );
 
   return <SiteContext.Provider value={value}>{children}</SiteContext.Provider>;

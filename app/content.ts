@@ -154,11 +154,8 @@ export const siteContent = {
       fields: {
         name: "Jméno",
         contact: "E-mail, telefon nebo Instagram",
-        goal: "Tvůj cíl",
-        message: "Zpráva",
+        message: "Tvoje zpráva",
       },
-      goalPlaceholder: "Vyber svůj cíl",
-      otherGoal: "Nejsem si jistý / jiný cíl",
       submit: "Domluvit úvodní konzultaci",
       sending: "Odesílám...",
       success: "Děkuju. Zpráva byla odeslána.",
@@ -327,11 +324,8 @@ export const siteContent = {
       fields: {
         name: "Meno",
         contact: "E-mail, telefón alebo Instagram",
-        goal: "Tvoj cieľ",
-        message: "Správa",
+        message: "Tvoja správa",
       },
-      goalPlaceholder: "Vyber svoj cieľ",
-      otherGoal: "Nie som si istý / iný cieľ",
       submit: "Dohodnúť úvodnú konzultáciu",
       sending: "Odosielam...",
       success: "Ďakujem. Správa bola odoslaná.",
@@ -348,4 +342,3 @@ export const siteContent = {
 } as const;
 
 export type Locale = keyof typeof siteContent;
-export type ContactGoal = "" | "strength" | "shape" | "performance" | "other";

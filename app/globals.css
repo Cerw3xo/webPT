@@ -120,7 +120,9 @@
 
 @media (min-width: 1440px) {
   :root {
-    --page-max: 90rem;
+    --page-max: 80rem;
+    --font-size-body: 1rem;
+    --font-size-lead: 1.1rem;
   }
 }
 

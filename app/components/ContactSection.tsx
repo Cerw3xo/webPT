@@ -9,10 +9,9 @@ import "./Typography.css";
 const contactEmail = "matejcervenka@icloud.com";
 const phoneDisplay = "+420 774 030 859";
 const phoneHref = "tel:+420774030859";
-const goals = ["strength", "shape", "performance"] as const;
 
 export function ContactSection() {
-  const { content, contactGoal, setContactGoal } = useSite();
+  const { content } = useSite();
   const [submitState, setSubmitState] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const startedAt = useRef(0);
 
@@ -28,7 +27,8 @@ export function ContactSection() {
     const data = new FormData(formElement);
     const name = String(data.get("name") ?? "").trim();
     const replyTo = String(data.get("replyTo") ?? "").trim();
-    const goal = String(data.get("goal") ?? "").trim();
+    const goal = "other";
+    const message = String(data.get("message") ?? "").trim();
     const website = String(data.get("website") ?? "").trim();
 
     setSubmitState("submitting");
@@ -37,7 +37,7 @@ export function ContactSection() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, replyTo, goal, website, startedAt: startedAt.current }),
+        body: JSON.stringify({ name, replyTo, goal, message, website, startedAt: startedAt.current }),
       });
 
       const result = await response.json() as { ok?: boolean };
@@ -47,7 +47,6 @@ export function ContactSection() {
       }
 
       formElement.reset();
-      setContactGoal("");
       setSubmitState("success");
       startedAt.current = Date.now();
     } catch {
@@ -84,20 +83,14 @@ export function ContactSection() {
             <label className="visual-field">
               <input name="replyTo" type="text" autoComplete="email" placeholder={content.contact.fields.contact} aria-label={content.contact.fields.contact} required />
             </label>
-            <label className="visual-field">
-              <select
-                name="goal"
-                value={contactGoal}
-                aria-label={content.contact.fields.goal}
+            <label className="visual-field visual-field--large">
+              <textarea
+                name="message"
+                placeholder={content.contact.fields.message}
+                aria-label={content.contact.fields.message}
+                rows={2}
                 required
-                onChange={(event) => setContactGoal(event.target.value as typeof contactGoal)}
-              >
-                <option value="" disabled>{content.contact.goalPlaceholder}</option>
-                {content.services.items.map((service, index) => (
-                  <option value={goals[index]} key={goals[index]}>{service.title}</option>
-                ))}
-                <option value="other">{content.contact.otherGoal}</option>
-              </select>
+              />
             </label>
             <button className="visual-submit editorial-cta" type="submit" disabled={submitState === "submitting"}>
               <span className="editorial-cta__label">

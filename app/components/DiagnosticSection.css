@@ -102,6 +102,12 @@
   line-height: 1.65;
 }
 
+@media (min-width:1440px) {
+  .diagnostic-intro .editorial-major {
+    font-size: 3.2rem;
+  }
+}
+
 @media (max-width:1024px) {
   .diagnostic-composition {
     grid-template-columns: 1fr;

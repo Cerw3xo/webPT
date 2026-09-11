@@ -147,6 +147,12 @@
   }
 }
 
+@media (min-width: 1440px) {
+  .heading {
+    font-size: 3.2rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .image {
     transition: none;

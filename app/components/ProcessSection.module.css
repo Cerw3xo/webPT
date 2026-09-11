@@ -112,6 +112,12 @@
   .cell:last-child { padding-right: 0; }
 }
 
+@media (min-width: 1440px) {
+  .heading {
+    font-size: 3rem;
+  }
+}
+
 @media (max-width: 639px) {
   .grid {
     margin-top: 3.5rem;

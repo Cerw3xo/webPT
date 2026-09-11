@@ -130,6 +130,12 @@
   border-radius: .2rem 1rem 1rem;
 }
 
+@media (min-width:1440px) {
+  .results-intro>.editorial-major {
+    font-size: 3.1rem;
+  }
+}
+
 @media (max-width:900px) {
   .results-intro {
     display: block;

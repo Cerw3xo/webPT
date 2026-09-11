@@ -70,7 +70,7 @@
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.visual-field input,.visual-field select,.visual-field textarea {
+.visual-field input,.visual-field textarea {
   width: 100%;
   min-height: 4.35rem;
   padding: 1.2rem 0;
@@ -87,20 +87,11 @@
   text-transform: none;
 }
 
-.visual-field select {
-  cursor: pointer;
-}
-
-.visual-field select option {
-  background: var(--bg-elevated);
-  color: var(--text-primary);
-}
-
 .visual-field--large,.visual-field--large textarea {
-  min-height: 8.25rem;
+  min-height: 5.25rem;
 }
 
-.visual-field input::placeholder,.visual-field textarea::placeholder,.visual-field select:invalid {
+.visual-field input::placeholder,.visual-field textarea::placeholder {
   color: var(--text-dim);
   opacity: 1;
 }
@@ -111,7 +102,7 @@
 
 .contact-section .visual-submit.editorial-cta {
   width: fit-content;
-  margin-top: clamp(2.5rem,3.25vw,3.25rem);
+  margin-top: clamp(1rem,1.75vw,1.75rem);
   justify-content: flex-start;
 }
 
@@ -218,6 +209,12 @@ a.contact-detail:hover i,a.contact-detail:focus-visible i {
   text-transform: uppercase;
 }
 
+@media (min-width:1440px) {
+  .contact-title {
+    font-size: 4.55rem;
+  }
+}
+
 @media (max-width:900px) {
   .contact-grid {
     grid-template-columns: 1fr;
@@ -258,12 +255,12 @@ a.contact-detail:hover i,a.contact-detail:focus-visible i {
     width: 1.5rem;
   }
 
-  .visual-field input,.visual-field select,.visual-field textarea {
+  .visual-field input,.visual-field textarea {
     min-height: 4.1rem;
   }
 
   .visual-field--large,.visual-field--large textarea {
-    min-height: 7.5rem;
+    min-height: 4.75rem;
   }
 }
 

@@ -68,6 +68,13 @@
   animation: page-loader-progress 800ms linear 2 forwards;
 }
 
+@media (min-width: 1440px) {
+  .page-loader__logo-wrap {
+    width: 13.4rem;
+    height: 5.3rem;
+  }
+}
+
 @keyframes page-loader-brand-in {
   from {
     opacity: 0;

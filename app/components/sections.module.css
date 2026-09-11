@@ -87,3 +87,17 @@
     gap: 2.5rem;
   }
 }
+
+@media (min-width: 1440px) {
+  .h2 {
+    font-size: 3.35rem;
+  }
+
+  .h2Large {
+    font-size: 3.65rem;
+  }
+
+  .h2Huge {
+    font-size: 5.1rem;
+  }
+}
